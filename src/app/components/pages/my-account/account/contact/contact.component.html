@@ -1,0 +1,283 @@
+<section>
+  <div *ngIf="show" class="contactUsFormData py-4">
+    <div class="EditContactform">
+      <form action="" (ngSubmit)="onEditFormSubmit()" [formGroup]="editContactForm">
+        <div class="container-fluid">
+          <div class="row m-auto mt-3">
+            <div class="col-sm-12 col-md-6 px-2">
+              <label for="" class="my-2">Address 1</label>
+              <input type="text" name="" id="" class="form-control" placeholder="Address 1" formControlName="address"
+                [ngClass]="{
+                  'is-invalid': submitEditContactForm && f11.address.errors
+                }" />
+              <div *ngIf="submitEditContactForm && f11.address.errors" class="invalid-feedback">
+                <div *ngIf="f11.address.errors.required">
+                  Address 1 is required
+                </div>
+              </div>
+
+              <label for="" class="my-2">Phone No</label>
+              <input type="number" name="" id="" class="form-control" placeholder="Phone No." formControlName="phoneNo"
+                [ngClass]="{
+                  'is-invalid': submitEditContactForm && f11.phoneNo.errors
+                }" />
+              <div *ngIf="submitEditContactForm && f11.phoneNo.errors" class="invalid-feedback">
+                <div *ngIf="f11.phoneNo.errors.required">
+                  phoneNo is required
+                </div>
+              </div>
+              <label for="" class="my-2">Blog Link (if any)</label>
+              <input type="text" name="" id="" class="form-control" placeholder="Blog Link." formControlName="blogLink"
+                [ngClass]="{
+                  'is-invalid': submitEditContactForm && f11.blogLink.errors
+                }" />
+              <div *ngIf="submitEditContactForm && f11.blogLink.errors" class="invalid-feedback">
+                <div *ngIf="f11.blogLink.errors.required">
+                  blogLink is required
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6 px-2">
+              <label for="" class="my-2">Facebook Link</label>
+              <input type="text" name="" formControlName="facebookLink" id="" placeholder="FaceBook Link"
+                class="form-control" [ngClass]="{
+                  'is-invalid': submitEditContactForm && f11.facebookLink.errors
+                }" />
+              <div *ngIf="submitEditContactForm && f11.facebookLink.errors" class="invalid-feedback">
+                <div *ngIf="f11.facebookLink.errors.required">
+                  facebookLink is required
+                </div>
+              </div>
+              <label for="" class="my-2">Instagram link</label>
+              <input type="text" name="" id="" formControlName="instagramLink" placeholder="Instagram Link"
+                class="form-control" [ngClass]="{
+                  'is-invalid':
+                    submitEditContactForm && f11.instagramLink.errors
+                }" />
+              <div *ngIf="submitEditContactForm && f11.instagramLink.errors" class="invalid-feedback">
+                <div *ngIf="f11.instagramLink.errors.required">
+                  instagram Link is required
+                </div>
+              </div>
+              <label for="" class="my-2">Twitter Link</label>
+              <input type="text" name="" id="" placeholder="Twitter Link" formControlName="twitterLink"
+                class="form-control" [ngClass]="{
+                  'is-invalid': submitEditContactForm && f11.twitterLink.errors
+                }" />
+              <div *ngIf="submitEditContactForm && f11.twitterLink.errors" class="invalid-feedback">
+                <div *ngIf="f11.twitterLink.errors.required">
+                  twitterLink is required
+                </div>
+              </div>
+              <label for="" class="my-2">Youtube Link</label>
+              <input type="text" name="" id="" placeholder="Youtube Link" formControlName="youtubeLink"
+                class="form-control" [ngClass]="{
+                  'is-invalid': submitEditContactForm && f11.youtubeLink.errors
+                }" />
+              <div *ngIf="submitEditContactForm && f11.youtubeLink.errors" class="invalid-feedback">
+                <div *ngIf="f11.youtubeLink.errors.required">
+                  youtube Link is required
+                </div>
+              </div>
+              <label for="">Website Link (if any)</label>
+              <input type="text" name="" id="" placeholder="Website Link" class="form-control"
+                formControlName="websiteLink" [ngClass]="{
+                  'is-invalid': submitEditContactForm && f11.websiteLink.errors
+                }" />
+              <div *ngIf="submitEditContactForm && f11.websiteLink.errors" class="invalid-feedback">
+                <div *ngIf="f11.websiteLink.errors.required">
+                  websiteLink is required
+                </div>
+              </div>
+              <label for="" class="my-2">Booking Link(if any)</label>
+              <input type="text" name="" id="" placeholder="Booking Link" class="form-control"
+                formControlName="bookingLink" [ngClass]="{
+                  'is-invalid': submitEditContactForm && f11.bookingLink.errors
+                }" />
+              <div *ngIf="submitEditContactForm && f11.bookingLink.errors" class="invalid-feedback">
+                <div *ngIf="f11.bookingLink.errors.required">
+                  bookingLink is required
+                </div>
+              </div>
+              <label for="" class="my-2">Link for Live Portal (if any)</label>
+              <input type="text" name="" id="" placeholder="Live Portal Link" class="form-control"
+                formControlName="linkForLivePortal" [ngClass]="{
+                  'is-invalid':
+                    submitEditContactForm && f11.linkForLivePortal.errors
+                }" />
+              <div *ngIf="submitEditContactForm && f11.linkForLivePortal.errors" class="invalid-feedback">
+                <div *ngIf="f11.linkForLivePortal.errors.required">
+                  link For Live Portal is required
+                </div>
+              </div>
+              <label for="" class="my-2">Vimeo Link</label>
+              <input type="text" name="" id="" placeholder="Viemo Link" class="form-control" formControlName="vimeoLink"
+                [ngClass]="{
+                  'is-invalid': submitEditContactForm && f11.vimeoLink.errors
+                }" />
+              <div *ngIf="submitEditContactForm && f11.vimeoLink.errors" class="invalid-feedback">
+                <div *ngIf="f11.vimeoLink.errors.required">
+                  vimeoLink is required
+                </div>
+              </div>
+              <label for="" class="my-2">other Link</label>
+              <input type="text" name="" id="" formControlName="otherLink" placeholder="other Link" class="form-control"
+                [ngClass]="{
+                  'is-invalid': submitEditContactForm && f11?.otherLink?.errors
+                }" />
+              <div *ngIf="submitEditContactForm && f11.otherLink.errors" class="invalid-feedback">
+                <div *ngIf="f11.otherLink.errors.required">
+                  OtherLink is required
+                </div>
+              </div>
+              <div style="float: right">
+                <button type="submit" class="btn btn-danger mt-3 py-2 px-3 submit_btn">
+                  Update
+                </button>
+                <button type="button" class="btn btn-danger mt-3 mx-2 py-2 px-3 submit_btn" (click)="toggleIcon()">
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="!show" class="container-fluid py-4">
+    <div class="container-fluid">
+      <div class="row py-5">
+        <div class="col-sm-12 col-md-4 py-5 pl-5">
+          <div class="myProfile">
+            <h6 class="">
+              <i class="pi pi-phone px-2" style="color: #ff1a1a; font-size: 21px"></i>{{ profileInfo.contactUs.phoneNo
+              }}
+            </h6>
+            <h6 class="py-2">
+              <i class="pi pi-map-marker px-2" style="color: #ff1a1a; font-size: 21px"></i>{{
+              profileInfo.contactUs.address }}
+            </h6>
+            <div class="address_bar">
+              <a [href]="profileInfo.contactUs.facebookLink" target="_blank">
+                <img style="margin: 5px" src="../../../../../../assets/images/facebook.png"
+                  alt="Share on Facebook" /></a>
+              <a [href]="profileInfo.contactUs.facebookLink" target="_blank">
+                <img style="margin: 5px" src="../../../../../../assets/images/linkedin.png"
+                  alt="Share on Facebook" /></a>
+              <a [href]="profileInfo.contactUs.facebookLink" target="_blank">
+                <img style="margin: 5px" src="../../../../../../assets/images/linkedin.png"
+                  alt="Share on Facebook" /></a>
+              <a [href]="profileInfo.contactUs.facebookLink" target="_blank">
+                <img style="margin: 5px" src="../../../../../../assets/images/twitter.png"
+                  alt="Share on Facebook" /></a>
+              <a [href]="profileInfo.contactUs.facebookLink" target="_blank">
+                <img style="margin: 5px" src="../../../../../../assets/images/linkedin.png"
+                  alt="Share on Facebook" /></a>
+              <a [href]="profileInfo.contactUs.facebookLink" target="_blank">
+                <img style="margin: 5px" src="../../../../../../assets/images/facebook.png"
+                  alt="Share on Facebook" /></a>
+            </div>
+
+            <form action="" [formGroup]="rateUsForm" (ngSubmit)="onSubmitWriteAboutUs()">
+              <div class="container">
+                <p-rating [cancel]="false" formControlName="rating" [ngClass]="{
+                    'is-invalid': submitEditContactForm && f10.rating.errors
+                  }"></p-rating>
+                <div *ngIf="submitEditContactForm && f10.rating.errors" class="invalid-feedback">
+                  <div *ngIf="f10.rating.errors.required">
+                    Rating is required
+                  </div>
+                </div>
+                <div class="row pr-4 rounded">
+                  <textarea name="" class="form-control" id="" cols="3" rows="5" formControlName="ratingComment"
+                    placeholder="Write about us" [ngClass]="{
+                      'is-invalid':
+                        SubmitWriteAboutForm && f10.ratingComment.errors
+                    }"></textarea>
+                  <div *ngIf="SubmitWriteAboutForm && f10.ratingComment.errors" class="invalid-feedback">
+                    <div *ngIf="f10.ratingComment.errors.required">
+                      Rating Comments is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-danger mt-3 p-2 rounded submit_btn" type="submit">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-7 py-5">
+          <div class="contactform rounded p-5">
+            <h3>Get in touch with us</h3>
+            <!-- <form action="" [formGroup]="contactUsForm" (ngSubmit)="OnSumbitContact()">
+              <div class="container">
+                <div class="row my-2">
+                  <div class="col-sm-12 col-md-6 pr-2">
+                    <input type="text" class="form-control" id="" placeholder="Name" formControlName="name" [ngClass]="{
+                        'is-invalid': SubmitContactForm && f9.name.errors
+                      }" />
+                    <div *ngIf="SubmitContactForm && f9.name.errors" class="invalid-feedback">
+                      <div *ngIf="f9.name.errors.required">
+                        name is required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <input type="text" class="form-control" id="" formControlName="email" placeholder="Email" [ngClass]="{
+                        'is-invalid': SubmitContactForm && f9.email.errors
+                      }" />
+                    <div *ngIf="SubmitContactForm && f9.email.errors" class="invalid-feedback">
+                      <div *ngIf="f9.email.errors.required">
+                        email is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row py-2">
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" id="" formControlName="subject" placeholder="Subject"
+                      [ngClass]="{
+                        'is-invalid': SubmitContactForm && f9.subject.errors
+                      }" />
+                    <div *ngIf="SubmitContactForm && f9.subject.errors" class="invalid-feedback">
+                      <div *ngIf="f9.subject.errors.required">
+                        subject is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row py-2">
+                  <div class="col-sm-12">
+                    <textarea name="" id="" cols="30" class="form-control" rows="7" placeholder="Enter Your Message"
+                      formControlName="message" [ngClass]="{
+                        'is-invalid': SubmitContactForm && f9.message.errors
+                      }"></textarea>
+                    <div *ngIf="SubmitContactForm && f9.message.errors" class="invalid-feedback">
+                      <div *ngIf="f9.message.errors.required">
+                        message is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row py-2">
+                  <button type="submit" class="btn btn-danger p-2 rounded submit_btn">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form> -->
+            <div class="container m-auto">
+              <ul *ngIf="!guestMode">
+                <li (click)="toggleIcon()" style="float: right; position: relative; left: 72px">
+                  <a href="#"><i class="{{ buttonicon }}" style="font-size: 1.3rem"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

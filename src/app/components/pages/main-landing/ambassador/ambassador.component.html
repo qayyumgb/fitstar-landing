@@ -1,0 +1,43 @@
+<div id="ambassadors" class="mb-50">
+  <div class="container">
+    <h4 class="derlimn-font">our ambassadors</h4>
+
+    <owl-carousel-o [options]="ambassadorOptions">
+      <ng-container *ngFor="let item of ambassadorList">
+        <ng-template carouselSlide>
+          <!-- <img [src]="headItem.src"> -->
+          <div class="ad_card" style="background-image: url({{item.picture}})">
+            <div class="ads_card_banner poppins">
+              <h4>{{ item.name }}</h4>
+              <p class="mb-0">{{ item.title }}</p>
+              <a class="view_more" (click)="openModal(template,item.description)">
+                <span class="badge">View More</span>
+              </a>
+              <div class="bottom-card">
+                <a [href]="item.facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a [href]="item.tiwtter" target="_blank">
+                  <i class="fab fa-twitter"></i></a>
+                <a [href]="item.instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a [href]="item.youtube" target="_blank">
+                  <i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</div>
+<!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button> -->
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Description</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    {{userDescription}}
+  </div>
+</ng-template>

@@ -1,0 +1,54 @@
+@media (max-width:991.98px) {
+    .menu div#myNav {
+        height: 0;
+        overflow: hidden;
+        transition: 0.35s ease all;
+    }
+    .menu.open div#myNav{
+        height: 292px;
+    }
+    div#myNav{
+        position: absolute;
+        width: 100%;
+        left: 0;
+        background: #f2f4f9;
+        z-index: 9;
+        top: 70px;
+        box-shadow: 0px 4px 6px -2px grey;
+      
+        ul{
+          display: flex;
+          flex-direction: column;
+          grid-gap: 20px;
+          /* position: absolute; */
+          width: 100%;
+          align-items: center;
+        }
+      }
+      .mobile-menu-toggle{
+          display: flex !important;
+      }
+      #header .logo img {
+        width: 240px !important;
+    }
+    .leftSide h1{
+        font-size:64px !important
+    }
+    #whoWeAre h2,#whoWeAre h3,#ambassadors h4,div#sponsors h2{
+        font-size: 60px !important;
+    }
+    #banner .mainHeading > h2{
+        font-size: 92px !important;
+        line-height: 110px !important;
+        line-height: 160px !important;
+    }
+}
+@media (max-width:767.88px) {
+    .footer-menu{
+        text-align: center;
+    }
+    #banner .mainHeading > h2{
+        font-size: 78px !important;
+        line-height: 90px !important;
+    }
+}

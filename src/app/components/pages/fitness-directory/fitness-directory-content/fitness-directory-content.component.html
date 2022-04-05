@@ -1,0 +1,123 @@
+<section class="mt-5">
+  <div class="container-fluid">
+    <form [formGroup]="searchForm" (ngSubmit)="search()">
+      <div class="row padingMobile">
+        <div class="col-sm-3 col-12 my-1">
+          <input name="name" value="" type="text" id="name" class="form-control" placeholder="Name"
+            formControlName="name" />
+        </div>
+        <div class="col-sm-3 col-12 my-1">
+          <select class="form-control" name="speciality" id="speciality" formControlName="specialities">
+            <option value="{{ data.name }}" *ngFor="let data of specialistsList">
+              {{ data.name }}
+            </option>
+          </select>
+        </div>
+        <div class="col-sm-3 col-12 my-1">
+          <input name="location" value="" id="location" formControlName="location" type="text"
+            class="form-control pac-target-input" placeholder="Location" autocomplete="off" />
+        </div>
+
+        <div class="col-sm-3 col-12 text-center my-1">
+          <button style="margin-top: 0px" class="btn-custom" type="submit">
+            Search
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+<section class="mt-5 pt-5 mb-5" style="background: #f1f4f8">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 table-responsive">
+        <table class="table table-striped" id="dataTable">
+          <thead>
+            <tr *ngIf="_role === 'pro'">
+              <th>Fitness Pro</th>
+              <th>Name</th>
+              <th>1:1 Rate</th>
+              <th>Speciality</th>
+              <th>Languages</th>
+            </tr>
+            <tr *ngIf="_role === 'center'">
+              <th>Fitness Center</th>
+              <th>Name</th>
+              <th>Language</th>
+              <th>Type</th>
+              <th>Open Since</th>
+            </tr>
+            <tr *ngIf="_role === 'modal'">
+              <th>Fitness Model</th>
+              <th>Name</th>
+              <th>Experience</th>
+              <th>Ethnicity</th>
+              <th>Modeling Activities</th>
+            </tr>
+          </thead>
+
+          <tbody *ngIf="itemList.length">
+            <ng-container *ngFor="let item of itemList">
+              <ng-container *ngIf="item.role === 'pro'">
+                <tr>
+                  <td>
+                    <a [routerLink]="['../myaccount/', item._id]" [state]="item"><img [src]="
+                        item.image !== ''
+                          ? item.image
+                          : 'https://www.kindpng.com/picc/m/59-597441_clip-art-fitness-models-pics-portable-network-graphics.png'
+                      " style="width: 100px" /></a>
+                  </td>
+                  <td>{{ item?.fullName }}</td>
+                  <td>{{ item?.rating }}</td>
+                  <td>{{ item?.proAbout?.qualifications?.specialities }}</td>
+                  <td>
+                    <span *ngFor="let language of item?.proAbout?.qualifications?.languages">
+                      {{ language.name}}
+                    </span>
+                  </td>
+                </tr>
+              </ng-container>
+            </ng-container>
+
+            <ng-container *ngFor="let item of itemList">
+              <tr *ngIf="item.role === 'center'">
+                <td>
+                  <a href="#"><img [src]="
+                        item.image !== ''
+                          ? item.image
+                          : 'https://www.kindpng.com/picc/m/59-597441_clip-art-fitness-models-pics-portable-network-graphics.png'
+                      " style="width: 100px" /></a>
+                </td>
+                <td [routerLink]="['../myaccount/', item._id]" [state]="item">{{ item?.fullName }}</td>
+
+                <td>{{ item?.centerAbout?.language }}</td>
+                <td>{{ item?.centerAbout?.fitnessCenterType }}</td>
+                <td>{{ item?.centerAbout?.openSince }}</td>
+              </tr>
+            </ng-container>
+
+
+
+            <ng-container *ngFor="let item of itemList">
+              <tr *ngIf="_role === 'modal'">
+                <td>
+                  <a href="#"><img [src]="
+                        item.image !== ''
+                          ? item.image
+                          : 'https://www.kindpng.com/picc/m/59-597441_clip-art-fitness-models-pics-portable-network-graphics.png'
+                      " style="width: 100px" /></a>
+                </td>
+                <td [routerLink]="['../myaccount/', item._id]" [state]="item">{{ item?.fullName }}</td>
+                <td>{{ item?.modelAbout?.experience }}</td>
+                <td>{{ item?.modelAbout?.ethnicity }}</td>
+                <td>{{ item?.modelAbout?.activites }}</td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,260 @@
+<section id="">
+  <div class="container1">
+    <div class="side-image">
+      <img src="../../../assets/images/sign.png" alt="Girl doing exercise" />
+    </div>
+    <div class="form">
+      <a href="/"
+        ><img src="../../../assets/images/logo.png" alt="Fitstar Pro Logo"
+      /></a>
+      <h1>Sign Up</h1>
+      <form [formGroup]="registerForm" (ngSubmit)="submit()">
+        <input type="hidden" />
+        <div class="input-field">
+          <input
+            type="text"
+            placeholder="Full Name"
+            name="username"
+            required=""
+            formControlName="fullName"
+            [ngClass]="{
+              'is-invalid': submitted && f.fullName.errors
+            }"
+          />
+          <div
+            *ngIf="submitted && f?.fullName?.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.fullName?.errors?.required" class="errorMsg">
+              fullName is required
+            </div>
+          </div>
+        </div>
+        <div class="input-group">
+          <div class="input-field">
+            <input
+              style="margin-top: 15px"
+              type="email"
+              placeholder="Email Address"
+              name="email"
+              formControlName="email"
+              required=""
+              [ngClass]="{
+                'is-invalid': submitted && f.email.errors
+              }"
+            />
+            <div *ngIf="submitted && f?.email?.errors" class="invalid-feedback">
+              <div *ngIf="f.email?.errors?.required" class="errorMsg">
+                Email is required
+              </div>
+              <div *ngIf="f.email?.errors?.pattern" class="errorMsg">
+                In-Valid Email Pattern
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="input-group">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="input-field row-field">
+                <input
+                  [type]="passwordShow ? 'text' : 'password'"
+                  placeholder="Password"
+                  formControlName="password"
+                  required=""
+                  style="margin-top: 0px"
+                  [ngClass]="{
+                    'is-invalid': submitted && f.password.errors
+                  }"
+                />
+                <div
+                  *ngIf="submitted && f?.password?.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.password?.errors?.required" class="errorMsg">
+                    password is required
+                  </div>
+
+                  <div *ngIf="f.password?.errors?.minlength" class="errorMsg">
+                    password atleast 6 characters
+                  </div>
+                </div>
+                <span
+                  style="
+                    float: right;
+                    margin-top: -33px;
+                    margin-right: 10px;
+                    position: relative;
+                    z-index: 2;
+                  "
+                  [class]="
+                    passwordShow
+                      ? 'fa fa-fw fa-eye field-icon'
+                      : 'fa-solid fa-eye-slash'
+                  "
+                  (click)="password()"
+                ></span>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div class="input-field row-field pl">
+                <input
+                  [type]="confirmPasswordShow ? 'text' : 'password'"
+                  placeholder="Confirm Password"
+                  formControlName="confirmPassword"
+                  [ngClass]="{
+                    'is-invalid': submitted && f.confirmPassword.errors
+                  }"
+                />
+                <div
+                  *ngIf="submitted && f?.confirmPassword?.errors"
+                  class="invalid-feedback"
+                >
+                  <div
+                    *ngIf="f.confirmPassword?.errors?.required"
+                    class="errorMsg"
+                  >
+                    Confirm Password is required
+                  </div>
+                  <div
+                    *ngIf="f.confirmPassword?.errors?.notSame"
+                    class="errorMsg"
+                  >
+                    Password does not Match
+                  </div>
+                </div>
+                <span
+                  style="
+                    float: right;
+                    margin-top: -33px;
+                    margin-right: 10px;
+                    position: relative;
+                    z-index: 2;
+                  "
+                  [class]="
+                    confirmPasswordShow
+                      ? 'fa fa-fw fa-eye field-icon'
+                      : 'fa-solid fa-eye-slash'
+                  "
+                  (click)="confirmPasswordToggle()"
+                ></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="input-group">
+          <select
+            formControlName="role"
+            name="role"
+            class="row-field mr"
+            required=""
+            [ngClass]="{
+              'is-invalid': submitted && f.role.errors
+            }"
+          >
+            <option selected="" disabled="">Select Role</option>
+            <option *ngFor="let item of roles" [value]="item.id">
+              {{ item.name }}
+            </option>
+          </select>
+          <div *ngIf="submitted && f?.role?.errors" class="invalid-feedback">
+            <div *ngIf="f.role?.errors?.required" class="errorMsg">
+              Role is required
+            </div>
+          </div>
+        </div>
+        <div class="input-group">
+          <div class="input-field row-field pr">
+            <input
+              type="text"
+              style="margin-top: 0px"
+              placeholder="Enter Your Location"
+              name="location"
+              required=""
+              class="pac-target-input"
+              autocomplete="off"
+              formControlName="location"
+              [ngClass]="{
+                'is-invalid': submitted && f.location.errors
+              }"
+            />
+            <div
+              *ngIf="submitted && f?.location?.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.location?.errors?.required" class="errorMsg">
+                Location is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-field" id="check-field">
+          <input
+            type="checkbox"
+            name="checkbtn"
+            formControlName="checkbtn"
+            id="checkbtn"
+            required=""
+            [checked]="true"
+            [(ngModel)]="terms"
+            (change)="terms = !terms"
+            [ngClass]="{
+              'is-invalid': submitted && f.checkbtn.errors
+            }"
+          />
+
+          <label for="checkbtn"
+            >I agree the supplied information is true and agree to FitStar Pro's
+            Terms and Conditions.</label
+          >
+          <div
+            *ngIf="submitted && f?.checkbtn?.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.checkbtn?.errors?.required" class="errorMsg">
+              Please Accept TOC to continue.
+            </div>
+          </div>
+        </div>
+        <div
+          style="margin-right: -50px; margin-top: 30px; margin-left: 200px"
+          class="g-recaptcha"
+          data-sitekey="6LdL8AUaAAAAAPlNDKd8dRPu9PsbBft6hinwwDmg"
+        >
+          <div style="width: 304px; height: 78px">
+            <div>
+              <iframe
+                title="reCAPTCHA"
+                src="https://www.google.com/recaptcha/api2/anchor?ar=2&amp;k=6LdL8AUaAAAAAPlNDKd8dRPu9PsbBft6hinwwDmg&amp;co=aHR0cHM6Ly9maXRzdGFyLnBybzo0NDM.&amp;hl=en&amp;v=PdoyIVkd8v16xl_NMp3H0N1Y&amp;size=normal&amp;cb=dr6o0jfzvg8u"
+                width="304"
+                height="78"
+                role="presentation"
+                name="a-cjzlvpv0q3v4"
+                frameborder="0"
+                scrolling="no"
+                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"
+              ></iframe>
+            </div>
+            <textarea
+              id="g-recaptcha-response"
+              name="g-recaptcha-response"
+              class="g-recaptcha-response"
+              style="
+                width: 250px;
+                height: 40px;
+                border: 1px solid rgb(193, 193, 193);
+                margin: 10px 25px;
+                padding: 0px;
+                resize: none;
+                display: none;
+              "
+            ></textarea>
+          </div>
+          <iframe style="display: none"></iframe>
+        </div>
+        <button class="btnNext" type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,1744 @@
+<section id="aboutTab" class="mb-3">
+  <!-- Fitness Center Role AboutUs Start -->
+  <div *ngIf="role === activeRoleEnum.Center" id="fitnessCenter">
+    <div class="container mx-auto mt-5">
+      <div class="d-flex justify-content-between roleHeading">
+        <h1 class="">BUSINESS</h1>
+        <ul *ngIf="!guestMode">
+          <li (click)="toggleIcon()">
+            <a href="#"><i class="{{ buttonIcon }}" style="font-size: 1.3rem"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="aboutUs">
+        <form action="" [formGroup]="aboutFitnessCenterForm" (ngSubmit)="OnSubmitFitnessCenter()">
+          <div class="container-fluid aboutusdata">
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Open Since</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <input type="text" class="form-control" id="" formControlName="openSince" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid': SubmitFitnessCenter && f3.openSince.errors
+                  }" placeholder="0" />
+                <div *ngIf="SubmitFitnessCenter && f3.openSince.errors" class="invalid-feedback">
+                  <div *ngIf="f3.openSince.errors.required">
+                    openSince is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Fitness Center Type</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <select formControlName="fitnessCenterType" name="fitnessCenterType" class="form-select form-control"
+                  required="" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      SubmitFitnessCenter && f3.fitnessCenterType.errors
+                  }">
+                  <option selected="" disabled="">Select Fitness Center</option>
+                  <option *ngFor="let item of fitnessTypeList" [value]="item.name">
+                    {{ item.name }}
+                  </option>
+                </select>
+
+                <div *ngIf="SubmitFitnessCenter && f3.fitnessCenterType.errors" class="invalid-feedback">
+                  <div *ngIf="f3.fitnessCenterType.errors.required">
+                    fitnessCenterType is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Languages</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="">
+                  <div class="">
+                    <p-multiSelect [options]="languages" specialties="Select a Languages" optionLabel="name"
+                      formControlName="language" [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid': SubmitFitnessCenter && f3.language.errors
+                      }">
+                    </p-multiSelect>
+                    <div *ngIf="SubmitFitnessCenter && f3.language.errors" class="invalid-feedback">
+                      <div *ngIf="f3.language.errors.required">
+                        language is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Specialties</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="">
+                  <div class="">
+                    <p-multiSelect [options]="specialties" specialties="Select a specialties" optionLabel="name"
+                      formControlName="specialities" [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          SubmitFitnessCenter && f3.specialities.errors
+                      }">
+                    </p-multiSelect>
+                    <div *ngIf="SubmitFitnessCenter && f3.specialities.errors" class="invalid-feedback">
+                      <div *ngIf="f3.specialities.errors.required">
+                        specialities is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Hours Of Operation</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <input type="text" class="form-control" id="" formControlName="hoursOfOperation"
+                  placeholder="Hours Of Operation" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      SubmitFitnessCenter && f3.hoursOfOperation.errors
+                  }" />
+                <div *ngIf="SubmitFitnessCenter && f3.hoursOfOperation.errors" class="invalid-feedback">
+                  <div *ngIf="f3.hoursOfOperation.errors.required">
+                    hoursOfOperation is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Membership Plans</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <input type="text" class="form-control" id="" placeholder="Membership Plans"
+                  formControlName="membership" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid': SubmitFitnessCenter && f3.membership.errors
+                  }" />
+                <div *ngIf="SubmitFitnessCenter && f3.membership.errors" class="invalid-feedback">
+                  <div *ngIf="f3.membership.errors.required">
+                    Membership is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Accomplishments</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <input type="text" class="form-control" placeholder="Accomplishments" id=""
+                  formControlName="accomplishments" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      SubmitFitnessCenter && f3.accomplishments.errors
+                  }" />
+                <div *ngIf="SubmitFitnessCenter && f3.accomplishments.errors" class="invalid-feedback">
+                  <div *ngIf="f3.accomplishments.errors.required">
+                    Accomplishments is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Our Fitness Pros</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="">
+                  <div class="">
+                    <p-multiSelect [options]="professions" specialties="Select a Professional" optionLabel="name"
+                      formControlName="ourFitnessPro" [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          SubmitFitnessCenter && f3.ourFitnessPro.errors
+                      }">
+                    </p-multiSelect>
+                    <div *ngIf="SubmitFitnessCenter && f3.ourFitnessPro.errors" class="invalid-feedback">
+                      <div *ngIf="f3.ourFitnessPro.errors.required">
+                        Fitness Profession is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Our Story/About Us</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="">
+                  <div class="">
+                    <textarea name="" class="form-control" id="" cols="5" rows="5" formControlName="ourStory"
+                      placeholder="About us" autoWidth="false" [style]="{ width: '100%' }" [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid': SubmitFitnessCenter && f3.ourStory.errors
+                      }"></textarea>
+                    <div *ngIf="SubmitFitnessCenter && f3.ourStory.errors" class="invalid-feedback">
+                      <div *ngIf="f3.ourStory.errors.required">
+                        Our Story is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Product Reviews</span>
+              </div>
+
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="productReviewsMain" formArrayName="productsRating">
+                  <div class="row productReviewsMainItem" style="border: none" *ngFor="
+                      let item of productRatingArray.controls;
+                      let i = index
+                    " [formGroupName]="i">
+                    <div style="border: none" class="col-10 p-0 row" *ngIf="productRatingArray.length">
+                      <input class="col-3 form-control mt-0 product_review_name_multiple_field" placeholder="Product"
+                        formControlName="product" />
+                      <input class="col-4 form-control mt-0 product_review_multiple_field" placeholder="Review"
+                        formControlName="review" />
+                      <div class="col-3">
+                        <p-rating [cancel]="false" formControlName="starts"></p-rating>
+                      </div>
+                    </div>
+
+                    <div class="col-2 p-0 text-right">
+                      <a>
+                        <div class="edit_ico">
+                          <i class="pi pi-trash" (click)="removeFitnessCenterRating(i)"></i>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row" *ngIf="show" style="border: none">
+                  <button type="button" class="update_btn2 poppins"
+                    (click)="addFitnessProductRating(activeRoleEnum.Center)">
+                    Add New Product Review
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="show">
+            <button type="submit" class="btn btn-danger mt-3 py-2 px-3 update_btn">
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Fitness Center Role AboutUs Ends -->
+
+  <!-- Fitness Model Role AboutUs Start -->
+  <div *ngIf="role === activeRoleEnum.Modal" id="fitnessModel">
+    <div class="container d-flex justify-content-center flex-column mx-auto">
+      <div class="d-flex justify-content-between py-5">
+        <h1 class="">Key Info</h1>
+        <!-- <button class="btn btn-danger px-3 py-2">Edit</button> -->
+        <ul *ngIf="!guestMode">
+          <li (click)="toggleIcon()" style="float: right; position: relative; bottom: 30px; right: 30px">
+            <a href="#"><i class="{{ buttonIcon }}" style="font-size: 1.3rem"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="aboutUs">
+        <form action="" [formGroup]="aboutFitnessModelForm" (ngSubmit)="OnSubmitAboutFitnessModel()">
+          <div class="container-fluid aboutusdata">
+            <!-- Name -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Name</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <input type="text" class="form-control" formControlName="name" id="" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid': submitAboutFitnessModel && f4.name.errors
+                  }" placeholder="Fitness Model Name" />
+                <div *ngIf="submitAboutFitnessModel && f4.name.errors" class="invalid-feedback">
+                  <div *ngIf="f4.name.errors.required">name is required</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Profile Url -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Profile Url</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <input type="text" class="form-control" formControlName="profileUrl" id="" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessModel && f4.profileUrl.errors
+                  }" placeholder="Enter profile Url" />
+                <div *ngIf="submitAboutFitnessModel && f4.profileUrl.errors" class="invalid-feedback">
+                  <div *ngIf="f4.profileUrl.errors.required">
+                    profileUrl is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gender -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Gender</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="">
+                  <div class="col-md-6">
+                    <div class="p-field-radiobutton">
+                      <p-radioButton name="gender" value="Male" formControlName="gender" inputId="male">
+                      </p-radioButton>
+                      <label for="male" class="radioLabel">Male</label>
+                    </div>
+
+                    <div class="p-field-radiobutton">
+                      <p-radioButton name="gender" value="Female" formControlName="gender" inputId="female">
+                      </p-radioButton>
+                      <label for="female" class="radioLabel">Female</label>
+                    </div>
+
+                    <div class="p-field-radiobutton">
+                      <p-radioButton name="gender" value="Other" formControlName="gender" inputId="other">
+                      </p-radioButton>
+                      <label for="other" class="radioLabel">Other</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Age -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Age</span>
+              </div>
+              <div class="col-sm-12 col-md-8">
+                <div class="row" style="border: none">
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" formControlName="age" id="" [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid': submitAboutFitnessModel && f4.age.errors
+                      }" placeholder="Age" />
+                    <div *ngIf="submitAboutFitnessModel && f4.age.errors" class="invalid-feedback">
+                      <div *ngIf="f4.age.errors.required">age is required</div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 pl-5 py-2">
+                    <p>Years</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" formGroupName="height">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Height</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="row" style="border: none">
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" id="" placeholder="Height" formControlName="number"
+                      [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          submitAboutFitnessModel && f4?.number?.errors
+                      }" />
+                    <div *ngIf="submitAboutFitnessModel && f4?.number?.errors" class="invalid-feedback">
+                      <div *ngIf="f4?.number?.errors?.required">
+                        Height required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pl-3">
+                    <select class="form-control" formControlName="measurement" [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          submitAboutFitnessModel && f4?.measurement?.errors
+                      }">
+                      <option disabled value="null" selected>
+                        select an option
+                      </option>
+                      <option value="Feets">Feets</option>
+                      <option value="Inches">Inches</option>
+                    </select>
+
+                    <div *ngIf="submitAboutFitnessModel && f4?.measurement?.errors" class="invalid-feedback">
+                      <div *ngIf="f4.measurement?.errors?.required">
+                        measurement is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Weight -->
+            <div class="row" formGroupName="weight">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Weight</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="row" style="border: none">
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" id="" placeholder="Weight" formControlName="number"
+                      [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          submitAboutFitnessModel && f4?.number?.errors
+                      }" />
+                    <div *ngIf="submitAboutFitnessModel && f4?.number?.errors" class="invalid-feedback">
+                      <div *ngIf="f4.number?.errors?.required">
+                        weight is required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pl-3">
+                    <select class="form-select form-control" formControlName="measurement" [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          submitAboutFitnessModel && f4?.measurement?.errors
+                      }">
+                      <option disabled selected value>
+                        -- select an option --
+                      </option>
+                      <option value="Kilo">Kilo</option>
+                      <option value="Pounds">Pounds</option>
+                    </select>
+                    <div *ngIf="submitAboutFitnessModel && f4?.measurement?.errors" class="invalid-feedback">
+                      <div *ngIf="f4.measurement?.errors?.required">
+                        measurement is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Body Type</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <select class="form-select form-control" formControlName="bodyType" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid': submitAboutFitnessModel && f4.bodyType.errors
+                  }">
+                  <option selected>Open this select menu</option>
+                  <option value="1">Light</option>
+                  <option value="2">Fair</option>
+                  <option value="3">Medium</option>
+                  <option value="4">Olive</option>
+                  <option value="5">Tan</option>
+                  <option value="6">Brown</option>
+                  <option value="7">Dark Brown</option>
+                  <option value="8">Black</option>
+                </select>
+                <div *ngIf="submitAboutFitnessModel && f4.bodyType.errors" class="invalid-feedback">
+                  <div *ngIf="f4.bodyType.errors.required">
+                    bodyType is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Ethnicity</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <select class="form-select form-control" formControlName="ethnicity" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid': submitAboutFitnessModel && f4.ethnicity.errors
+                  }">
+                  <option selected value="1">Asian</option>
+                  <option value="2">Caucassin</option>
+                  <option value="3">Eastern European</option>
+                  <option value="4">East Indian</option>
+                  <option value="5">Hispanic</option>
+                  <option value="6">Middle Eastern</option>
+                  <option value="7">Native American</option>
+                  <option value="8">Pacfic Islands</option>
+                  <option value="9">I don't Know</option>
+                </select>
+                <div *ngIf="submitAboutFitnessModel && f4.ethnicity.errors" class="invalid-feedback">
+                  <div *ngIf="f4.ethnicity.errors.required">
+                    Ethnicity is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Skin Tone</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="">
+                  <div class="col-md-12">
+                    <select class="form-select form-control" formControlName="skinTone" [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          submitAboutFitnessModel && f4.skinTone.errors
+                      }">
+                      <option selected value="1">Light</option>
+                      <option value="2">Fair</option>
+                      <option value="3">Medium</option>
+                      <option value="4">Olive</option>
+                      <option value="5">Tan</option>
+                      <option value="6">Brown</option>
+                      <option value="7">Dark Brown</option>
+                      <option value="8">Black</option>
+                    </select>
+                    <div *ngIf="submitAboutFitnessModel && f4.skinTone.errors" class="invalid-feedback">
+                      <div *ngIf="f4.skinTone.errors.required">
+                        SkinTone is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Eye Color</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <select class="form-select form-control" formControlName="eyeColor" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid': submitAboutFitnessModel && f4.eyeColor.errors
+                  }">
+                  <option selected value="1">Amber</option>
+                  <option value="2">Blue</option>
+                  <option value="3">Brain</option>
+                  <option value="4">Dark Brown</option>
+                  <option value="5">Grey</option>
+                  <option value="6">Green</option>
+                  <option value="7">Hazel</option>
+                  <option value="8">Red</option>
+                  <option value="9">Violet</option>
+                </select>
+                <div *ngIf="submitAboutFitnessModel && f4.eyeColor.errors" class="invalid-feedback">
+                  <div *ngIf="f4.eyeColor.errors.required">
+                    EyeColor is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Hair Length</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <select class="form-select form-control" formControlName="hairLength" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessModel && f4.hairLength.errors
+                  }">
+                  <option selected value="1">Bold</option>
+                  <option value="2">Small</option>
+                  <option value="3">Medium</option>
+                  <option value="4">Long</option>
+                  <option value="5">Short</option>
+                  <option value="6">Shoulder Length</option>
+                  <option value="7">Very long</option>
+                </select>
+                <div *ngIf="submitAboutFitnessModel && f4.hairLength.errors" class="invalid-feedback">
+                  <div *ngIf="f4.hairLength.errors.required">
+                    HairLength is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Tattoos</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <select class="form-select form-control" formControlName="tattoos" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid': submitAboutFitnessModel && f4.tattoos.errors
+                  }">
+                  <option selected value="2">Some</option>
+                  <option value="2">Many</option>
+                </select>
+                <div *ngIf="submitAboutFitnessModel && f4.tattoos.errors" class="invalid-feedback">
+                  <div *ngIf="f4.tattoos.errors.required">
+                    Tattoos is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Piercings</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <select class="form-select form-control" formControlName="piercings" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid': submitAboutFitnessModel && f4.piercings.errors
+                  }">
+                  <option selected>None</option>
+                  <option value="2">Some</option>
+                  <option value="3">Many</option>
+                </select>
+                <div *ngIf="submitAboutFitnessModel && f4.piercings.errors" class="invalid-feedback">
+                  <div *ngIf="f4.piercings.errors.required">
+                    Piercings is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Experience</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <select class="form-select form-control" formControlName="experience" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessModel && f4.experience.errors
+                  }">
+                  <option selected value="1">No Experience</option>
+                  <option value="2">Some Experience</option>
+                  <option vaule="3">Experience</option>
+                  <option vaule="4">Very Experience</option>
+                </select>
+                <div *ngIf="submitAboutFitnessModel && f4.experience.errors" class="invalid-feedback">
+                  <div *ngIf="f4.experience.errors.required">
+                    Experience is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Languages</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="">
+                  <div class="">
+                    <p-multiSelect [options]="languages" formControlName="languages" optionValue="code"
+                      specialties="Select a Languages" optionLabel="name" [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          submitAboutFitnessModel && f4.languages.errors
+                      }">
+                    </p-multiSelect>
+                    <div *ngIf="submitAboutFitnessModel && f4.languages.errors" class="invalid-feedback">
+                      <div *ngIf="f4.languages.errors.required">
+                        Languages required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Working With Media</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="">
+                  <div class="col-md-6">
+                    <!-- <div class="form-check">
+                      <input class="form-check-input mt-2" type="radio" name="workingWithMedia"
+                        formControlName="workingWithMedia" id="yes" />
+
+                      <label class="form-check-label" for="yes">Yes</label>
+                      <br />
+
+                      <input class="form-check-input mt-2" type="radio" name="workingWithMedia" id="no"
+                        formControlName="workingWithMedia" />
+                      <label class="form-check-label" for="female">No</label>
+                      <div *ngIf="
+                          submitAboutFitnessModel && f4.workingWithMedia.errors
+                        " class="invalid-feedback">
+                        <div *ngIf="f4.workingWithMedia.errors.required">
+                          workingWithMedia is required
+                        </div>
+                      </div>
+                      <br />
+                    </div> -->
+
+                    <div class="p-field-radiobutton">
+                      <p-radioButton name="workingWithMedia" [value]="true" formControlName="workingWithMedia"
+                        inputId="yes">
+                      </p-radioButton>
+                      <label for="yes" class="radioLabel">Yes</label>
+                    </div>
+                    <div class="p-field-radiobutton">
+                      <p-radioButton name="workingWithMedia" [value]="false" formControlName="workingWithMedia"
+                        inputId="no">
+                      </p-radioButton>
+                      <label for="no" class="radioLabel">No</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Modeling Interests</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <p-multiSelect [options]="Interests" formControlName="modelingInterest"
+                  specialties="Select Your Interests" optionLabel="name" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessModel && f4.modelingInterest.errors
+                  }">
+                </p-multiSelect>
+                <div *ngIf="submitAboutFitnessModel && f4.modelingInterest.errors" class="invalid-feedback">
+                  <div *ngIf="f4.modelingInterest.errors.required">
+                    ModelingInterest is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Compensation</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <select class="form-select form-control" formControlName="compensation" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessModel && f4.compensation.errors
+                  }">
+                  <option selected>Not Compensation</option>
+                  <option value="1">Paid</option>
+                  <option value="2">Any</option>
+                  <option vaule="3">Depends on assigments</option>
+                  <option vaule="4">Time Prints</option>
+                </select>
+                <div *ngIf="submitAboutFitnessModel && f4.compensation.errors" class="invalid-feedback">
+                  <div *ngIf="f4.compensation.errors.required">
+                    compensation is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Notes About Compensation</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <input type="text" class="form-control" formControlName="noteAboutCompensation" id="" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessModel && f4.noteAboutCompensation.errors
+                  }" placeholder="Notes About Compensation" />
+                <div *ngIf="
+                    submitAboutFitnessModel && f4.noteAboutCompensation.errors
+                  " class="invalid-feedback">
+                  <div *ngIf="f4.noteAboutCompensation.errors.required">
+                    noteAboutCompensation is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Activities</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="">
+                  <div class="">
+                    <p-multiSelect [options]="Activities" specialties="Select a Activities" optionLabel="name"
+                      formControlName="activites" [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          submitAboutFitnessModel && f4.activites.errors
+                      }">
+                    </p-multiSelect>
+                    <div *ngIf="submitAboutFitnessModel && f4.activites.errors" class="invalid-feedback">
+                      <div *ngIf="f4.activites.errors.required">
+                        Activities is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">My Story/About Me</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="">
+                  <div class="">
+                    <textarea name="" class="form-control" formControlName="aboutMe" id="" cols="5" rows="5"
+                      placeholder="About us" [style]="{ width: '100%' }" [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          submitAboutFitnessModel && f4.aboutMe.errors
+                      }"></textarea>
+                    <div *ngIf="submitAboutFitnessModel && f4.aboutMe.errors" class="invalid-feedback">
+                      <div *ngIf="f4.aboutMe.errors.required">
+                        AboutMe is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Product Reviews</span>
+              </div>
+
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="productReviewsMain" formArrayName="productsRating">
+                  <div class="row productReviewsMainItem" style="border: none" *ngFor="
+                      let item of productRatingModalArray.controls;
+                      let i = index
+                    " [formGroupName]="i">
+                    <div style="border: none" class="col-10 p-0 row" *ngIf="productRatingModalArray.length">
+                      <input class="col-3 form-control mt-0 product_review_name_multiple_field" placeholder="Product"
+                        formControlName="product" />
+                      <input class="col-4 form-control mt-0 product_review_multiple_field" placeholder="Review"
+                        formControlName="review" />
+                      <div class="col-3">
+                        <p-rating [cancel]="false" formControlName="starts"></p-rating>
+                      </div>
+                    </div>
+
+                    <div class="col-2 p-0 text-right" *ngIf="!guestMode">
+                      <a>
+                        <div class="edit_ico">
+                          <i class="pi pi-trash" (click)="removeFitnessModalRating(i)"></i>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row" *ngIf="show" style="border: none">
+                  <button type="button" class="update_btn2 poppins"
+                    (click)="addFitnessProductRating(activeRoleEnum.Modal)">
+                    Add New Product Review
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="show">
+            <button type="submit" class="btn btn-danger mt-3 py-2 px-3 update_btn">
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Fitness Model Role AboutUs Ends -->
+
+  <!-- Fitness Professional Role AboutUs Start -->
+
+  <div *ngIf="role === activeRoleEnum.Pro" id="fitness Professional">
+    <div class="container d-flex justify-content-center flex-column mx-auto">
+      <div class="d-flex justify-content-between py-5">
+        <h1 class="">BUSINESS</h1>
+        <!-- <button class="btn btn-danger px-3 py-2">Edit</button> -->
+        <ul *ngIf="!guestMode">
+          <li (click)="toggleIcon()" style="float: right; position: relative; bottom: 30px; right: 30px">
+            <a href="#"><i class="{{ buttonIcon }}" style="font-size: 1.3rem"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="aboutUs">
+        <form action="" [formGroup]="aboutFitnessProfessionalForm" (ngSubmit)="OnSubmitAboutFitnessProfessional()">
+          <!-- Business -->
+          <div class="container-fluid aboutusdata" formGroupName="business">
+            <!-- Business Name -->
+
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Business Name</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <input type="text" class="form-control" formControlName="name" id="" placeholder="Enter Business Name"
+                  [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessProfessional && f5.name.errors
+                  }" />
+                <div *ngIf="submitAboutFitnessProfessional && f5.name.errors" class="invalid-feedback">
+                  <div *ngIf="f5.name.errors.required">name is required</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Client Preference -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Client Preference</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <select class="form-select form-control" formControlName="clientPreference" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessProfessional &&
+                      f5.clientPreference.errors
+                  }">
+                  <option selected>Untrained</option>
+                  <option value="1">Novice</option>
+                  <option value="2">Intermediate</option>
+                  <option value="3">Advanced</option>
+                  <option value="4">Elite</option>
+                  <option value="5">All levels</option>
+                </select>
+                <div *ngIf="
+                    submitAboutFitnessProfessional && f5.clientPreference.errors
+                  " class="invalid-feedback">
+                  <div *ngIf="f5.clientPreference.errors.required">
+                    clientPreference is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- availabilityForInHomeTraining -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Availability for in-home training</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <select class="form-select form-control" formControlName="availabilityForInHomeTraining" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessProfessional &&
+                      f5.availabilityForInHomeTraining.errors
+                  }">
+                  <option selected value="0">
+                    Availability for in-home training ?
+                  </option>
+                  <option value="1">Yes Available</option>
+                  <option value="2">No,Come to My Place</option>
+                </select>
+                <div *ngIf="
+                    submitAboutFitnessProfessional &&
+                    f5.availabilityForInHomeTraining.errors
+                  " class="invalid-feedback">
+                  <div *ngIf="f5.availabilityForInHomeTraining.errors.required">
+                    availabilityForInHomeTraining is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- availabilityForOnLineLiveTraining -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Availability for on-line-live training
+                </span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <select class="form-select form-control" formControlName="availabilityForOnLineliveTraining" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessProfessional &&
+                      f5.availabilityForOnLineliveTraining.errors
+                  }">
+                  <option selected value="0">
+                    Availability for on-line-live training?
+                  </option>
+                  <option value="1">Yes Available</option>
+                  <option value="2">No,Come to My Place</option>
+                </select>
+                <div *ngIf="
+                    submitAboutFitnessProfessional &&
+                    f5.availabilityForOnLineliveTraining.errors
+                  " class="invalid-feedback">
+                  <div *ngIf="f5.availabilityForOnLineliveTraining.errors.required">
+                    availabilityForOnLineliveTraining is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- trainingRates -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Training Rates</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <input type="text" class="form-control" id="" formControlName="trainingRates"
+                  placeholder="Hours Of Operation" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessProfessional && f5.trainingRates.errors
+                  }" />
+                <div *ngIf="
+                    submitAboutFitnessProfessional && f5.trainingRates.errors
+                  " class="invalid-feedback">
+                  <div *ngIf="f5.trainingRates.errors.required">
+                    trainingRates is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- noteAboutTrainingRates -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Note About Training Rates</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <input type="text" class="form-control" id="" formControlName="noteAboutTrainingRates"
+                  placeholder="Membership Plans" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessProfessional &&
+                      f5.noteAboutTrainingRates.errors
+                  }" />
+                <div *ngIf="
+                    submitAboutFitnessProfessional &&
+                    f5.noteAboutTrainingRates.errors
+                  " class="invalid-feedback">
+                  <div *ngIf="f5.noteAboutTrainingRates.errors.required">
+                    noteAboutTrainingRates is required
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- QUALIFICATIONS -->
+          <div class="aboutusdata Qualification" formGroupName="qualifications">
+            <h1 class="py-5">QUALIFICATIONS</h1>
+
+            <!-- Degrees/Diplomas -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Degrees/Diplomas</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <input type="text" class="form-control" id="" formControlName="degree" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessProfessional && f5.degree.errors
+                  }" placeholder="0" />
+                <div *ngIf="submitAboutFitnessProfessional && f5.degree.errors" class="invalid-feedback">
+                  <div *ngIf="f5.degree.errors.required">
+                    Degree is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Professions -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Professions</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <input type="text" class="form-control" formControlName="professions" id="" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessProfessional && f5.professions.errors
+                  }" placeholder="Profession" />
+                <div *ngIf="
+                    submitAboutFitnessProfessional && f5.professions.errors
+                  " class="invalid-feedback">
+                  <div *ngIf="f5.professions.errors.required">
+                    professions is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- experience -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Experience</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="">
+                  <input type="text" class="form-control" formControlName="experience" id="" [ngStyle]="{
+                      border: pointerEvent === true ? 'none' : '1px solid grey',
+                      'pointer-events':
+                        pointerEvent === true ? 'none' : 'inherit '
+                    }" [ngClass]="{
+                      'is-invalid':
+                        submitAboutFitnessProfessional && f5.experience.errors
+                    }" placeholder="Experience" />
+                  <div *ngIf="
+                      submitAboutFitnessProfessional && f5.experience.errors
+                    " class="invalid-feedback">
+                    <div *ngIf="f5.experience.errors.required">
+                      experience is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Certifications/Trainings</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="">
+                  <div class="">
+                    <p-multiSelect formControlName="certification" [options]="certificates"
+                      specialties="Select a certificates" optionLabel="name" [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          submitAboutFitnessProfessional &&
+                          f5.certification.errors
+                      }">
+                    </p-multiSelect>
+                    <div *ngIf="
+                        submitAboutFitnessProfessional &&
+                        f5.certification.errors
+                      " class="invalid-feedback">
+                      <div *ngIf="f5.certification.errors.required">
+                        certificates is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Specialties -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Specialties</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <p-multiSelect [options]="specialties" specialties="Select a specialities" optionLabel="name"
+                  formControlName="specialities" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessProfessional && f5.specialities.errors
+                  }">
+                </p-multiSelect>
+                <div *ngIf="
+                    submitAboutFitnessProfessional && f5.specialities.errors
+                  " class="invalid-feedback">
+                  <div *ngIf="f5.specialities.errors.required">
+                    specialities is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Languages</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <p-multiSelect [options]="languages" specialties="Select a languages" optionLabel="name"
+                  formControlName="languages" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessProfessional && f5.languages.errors
+                  }">
+                </p-multiSelect>
+                <div *ngIf="submitAboutFitnessProfessional && f5.languages.errors" class="invalid-feedback">
+                  <div *ngIf="f5.languages.errors.required">
+                    languages is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Training Methods and Styles -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Training Methods and Styles</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <textarea name="" class="form-control" id="" cols="5" formControlName="trainingMethodsAndStyles"
+                  rows="5" placeholder="TrainingMethodsAndStyles" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessProfessional &&
+                      f5.trainingMethodsAndStyles.errors
+                  }"></textarea>
+                <div *ngIf="
+                    submitAboutFitnessProfessional &&
+                    f5.trainingMethodsAndStyles.errors
+                  " class="invalid-feedback">
+                  <div *ngIf="f5.trainingMethodsAndStyles.errors.required">
+                    trainingMethodsAndStyles is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="row">
+              <div class="col-sm-12 col-md-6 py-2">
+                <span for="exampleInputEmail1">Fitness Awards</span>
+              </div>
+              <div class="col-sm-12 col-md-6 entries">
+                <button *ngIf="show" class="btn btn-danger" style="
+                    background-color: #ff1a1a;
+                    font-weight: 700;
+                    padding: 10px 15px;
+                  ">
+                  Add New Product Review
+                </button>
+              </div>
+            </div> -->
+          </div>
+
+          <div class="aboutusdata Personal" formGroupName="personal">
+            <h1 class="py-5">Personal</h1>
+            <!-- name -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Name</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <input type="text" class="form-control" formControlName="name" id="" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessProfessional && f5.name.errors
+                  }" placeholder="Fitness Model Name" />
+                <div *ngIf="submitAboutFitnessProfessional && f5.name.errors" class="invalid-feedback">
+                  <div *ngIf="f5.name.errors.required">
+                    personal name is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Profile Url -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Profile Url</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <input type="text" class="form-control" id="" formControlName="profileUrl" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessProfessional && f5.profileUrl.errors
+                  }" placeholder="Enter profile Url" />
+                <div *ngIf="submitAboutFitnessProfessional && f5.profileUrl.errors" class="invalid-feedback">
+                  <div *ngIf="f5.profileUrl.errors.required">
+                    profileUrl is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gender -->
+
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Gender</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="">
+                  <div class="col-md-6">
+                    <div class="p-field-radiobutton">
+                      <p-radioButton name="gender" value="Male" formControlName="gender" inputId="male">
+                      </p-radioButton>
+                      <label for="male" class="radioLabel">Male</label>
+                    </div>
+
+                    <div class="p-field-radiobutton">
+                      <p-radioButton name="gender" value="Female" formControlName="gender" inputId="female">
+                      </p-radioButton>
+                      <label for="female" class="radioLabel">Female</label>
+                    </div>
+
+                    <div class="p-field-radiobutton">
+                      <p-radioButton name="gender" value="Other" formControlName="gender" inputId="other">
+                      </p-radioButton>
+                      <label for="other" class="radioLabel">Other</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Age -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Age</span>
+              </div>
+              <div class="col-sm-12 col-md-8">
+                <div class="row" style="border: none">
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" formControlName="age" id="" [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          submitAboutFitnessProfessional && f5.age.errors
+                      }" placeholder="Age" />
+                    <div *ngIf="submitAboutFitnessProfessional && f5.age.errors" class="invalid-feedback">
+                      <div *ngIf="f5.age.errors.required">age is required</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pl-5 py-2">
+                    <h4>Years</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Height -->
+            <div class="row" formGroupName="height">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Height</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="row" style="border: none">
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" formControlName="number" id="" placeholder="Height"
+                      [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          submitAboutFitnessProfessional && f5.number.errors
+                      }" />
+                    <div *ngIf="submitAboutFitnessProfessional && f5.number.errors" class="invalid-feedback">
+                      <div *ngIf="f5.number.errors.required">
+                        height is required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pl-3">
+                    <select class="form-select form-control" formControlName="measurement" [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          submitAboutFitnessProfessional &&
+                          f5.measurement.errors
+                      }">
+                      <option selected value="1">Meters</option>
+                      <option value="2">Feets</option>
+                    </select>
+                    <div *ngIf="
+                        submitAboutFitnessProfessional && f5.measurement.errors
+                      " class="invalid-feedback">
+                      <div *ngIf="f5.measurement.errors.required">
+                        height is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" formGroupName="weight">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Weight</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="row" style="border: none">
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" id="" placeholder="Weight" formControlName="number"
+                      [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          submitAboutFitnessProfessional && f5.number.errors
+                      }" />
+                    <div *ngIf="submitAboutFitnessProfessional && f5.number.errors" class="invalid-feedback">
+                      <div *ngIf="f5.number.errors.required">
+                        weight is required
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 pl-3">
+                    <select class="form-select form-control" formControlName="measurement" [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          submitAboutFitnessProfessional &&
+                          f5.measurement.errors
+                      }" autoWidth="false" [style]="{ width: '100%' }">
+                      <option selected value="1">Kilograms</option>
+                      <option value="2">Pounds</option>
+                    </select>
+                    <div *ngIf="
+                        submitAboutFitnessProfessional && f5.measurement.errors
+                      " class="invalid-feedback">
+                      <div *ngIf="f5.measurement.errors.required">
+                        Measurement is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Diet Type -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Diet Type</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <select formControlName="dietType" class="form-select form-control custom-select" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessProfessional && f5.dietType.errors
+                  }">
+                  <option selected value="1">Regular</option>
+                  <option value="2">Vegan</option>
+                  <option value="3">Rew Food</option>
+                  <option value="4">Mediterranean</option>
+                </select>
+                <div *ngIf="submitAboutFitnessProfessional && f5.dietType.errors" class="invalid-feedback">
+                  <div *ngIf="f5.dietType.errors.required">
+                    dietType is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Body Type -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Body Type</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <select formControlName="bodyType" class="form-select form-control" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessProfessional && f5.bodyType.errors
+                  }">
+                  <option selected value="1">Ectomorph</option>
+                  <option value="2">Endomorph</option>
+                  <option value="3">Mesormorph</option>
+                </select>
+                <div *ngIf="submitAboutFitnessProfessional && f5.bodyType.errors" class="invalid-feedback">
+                  <div *ngIf="f5.bodyType.errors.required">
+                    bodyType is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activities -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Activities</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="">
+                  <div class="">
+                    <p-multiSelect formControlName="activites" [options]="Activities" specialties="Select a Activities"
+                      optionLabel="name" autoWidth="false" [ngStyle]="{
+                        border:
+                          pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" [ngClass]="{
+                        'is-invalid':
+                          submitAboutFitnessProfessional && f5.activites.errors
+                      }">
+                    </p-multiSelect>
+                    <div *ngIf="
+                        submitAboutFitnessProfessional && f5.activites.errors
+                      " class="invalid-feedback">
+                      <div *ngIf="f5.activites.errors.required">
+                        activities is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- My Story/About me -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">My Story/About me</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <textarea name="" class="form-control" id="" cols="5" formControlName="aboutMe" rows="5"
+                  placeholder="About us" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid':
+                      submitAboutFitnessProfessional && f5.aboutMe.errors
+                  }"></textarea>
+                <div *ngIf="submitAboutFitnessProfessional && f5.aboutMe.errors" class="invalid-feedback">
+                  <div *ngIf="f5.aboutMe.errors.required">
+                    aboutMe is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Reviews -->
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Product Reviews</span>
+              </div>
+
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="productReviewsMain" formArrayName="productsRating">
+                  <div class="row productReviewsMainItem" style="border: none" *ngFor="
+                      let item of productRatingProArray.controls;
+                      let i = index
+                    " [formGroupName]="i">
+                    <div style="border: none" class="col-10 p-0 row" *ngIf="productRatingProArray.length">
+                      <input class="col-3 form-control mt-0 product_review_name_multiple_field" placeholder="Product"
+                        formControlName="product" />
+                      <input class="col-4 form-control mt-0 product_review_multiple_field" placeholder="Review"
+                        formControlName="review" />
+                      <div class="col-3">
+                        <p-rating [cancel]="false" formControlName="starts"></p-rating>
+                      </div>
+                    </div>
+
+                    <div class="col-2 p-0 text-right">
+                      <a>
+                        <div class="edit_ico">
+                          <i class="pi pi-trash" (click)="removeFitnessProRating(i)"></i>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row" *ngIf="show" style="border: none">
+                  <button type="button" class="update_btn2 poppins"
+                    (click)="addFitnessProductRating(activeRoleEnum.Pro)">
+                    Add New Product Review
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span for="exampleInputEmail1">Sponsor Images</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <div class="productReviewsMain" formArrayName="productsRating">
+                  <div class="row productReviewsMainItem" style="border: none" *ngFor="
+                      let item of productRatingProArray.controls;
+                      let i = index
+                    " [formGroupName]="i">
+                    <div style="border: none" class="col-10 p-0 row" *ngIf="productRatingProArray.length">
+                      <input type="text" class="col-5 form-control mt-0" placeholder="Name" />
+                      <input type="file" class="col-5 form-control mt-0" />
+                    </div>
+
+                    <div class="col-2 p-0 text-right">
+                      <a>
+                        <div class="edit_ico">
+                          <i class="pi pi-trash"></i>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row" *ngIf="show" style="border: none">
+                  <button type="button" class="update_btn2 poppins">
+                    Add New Sponsor Image
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="show">
+            <button type="submit" class="btn btn-danger mt-3 py-2 px-3 update_btn">
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

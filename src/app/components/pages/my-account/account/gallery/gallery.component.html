@@ -1,0 +1,75 @@
+<section>
+  <div id="editPost">
+    <ul *ngIf="!show && !guestMode">
+      <li (click)="toggleIcon()" style="float: right; position: relative; top: 50px; right: 50px">
+        <a href="#"><i class="{{ buttonicon }}" style="font-size: 1.3rem"></i></a>
+      </li>
+    </ul>
+  </div>
+  <div id="main-content" class="py-5 container m-auto">
+    <div *ngIf="show" class="d-flex justify-content-center mt-3">
+      <form action="" [formGroup]="GalleryImageForm" class="success_storyForm" (ngSubmit)="OnSumbitGallery()">
+        <div class="mt-3 container m-auto galleryForm">
+          <h2 class="my-2 pb-3">Update Gallery Images</h2>
+          <div class="custom-file mb-3" style="width: 130%">
+            <div class="upload_file_field">
+              <input type="file" class="form-control" name="img_name" formControlName="galleryImages" [ngClass]="{
+                  'is-invalid': SubmitGalleryImage && f8?.galleryImages?.errors
+                }" id="gallery_image" required="" multiple="" (change)="fileUpload($event)" />
+              <div *ngIf="SubmitGalleryImage && f8?.gallery?.errors" class="invalid-feedback">
+                <div *ngIf="f8?.gallery?.errors?.required">
+                  gallery image is required
+                </div>
+              </div>
+              <label for="gallery_image" class="poppins file_upload_label" style="margin-top: 7px">Browse</label>
+              <span class="poppins file_name" id="gallery_image_file_uploaded_name">
+                {{
+                totalFileLength === 0
+                ? "No File Chosen"
+                : totalFileLength + " files are uploaded"
+                }}</span>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-danger mt-3 py-2 px-3 submit_btn">
+          Update
+        </button>
+        <button type="submit" class="btn btn-danger mt-3 mx-2 py-2 px-3 submit_btn" (click)="toggleIcon()">
+          Cancel
+        </button>
+      </form>
+    </div>
+
+    <!-- Main Gallery Content  -->
+    <div class="gallery_heading">
+      <h2 class="derlimn-font">Gallery</h2>
+    </div>
+
+    <div *ngIf="this.profileInfo.gallery.length < 1">
+      <p class="text-center">No Images Added Yet!</p>
+    </div>
+
+    <div *ngIf="this.profileInfo.gallery.length >= 1">
+      <div *ngFor="let item of this.profileInfo.gallery">
+        <div>
+          <img [src]="item.url" alt="" />
+        </div>
+      </div>
+    </div>
+    <!-- <div class="galleryMedia">
+      <h2 class="delirium portfolio_heading fs_d_gray">Gallery</h2>
+      <div class="row w-100 d-flex justify-content-center">
+        <div class="col-sm-12 col-md-3 mediaImg m-2"></div>
+        <div class="col-sm-12 col-md-3 mediaImg m-2"></div>
+        <div class="col-sm-12 col-md-3 mediaImg m-2"></div>
+        <div class="col-sm-12 col-md-3 mediaImg m-2"></div>
+        <div class="col-sm-12 col-md-3 mediaImg m-2"></div>
+        <div class="col-sm-12 col-md-3 mediaImg m-2"></div>
+        <div class="col-sm-12 col-md-3 mediaImg m-2"></div>
+        <div class="col-sm-12 col-md-3 mediaImg m-2"></div>
+        <div class="col-sm-12 col-md-3 mediaImg m-2"></div>
+      </div>
+    </div> -->
+  </div>
+</section>

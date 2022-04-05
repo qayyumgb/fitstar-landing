@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "heading": "Blog Title",
+            "blogType": "nutrition",
+            "image": "https://www.wpbeginner.com/wp-content/uploads/2016/11/choose-best-blogging-platform.png",
+            "author": "swapnall kulthy",
+            "date": "Feb. 7, 2022, 8:04 a.m.",
+            "description": "short description",
+            "fullDescription": "The graduation or post graduation along with industry level training and curriculum makes our student stand out from the crowd. Candidates with minimum 50% marks in 12th or Diploma can apply. Candidates with minimum 50% marks in 12th or Diploma can apply. Know more about BCA, MCA, MCS, BSc with Job in the IT industry."
+        },
+        {
+            "id": 2,
+            "heading": "Blog Title",
+            "blogType": "workouts",
+            "image": "https://www.wpbeginner.com/wp-content/uploads/2016/11/choose-best-blogging-platform.png",
+            "author": "swapnall kulthy",
+            "date": "Feb. 7, 2022, 8:04 a.m.",
+            "description": "short description",
+            "fullDescription": "The graduation or post graduation along with industry level training and curriculum makes our student stand out from the crowd. Candidates with minimum 50% marks in 12th or Diploma can apply. Candidates with minimum 50% marks in 12th or Diploma can apply. Know more about BCA, MCA, MCS, BSc with Job in the IT industry."
+        }
+    ]
+}

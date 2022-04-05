@@ -1,0 +1,28 @@
+<div id="ambassadors" class="mb-50">
+  <div class="container">
+    <h4 class="derlimn-font">TOP FITNESS PROS</h4>
+
+    <owl-carousel-o [options]="ambasadorSlider">
+      <ng-container *ngFor="let item of fitnessProList; let i = index">
+        <ng-template carouselSlide>
+          <!-- <img [src]="headItem.src"> -->
+
+          <div class="ad_card" [ngStyle]="{
+              'background-image':
+                item.image !== ''
+                  ? 'url(' + item.image + ')'
+                  : 'url(../../../../../assets/images/main.jpg)'
+            }">
+            <div class="ads_card_banner poppins">
+              <a [routerLink]="['../myaccount/', item._id]">
+                <h4 class="mb-0 pb-0">
+                  {{ item.fullName !== "" ? item.fullName : "Name Not Set" }}
+                </h4>
+              </a>
+            </div>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</div>

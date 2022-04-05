@@ -1,0 +1,148 @@
+<section>
+  <div id="editPost">
+    <ul *ngIf="!show && !guestMode">
+      <li
+        (click)="toggleIcon()"
+        style="float: right; position: relative; top: 50px; right: 50px"
+      >
+        <a href="#"
+          ><i class="{{ buttonIcon }}" style="font-size: 1.3rem"></i
+        ></a>
+      </li>
+    </ul>
+  </div>
+  <div id="main_content" class="py-5 container m-auto">
+    <form [formGroup]="formVideo" (ngSubmit)="OnSubmitVideo()">
+      <div *ngIf="show" class="">
+        <div formArrayName="videos">
+          <div
+            class="container"
+            *ngFor="let item of videoArray.controls; let i = index"
+          >
+            <div class="row" [formGroupName]="i">
+              <!-- Url -->
+              <div class="col-sm-12 col-md-7 pr-2">
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  class="form-control"
+                  placeholder="Enter Embed vide URl (optional)"
+                  formControlName="url"
+                  [ngClass]="{
+                    'is-invalid': SubmitVideo && f6.url.errors
+                  }"
+                />
+                <div
+                  *ngIf="SubmitVideo && f6.url.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f6.url.errors.required">
+                    Video Url is required
+                  </div>
+                </div>
+              </div>
+              <!-- category -->
+              <div class="col-sm-12 col-md-4 px-1">
+                <select
+                  class="form-select form-control"
+                  formControlName="videoType"
+                  [ngClass]="{
+                    'is-invalid': SubmitVideo && f6.videoType.errors
+                  }"
+                >
+                  <option selected>Select Video Catagory</option>
+                  <option value="workout">WORK OUT</option>
+                  <option value="musicplaylist">MUSIC PLAYLIST</option>
+                  <option value="recipes">RECIPES</option>
+                  <option value="productRiview">PRODUCT RIVIEW</option>
+                  <option value="justForFun">JUST FOR FUN</option>
+                  <option value="videoPodcast">VIDEO PODCAST</option>
+                  <option value="successStory">SUCCESS STORY</option>
+                  <option value="AD">AD</option>
+                  <option value="other">OTHER</option>
+                </select>
+                <div
+                  *ngIf="SubmitVideo && f6.videoType.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f6.videoType.errors.required">
+                    Select Video Type is required
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-1 d-flex justify-content-end">
+                <div class="edit_ico">
+                  <i class="fa-solid fa-trash" (click)="removeVideo(i)"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- add New Video -->
+          <div class="addNewVideo" *ngIf="videoArray.length > 0">
+            <button
+              (click)="addNewYoutubeLink()"
+              type="button"
+              class="update_btn poppins"
+              style="width: auto; padding: 5px 11px; margin: 10px 0px 0px 15px"
+            >
+              Add new video
+            </button>
+          </div>
+
+          <div class="form-controll_btn">
+            <button
+              *ngIf="videoArray.length == 0"
+              type=" button"
+              class="update_btn poppins"
+              (click)="addNewYoutubeLink()"
+              style="width: auto; padding: 5px 11px; margin: 10px 0px 0px 15px"
+            >
+              Add new video
+            </button>
+            <div class="field poppins age edit my-2">
+              <button class="update_btn mt_10 mx-1" type="submit">save</button>
+              <button
+                class="update_btn mt_10"
+                type="button"
+                (click)="toggleIcon()"
+              >
+                cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- Video Contact Goes Hera  -->
+    <div *ngIf="!show">
+      <div *ngIf="this.profileInfo.videos.length < 1" class="VideoHeading">
+        <h2 class="derlimn-font">Videos</h2>
+        <p class="text-center">No Video Added Yet!</p>
+      </div>
+      <div *ngIf="this.profileInfo.videos.length >= 1">
+        <div
+          class="storysection mt-4"
+          style="background-color: #fff"
+          *ngFor="let item of profileInfo.videos"
+        >
+          <div class="container">
+            <div class="row w-100">
+              <div class="col-sm-12 col-md-6 col-lg-4 p-2">
+                <div class="embed-responsive embed-responsive-16by9">
+                  <iframe
+                    class="embed-responsive-item"
+                    [src]="item.url | domSanitizer"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

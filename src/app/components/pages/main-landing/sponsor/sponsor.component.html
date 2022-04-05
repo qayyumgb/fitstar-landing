@@ -1,0 +1,14 @@
+<div id="sponsors" class="mb-50">
+  <div class="container">
+    <h2 class="derlimn-font">our sponsors</h2>
+    <div class="owl-carousels">
+      <owl-carousel-o [options]="sponsorSlider">
+        <ng-container *ngFor="let item of sponsorList; let i = index">
+          <ng-template carouselSlide [id]="item._id">
+            <img [src]="item.image" />
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+</div>

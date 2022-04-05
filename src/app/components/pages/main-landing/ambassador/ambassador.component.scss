@@ -1,0 +1,76 @@
+#ambassadors {
+  h4 {
+    letter-spacing: var(--unnamed-character-spacing-0);
+    text-align: center;
+    font: normal normal normal 90px DELIRIUM NCV;
+    color: #5a5a5a;
+    padding-bottom: 30px;
+  }
+
+  .ad_card {
+    width: 100%;
+    height: 350px;
+    margin: auto;
+    position: relative;
+    /* background-image: url(../../../static/images/main.png); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    max-width: 260px;
+
+    .ads_card_banner {
+      position: absolute;
+      width: 100%;
+      height: 90px;
+      border-radius: 0 0 8px 8px;
+      bottom: 0;
+      left: 0;
+      background-color: #ff1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 0 10px;
+      color: white;
+
+      h4 {
+        color: #ffffff;
+        font-family: "Poppins";
+        font-size: 20px;
+        margin-top: 0;
+        margin-bottom: 0;
+        white-space: nowrap;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      p {
+        color: #ffffff;
+        font-family: "Poppins";
+        font-size: 12px;
+      }
+
+      .view_more {
+        color: white;
+        cursor: pointer;
+      }
+
+      a i {
+        padding: 8px 12px;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.mb-50 {
+  margin-bottom: 50px !important;
+}
+
+::ng-deep {
+  .modal-dialog.modal-sm {
+    max-width: 500px !important;
+  }
+}

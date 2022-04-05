@@ -1,0 +1,48 @@
+<header id="header">
+  <div class="container d-flex align-items-center justify-content-between">
+    <div class="logo">
+      <a href="/">
+        <img [src]="headerLogo?'../../../assets/images/fitPro-logo.png':'../../../assets/images/blog-logo.png'"
+          alt="Logo" />
+      </a>
+    </div>
+    <div [class]="toggleMenu?'menu open':'menu'">
+      <div id="myNav">
+        <!-- <button class="ham"></button> -->
+        <div class="navbar">
+          <ul class="pl-0">
+            <li>
+              <a class="menuLink" routerLink="/about-us" routerLinkActive="active">About Us</a>
+            </li>
+            <li>
+              <a class="menuLink" routerLink="/fitness-pros" routerLinkActive="active">Fitness Directory</a>
+            </li>
+            <li>
+              <a class="menuLink" routerLink="/blog" routerLinkActive="active">Blog</a>
+            </li>
+            <li>
+              <a class="menuLink" routerLink="/contact" routerLinkActive="active">Contact Us</a>
+            </li>
+
+            <li *ngIf="isAuthenticated">
+              <a class="menuLink user btnLogin" href="#" routerLink="/myaccount">My Account</a>
+            </li>
+
+            <li>
+              <a class="menuLink btnLogin" (click)="authCheck()">{{isAuthenticated?'Log Out':'Login'}}</a>
+            </li>
+
+            <li *ngIf="!isAuthenticated">
+              <a class="menuLink user btnLogin" href="#" routerLink="/auth/register">Join Us</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-menu-toggle" (click)="toggleMenu = !toggleMenu">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </div>
+</header>

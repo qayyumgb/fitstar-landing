@@ -1,0 +1,501 @@
+<section>
+  <div id="editPost">
+    <ul *ngIf="!show && !guestMode">
+      <li (click)="toggleIcon()" style="float: right; position: relative; top: 50px; right: 50px">
+        <a href="#"><i class="pi pi-plus" style="font-size: 1.3rem"></i></a>
+      </li>
+    </ul>
+  </div>
+  <!-- mainCard Grid -->
+  <div id="main-content" class="py-5 container m-auto" *ngIf="!show">
+    <div class="content my-3" *ngFor="let item of profileInfo.ads">
+      <div class="ad_card" [style.background]="'url(' + item.file + ')'">
+        <div *ngIf="!guestMode" class="edit_ico editAdInfoIconTab" style="top: 0; left: 0px"
+          (click)="openModal(addDetails,addFormType.Add ,item)">
+          <i class="pi pi-pencil"></i>
+        </div>
+
+        <div class="edit_ico" style="top: 0; right: 50px">
+          <i class="fa-solid fa-trash"></i>
+        </div>
+
+        <div class="ads_card_banner poppins">
+          <div style="display: inline-block; width: 100%">
+            <h3 style="
+                float: left;
+                color: #ffffff;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 70%;
+              ">
+              {{item.sessionName}}
+            </h3>
+            <span class="ad_price right float-right" style="
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 20%;
+              ">{{item.price |currency:'USD'}}</span>
+          </div>
+          <div style="display: inline-block; width: 100%">
+            <p style="
+                float: left;
+                color: #ffffff;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 70%;
+              ">
+              <span *ngFor="let inter of item.interests">{{inter.name}}</span>
+              Aerobics, Baseball, Basketball
+            </p>
+            <span class="see_desc right" data-toggle="modal" data-target="#myModal9">
+              <button style="background-color: #5a5a5a; border-color: #5a5a5a" type="button"
+                (click)="openModal(addDetails,addFormType.Edit,item)" class="btn float-right mb-2 py-1 px-2">
+                Details
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- adding new Account -->
+  <ng-template #addDetails>
+    <div class="model-dialog model-lg">
+      <form [formGroup]="addsForm" (ngSubmit)="submitForm(addFormType.Add)">
+        <div class="model-content p-3">
+          <div class="modal-header py-3">
+            <h4 class="modal-title pull-left">Add Details?</h4>
+
+            <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+              <span aria-hidden="true" class="visually-hidden">&times;</span>
+            </button>
+
+          </div>
+          <div class="modal-body d-flex flex-column">
+            <div class="row py-2">
+              <div class="col-6 px-2" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+                <input type="text" name="" id="" class="form-control" placeholder="Session Name "
+                  formControlName="sessionName" [ngClass]="{
+                    'is-invalid': SubmitAddForm && f.sessionName.errors
+                  }" />
+                <div *ngIf="SubmitAddForm && f.sessionName.errors" class="invalid-feedback">
+                  <div *ngIf="f.sessionName.errors.required">
+                    Session Name is required
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6 px-2" *ngIf="profileInfo.role === activeRoleEnum.Modal">
+                <input type="text" name="" id="" class="form-control" placeholder="Service Title "
+                  formControlName="serviceTitle" [ngClass]="{
+                    'is-invalid': SubmitAddForm && f.serviceTitle.errors
+                  }" />
+                <div *ngIf="SubmitAddForm && f.serviceTitle.errors" class="invalid-feedback">
+                  <div *ngIf="f.serviceTitle.errors.required">
+                    serviceTitle is required
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6 px-2" *ngIf="profileInfo.role === activeRoleEnum.Modal">
+                <p-multiSelect [options]="interests" formControlName="interests" defaultLabel="Select a interest"
+                  optionLabel="name" [ngClass]="{
+                    'is-invalid': SubmitAddForm && f.interests.errors
+                  }">
+                </p-multiSelect>
+                <div *ngIf="SubmitAddForm && f.interests.errors" class="invalid-feedback">
+                  <div *ngIf="f.interests.errors.required">
+                    interests is required
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6 px-2" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+                <p-multiSelect [options]="specialties" formControlName="activities" defaultLabel="Select a specialties"
+                  optionLabel="name" [ngClass]="{
+                    'is-invalid': SubmitAddForm && f.activities.errors
+                  }">
+                </p-multiSelect>
+                <div *ngIf="SubmitAddForm && f.activities.errors" class="invalid-feedback">
+                  <div *ngIf="f.activities.errors.required">
+                    activities is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row py-2">
+              <div class="col-6" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+                <select class="form-select form-control" formControlName="intensityLevel" [ngClass]="{
+                    'is-invalid': SubmitAddForm && f.intensityLevel.errors
+                  }">
+                  <option selected>Select Your Catagory</option>
+                  <option value="Beginner">Beginner</option>
+                  <option value="Intermediate">Intermediate</option>
+                  <option value="advance">Advanced</option>
+                  <option value="elite">Elite</option>
+                </select>
+                <div *ngIf="SubmitAddForm && f.intensityLevel.errors" class="invalid-feedback">
+                  <div *ngIf="f.intensityLevel.errors.required">
+                    intensityLevel is required
+                  </div>
+                </div>
+              </div>
+
+              <!-- compensation -->
+              <div class="col-6" *ngIf="profileInfo.role === activeRoleEnum.Modal">
+                <select class="form-select form-control" formControlName="compensation" [ngClass]="{
+                    'is-invalid': SubmitAddForm && f.compensation.errors
+                  }">
+                  <option selected>Select Your Assignment</option>
+                  <option *ngFor="let option of compensation" [value]="option.name">
+                    {{ option.name }}
+                  </option>
+                </select>
+                <div *ngIf="SubmitAddForm && f.compensation.errors" class="invalid-feedback">
+                  <div *ngIf="f.compensation.errors.required">
+                    compensation is required
+                  </div>
+                </div>
+              </div>
+
+              <div class="px-2 col-6" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+                <p-multiSelect [options]="days" formControlName="compensation" defaultLabel="Select Days"
+                  optionLabel="name" [ngClass]="{
+                    'is-invalid': SubmitAddForm && f.compensation.errors
+                  }">
+                </p-multiSelect>
+                <div *ngIf="SubmitAddForm && f.compensation.errors" class="invalid-feedback">
+                  <div *ngIf="f.compensation.errors.required">
+                    compensation is required
+                  </div>
+                </div>
+              </div>
+
+              <div class="px-2 col-6" *ngIf="profileInfo.role === activeRoleEnum.Modal">
+                <input type="text" name="" formControlName="location" id="" class="form-control" placeholder="Location"
+                  value="location" [ngClass]="{
+                    'is-invalid': SubmitAddForm && f.location.errors
+                  }" />
+                <div *ngIf="SubmitAddForm && f.location.errors" class="invalid-feedback">
+                  <div *ngIf="f.location.errors.required">
+                    location is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row py-2" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+              <div class="col-6 px-2">
+                <input type="text" name="" id="" formControlName="time" class="form-control" placeholder="Time"
+                  [ngClass]="{
+                    'is-invalid': SubmitAddForm && f.time.errors
+                  }" />
+                <div *ngIf="SubmitAddForm && f.time.errors" class="invalid-feedback">
+                  <div *ngIf="f.time.errors.required">time is required</div>
+                </div>
+              </div>
+              <div class="px-2 col-6" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+                <input type="text" name="" formControlName="location" id="" class="form-control" placeholder="Location"
+                  value="location" [ngClass]="{
+                    'is-invalid': SubmitAddForm && f.location.errors
+                  }" />
+                <div *ngIf="SubmitAddForm && f.location.errors" class="invalid-feedback">
+                  <div *ngIf="f.location.errors.required">
+                    location is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row py-2">
+              <div class="col-6 px-2">
+                <textarea name="" class="form-control" formControlName="description" id="" cols="5" rows="5"
+                  value="Description" placeholder="Description" autoWidth="false" [style]="{ width: '100%' }" [ngClass]="{
+                    'is-invalid': SubmitAddForm && f.description.errors
+                  }"></textarea>
+                <div *ngIf="SubmitAddForm && f.description.errors" class="invalid-feedback">
+                  <div *ngIf="f.description.errors.required">
+                    description is required
+                  </div>
+                </div>
+              </div>
+              <div class="px-2 col-6" *ngIf="(profileInfo.role === activeRoleEnum.Modal) ">
+                <input type="file" accept="jpg png" name="" (change)="uploadImage($event)" id="" class="form-control"
+                  value="selected file" [ngClass]="{
+                    'is-invalid': SubmitAddForm && f.file.errors
+                  }" />
+                <div *ngIf="SubmitAddForm && f.file.errors" class="invalid-feedback">
+                  <div *ngIf="f.file.errors.required">
+                    Session Name is required
+                  </div>
+                </div>
+              </div>
+
+              <div class="px-2 col-6" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+                <input type="number" formControlName="price" placeholder="Price" name="" id="" class="form-control"
+                  value="12312451" [ngClass]="{
+                    'is-invalid': SubmitAddForm && f.price.errors
+                  }" />
+                <div *ngIf="SubmitAddForm && f.price.errors" class="invalid-feedback">
+                  <div *ngIf="f.price.errors.required">price is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row py-2" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+              <div class="col-6 px-2">
+                <input type="text" name="" id="" formControlName="spotsAvailbe" placeholder="Spots Description"
+                  class="form-control" value="Sport Availability" [ngClass]="{
+                    'is-invalid': SubmitAddForm && f.spotsAvailbe.errors
+                  }" />
+                <div *ngIf="SubmitAddForm && f.spotsAvailbe.errors" class="invalid-feedback">
+                  <div *ngIf="f.spotsAvailbe.errors.required">
+                    spotsAvailbe is required
+                  </div>
+                </div>
+              </div>
+
+              <div class="px-2 col-6" *ngIf="profileInfo.role !== activeRoleEnum.Modal && !detailSection">
+                <input type="file" accept="jpg png" name="" (change)="uploadImage($event)" id="" class="form-control"
+                  value="selected file" [ngClass]="{
+                    'is-invalid': SubmitAddForm && f.file.errors
+                  }" />
+                <div *ngIf="SubmitAddForm && f.file.errors" class="invalid-feedback">
+                  <div *ngIf="f.file.errors.required">file is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row py-2 float-right mx-2" *ngIf="!detailSection">
+              <button type="submit" class="btn btn-danger mt-3 py-2 px-3 submit_btn">
+                Update
+              </button>
+              <button type="button" class="btn btn-danger mt-3 mx-2 py-2 px-3 submit_btn" (click)="modalRef?.hide()">
+                Cancel
+              </button>
+            </div>
+
+            <div class="model-footer px-2" *ngIf="detailSection">
+              <button class="btn btn-danger py-1 px-2 float-right" type="button" aria-label="Close"
+                (click)="modalRef?.hide()">
+                Close
+              </button>
+            </div>
+
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+
+  <!-- adding new Account -->
+  <form [formGroup]="addsForm" (ngSubmit)="submitForm(addFormType.Edit)">
+    <div *ngIf="show" class="d-flex flex-column container-fluid px-5 w-100 mb-5">
+      <div class="row py-2">
+        <div class="col-sm-12 col-md-6" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+          <input type="text" name="" placeholder="Session Name" id="" class="form-control" formControlName="sessionName"
+            [ngClass]="{
+              'is-invalid': SubmitAddForm && f.sessionName.errors
+            }" />
+          <div *ngIf="SubmitAddForm && f.sessionName.errors" class="invalid-feedback">
+            <div *ngIf="f.sessionName.errors.required">
+              session Name is required
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6" *ngIf="profileInfo.role === activeRoleEnum.Modal">
+          <input type="text" name="" id="" class="form-control" placeholder="Service Title"
+            formControlName="serviceTitle" [ngClass]="{
+              'is-invalid': SubmitAddForm && f.serviceTitle.errors
+            }" />
+          <div *ngIf="SubmitAddForm && f.serviceTitle.errors" class="invalid-feedback">
+            <div *ngIf="f.serviceTitle.errors.required">
+              serviceTitle is required
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 px-2" *ngIf="profileInfo.role === activeRoleEnum.Modal">
+          <p-multiSelect [options]="interests" formControlName="interests" defaultLabel="Select a interest"
+            optionLabel="name" [ngClass]="{
+              'is-invalid': SubmitAddForm && f.interests.errors
+            }">
+          </p-multiSelect>
+          <div *ngIf="SubmitAddForm && f.interests.errors" class="invalid-feedback">
+            <div *ngIf="f.interests.errors.required">interests is required</div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 px-2" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+          <p-multiSelect [options]="specialties" formControlName="activities" defaultLabel="Select a specialties"
+            optionLabel="name" [ngClass]="{
+              'is-invalid': SubmitAddForm && f.activities.errors
+            }">
+          </p-multiSelect>
+          <div *ngIf="SubmitAddForm && f.activities.errors" class="invalid-feedback">
+            <div *ngIf="f.activities.errors.required">
+              activities is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row py-2">
+        <div class="col-sm-12 col-md-6" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+          <select class="form-select form-control" formControlName="intensityLevel" [ngClass]="{
+              'is-invalid': SubmitAddForm && f.intensityLevel.errors
+            }">
+            <option selected>Select Your Catagory</option>
+            <option value="begiiner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="advance">Advanced</option>
+            <option value="elite">Elite</option>
+          </select>
+          <div *ngIf="SubmitAddForm && f.intensityLevel.errors" class="invalid-feedback">
+            <div *ngIf="f.intensityLevel.errors.required">
+              intensityLevel is required
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6" *ngIf="profileInfo.role === activeRoleEnum.Modal">
+          <select class="form-select form-control" formControlName="compensation" [ngClass]="{
+              'is-invalid': SubmitAddForm && f.compensation.errors
+            }">
+            <option *ngFor="let option of compensation" [value]="option.name">
+              {{ option.name }}
+            </option>
+          </select>
+          <div *ngIf="SubmitAddForm && f.compensation.errors" class="invalid-feedback">
+            <div *ngIf="f.compensation.errors.required">
+              compensation is required
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 px-2" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+          <p-multiSelect [options]="days" defaultLabel="Select Days" formControlName="compensation" optionLabel="name"
+            [ngClass]="{
+              'is-invalid': SubmitAddForm && f.compensation.errors
+            }">
+          </p-multiSelect>
+          <div *ngIf="SubmitAddForm && f.compensation.errors" class="invalid-feedback">
+            <div *ngIf="f.compensation.errors.required">
+              compensation is required
+            </div>
+          </div>
+        </div>
+
+        <div class="px-2 col-sm-12 col-md-6" *ngIf="profileInfo.role === activeRoleEnum.Modal">
+          <input type="text" name="" id="" placeholder="Location" class="form-control" formControlName="location"
+            value="location" [ngClass]="{
+              'is-invalid': SubmitAddForm && f.location.errors
+            }" />
+          <div *ngIf="SubmitAddForm && f.location.errors" class="invalid-feedback">
+            <div *ngIf="f.location.errors.required">
+              Rating Comments is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row py-2" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+        <div class="col-sm-12 col-md-6">
+          <input type="text" name="" id="" formControlName="time" placeholder="Time" class="form-control" value="Time"
+            [ngClass]="{
+              'is-invalid': SubmitAddForm && f.time.errors
+            }" />
+          <div *ngIf="SubmitAddForm && f.time.errors" class="invalid-feedback">
+            <div *ngIf="f.time.errors.required">time is required</div>
+          </div>
+        </div>
+        <div class="px-2 col-sm-12 col-md-6" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+          <input type="text" name="" id="" class="form-control" placeholder="location" formControlName="location"
+            value="location" [ngClass]="{
+              'is-invalid': SubmitAddForm && f.location.errors
+            }" />
+          <div *ngIf="SubmitAddForm && f.location.errors" class="invalid-feedback">
+            <div *ngIf="f.location.errors.required">location is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row py-2">
+        <div class="col-sm-12 col-md-6 px-2">
+          <textarea formControlName="description" name="" class="form-control" id="" cols="5" rows="5"
+            placeholder="Description" autoWidth="false" [style]="{ width: '100%' }" [ngClass]="{
+              'is-invalid': SubmitAddForm && f.description.errors
+            }"></textarea>
+          <div *ngIf="SubmitAddForm && f.description.errors" class="invalid-feedback">
+            <div *ngIf="f.description.errors.required">
+              description is required
+            </div>
+          </div>
+        </div>
+
+        <div class="px-2 col-sm-12 col-md-6" *ngIf="profileInfo.role === activeRoleEnum.Modal">
+          <input type="file" accept="jpg png" name="" id="" (change)="uploadImage($event)" class="form-control"
+            value="selected file" [ngClass]="{
+              'is-invalid': SubmitAddForm && f.file.errors
+            }" />
+          <div *ngIf="SubmitAddForm && f.file.errors" class="invalid-feedback">
+            <div *ngIf="f.file.errors.required">file is required</div>
+          </div>
+        </div>
+
+        <div class="px-2 col-sm-12 col-md-6" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+          <input type="number" name="" formControlName="price" placeholder="Price" id="" class="form-control" [ngClass]="{
+              'is-invalid': SubmitAddForm && f.price.errors
+            }" />
+          <div *ngIf="SubmitAddForm && f.price.errors" class="invalid-feedback">
+            <div *ngIf="f.price.errors.required">price is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row py-2">
+        <div class="col-sm-12 col-md-6 px-2" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+          <input type="text" name="" formControlName="spotsAvailbe" placeholder="Sport Availability" id=""
+            class="form-control" [ngClass]="{
+              'is-invalid': SubmitAddForm && f.spotsAvailbe.errors
+            }" />
+          <div *ngIf="SubmitAddForm && f.spotsAvailbe.errors" class="invalid-feedback">
+            <div *ngIf="f.spotsAvailbe.errors.required">
+              spotsAvailbe is required
+            </div>
+          </div>
+        </div>
+        <div class="px-2 col-sm-12 col-md-6" *ngIf="profileInfo.role !== activeRoleEnum.Modal">
+          <input type="file" accept="jpg png" name="" id="" (change)="uploadImage($event)" class="form-control"
+            value="selected file" [ngClass]="{
+              'is-invalid': SubmitAddForm && f.file.errors
+            }" />
+
+          <div *ngIf="SubmitAddForm && f.file.errors" class="invalid-feedback">
+            <div *ngIf="f.file.errors.required">file is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row py-2 float-right mx-2">
+        <button type="submit" class="btn btn-danger mt-3 py-2 px-3 submit_btn">
+          Add
+        </button>
+        <button type="submit" class="btn btn-danger mt-3 mx-2 py-2 px-3 submit_btn" (click)="toggleIcon()">
+          Cancel
+        </button>
+      </div>
+
+
+
+
+    </div>
+  </form>
+</section>

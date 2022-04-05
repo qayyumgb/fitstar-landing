@@ -1,0 +1,231 @@
+<!-- //section#1 Switich Role  -->
+<div class="my-account d-flex justify-content-center py-3">
+  <section class="swtichRole container rounded">
+    <div class="swtich">
+      <div class="row">
+        <div class="col-sm-12 col-md-5 profileImg" [style.backgroundImage]="'url(' + f2.image.value  + ')'">
+          <div class="" style="
+              display: inline;
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              padding-right: 15px;
+            ">
+            <ul (click)="openModal(profileImage)" *ngIf="!guestMode">
+              <li>
+                <a href="#"><i class="pi pi-pencil" style="font-size: 1.3rem"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-7 d-flex justify-content-between flex-wrap pt-5 mt-3 px-3">
+          <div>
+            <button *ngIf="!guestMode" class="btn btn-danger p-2" (click)="openModal(WanachangeRole)">
+              Wanna Switch User Role
+            </button>
+            <div class="profileInfo">
+              <h4 class="text-uppercase">
+                {{ profileInfo?.role }}
+              </h4>
+              <h2>{{ profileInfo?.fullName }}</h2>
+              <div class="profileRating" *ngIf="showRoleContent && profileInfo?.rating">
+                <p-rating value="profileInfo.rating" [(ngModel)]="profileInfo.rating" [readonly]="true"
+                  [cancel]="false"></p-rating>
+              </div>
+            </div>
+
+            <div class="additional">
+              <p class="reviews">(1)Reviews</p>
+              <div class="location mt_10">
+                <i class="pi pi-map-marker fs_red"></i>
+                {{ profileInfo?.location }}
+                <div class="changeLocation" *ngIf="!guestMode">
+                  <button class="btn btn-danger p-2 my-2" (click)="openModal(Wanachangelocation)">
+                    Change Location Information
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="">
+            <a [href]="profileInfo?.contactUs?.facebookLink" target="_blank"><i class="px-1 cursor-pointer"><img
+                  src="../../../../../assets/images/facebook.png" alt="" /></i></a>
+            <a [href]="profileInfo?.contactUs?.blogLink" target="_blank"><i class="px-1 cursor-pointer"><img
+                  src="../../../../../assets/images/linkedin.png" alt="" /></i></a>
+            <a [href]="profileInfo?.contactUs?.twitterLink" target="_blank"><i class="px-1 cursor-pointer"><img
+                  src="../../../../../assets/images/twitter.png" alt="" /></i></a>
+            <a [href]="profileInfo?.contactUs?.otherLink" target="_blank"><i class="px-1 cursor-pointer"><img
+                  src="../../../../../assets/images/pinterest.png" alt="" /></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- Menu Section  -->
+<section id="tabsSection " *ngIf="showRoleContent">
+  <div class="tabMenu">
+    <button *ngFor="let tabs of tabsItems | tabFilter:profileInfo?.activeRole; let i = index" (click)="switchTabs(tabs)"
+      [class]="
+        tabsIndex == tabs.code
+          ? 'mobile-pading-12 blogMenu derlimn-font acitve'
+          : 'mobile-pading-12 blogMenu derlimn-font'
+      ">
+      {{ tabs.name }}
+    </button>
+  </div>
+</section>
+
+<!-- Menu Item #1 About Profile -->
+<section id="Menutabs">
+  <div *ngIf="tabsIndex === accountTabEnum.About">
+    <app-about [profileInfo]="profileInfo" [guestMode]="guestMode"></app-about>
+  </div>
+  <div *ngIf="tabsIndex === accountTabEnum.Video">
+    <app-video [profileInfo]="profileInfo" [guestMode]="guestMode"></app-video>
+  </div>
+  <div *ngIf="tabsIndex === accountTabEnum.Portfolio">
+    <app-portfilo [profileInfo]="profileInfo" [guestMode]="guestMode"></app-portfilo>
+  </div>
+  <div *ngIf="tabsIndex === accountTabEnum.Gallery">
+    <app-gallery [profileInfo]="profileInfo" [guestMode]="guestMode"></app-gallery>
+  </div>
+  <div *ngIf="tabsIndex === accountTabEnum.Adds">
+    <app-add [profileInfo]="profileInfo" [guestMode]="guestMode"></app-add>
+  </div>
+  <div *ngIf="tabsIndex === accountTabEnum.Contact">
+    <app-contact [profileInfo]="profileInfo" [guestMode]="guestMode"></app-contact>
+  </div>
+</section>
+<!-- Model Section  -->
+<!-- Role Modal -->
+<ng-template #WanachangeRole>
+  <div class="model-content p-3">
+    <div class="modal-header py-3">
+      <h4 class="modal-title pull-left">Wanna Change Current User Role?</h4>
+
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form action="" [formGroup]="ChangeFitnessRole" (ngSubmit)="onRoleSubmit()">
+        <p style="
+            color: red;
+            border-bottom: 2px solid grey;
+            margin-bottom: 15px;
+            padding-top: 17px;
+            padding-bottom: 10px;
+          ">
+          Important: Only change the role if you want to create a new profile
+          for that role or if you already have a profile for that role.
+        </p>
+        <input type="text" formControlName="activeRole" placeholder="Selected Role" name="" id="" value=""
+          class="form-control no-shadow my-2" />
+        <div class="selectRole py-2">
+          <select formControlName="activeRole" name="activeRole" class="form-select form-control" required="" [ngClass]="{
+              'is-invalid': SubmittedRole && f1.activeRole.errors
+            }">
+            <option selected="" disabled="">Select Role</option>
+            <option *ngFor="let item of roles" [value]="item.id">
+              {{ item.name }}
+            </option>
+          </select>
+
+          <div *ngIf="SubmittedRole && f1.activeRole.errors" class="invalid-feedback">
+            <div *ngIf="f1.activeRole.errors.required">
+              SelectedFitnessRole is required
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="mt-2 btn btn-danger" (click)="modalRef?.hide()" type="submit" style="
+            background: #ff1a1a;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            width: 70px;
+            padding: 6px;
+            border-radius: 5px;
+          ">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #Wanachangelocation>
+  <div class="model-content p-3">
+    <div class="modal-header py-3">
+      <h4 class="modal-title pull-left">Wanna Change Location Information?</h4>
+
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form action="">
+        <input type="text" placeholder="Selected Location" name="" id="" [(ngModel)]="location"
+          [ngModelOptions]="{standalone: true}" class="form-control no-shadow my-2" />
+        <button class="mt-2 btn btn-danger" (click)="saveLocation()" style="
+            background: #ff1a1a;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            width: 70px;
+            padding: 6px;
+            border-radius: 5px;
+          ">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #profileImage>
+  <div class="model-content p-3">
+    <div class="modal-header py-3">
+      <h4 class="modal-title pull-left">Upload Profile Image</h4>
+
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="container modal-body px-4">
+      <form action="" [formGroup]="createProfileImage" (ngSubmit)="onProfileImageSubmit()">
+        <div class="mt-3 container m-auto">
+          <div class="custom-file my-3">
+            <input type="file" class="custom-file-input form-control" id="validatedCustomFile"
+              placeholder="Select profile Image" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)"
+              required />
+            <label class="custom-file-label" for="validatedCustomFile">Browse...</label>
+            <div class="invalid-feedback">
+              Example invalid custom file feedback
+            </div>
+          </div>
+        </div>
+        <button class="mt-2 btn btn-danger" style="
+            background: #ff1a1a;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            width: 70px;
+            padding: 6px;
+            border-radius: 5px;
+          ">
+          Submit
+        </button>
+
+        <div class="avatar-upload">
+          <div class="avatar-edit">
+            <div class="avatar-preview" style="width: 466px; height: 466px">
+              <div id="imagePreview" [style.backgroundImage]="'url(' + f2.image.value + ')'"></div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>

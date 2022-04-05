@@ -1,0 +1,40 @@
+#whoWeAre {
+  margin: 4% 0 3%;
+  .whoLeftSide {
+    display: inline-block;
+    text-align: center;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .whoRightSide {
+    display: inline-block;
+    vertical-align: middle;
+    h2 {
+      font: normal normal normal 90px DELIRIUM NCV;
+      color: #5a5a5a;
+    }
+    h3 {
+      font: normal normal normal 90px DELIRIUM NEON NCV;
+      color: #ff1a1a;
+    }
+    p {
+      text-align: left;
+      font: normal normal normal 16px Poppins;
+      color: #000000;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 11;
+      -webkit-box-orient: vertical;
+    }
+    a {
+      text-align: left;
+      font: normal normal 600 20px Poppins;
+      color: #000000;
+    }
+  }
+}
+.mb-50 {
+  margin-bottom: 50px !important;
+}

@@ -1,0 +1,19 @@
+<section>
+  <div class="fitness-pros-wrapper">
+    <section id="banner">
+      <div class="container">
+        <div class="mainHeading">
+          <h2 class="mainHeadingbG">FITNESS PROS</h2>
+          <div class="secondoryHeading">
+            <h2 class="mainHeadingText">Fitness <span>Pros</span></h2>
+            <div class="heroUnderLine"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <app-tabs></app-tabs>
+    <ng-container *ngIf="showContent">
+      <app-fitness-directory-content [itemList]="fitnessProList" [role]="'pro'"></app-fitness-directory-content>
+    </ng-container>
+  </div>
+</section>

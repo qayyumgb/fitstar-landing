@@ -1,0 +1,82 @@
+<section id="login">
+  <div class="container1">
+    <div class="side-image">
+      <img
+        src="../../../../../assets/images/log.png"
+        alt="Girl doing exercise"
+      />
+    </div>
+    <div class="form">
+      <a href="/"
+        ><img
+          src="../../../../../assets/images/logo.png"
+          alt="Fitstar Pro Logo"
+      /></a>
+      <h1>Sign In</h1>
+      <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <input type="hidden" />
+
+        <div class="input-field">
+          <input
+            type="text"
+            placeholder="Email"
+            formControlName="email"
+            [ngClass]="{
+              'is-invalid': submitted && f.email.errors
+            }"
+          />
+          <div *ngIf="submitted && f?.email?.errors" class="invalid-feedback">
+            <div *ngIf="f.email?.errors?.required" class="errorMsg">
+              Email is required
+            </div>
+            <div *ngIf="f.email?.errors?.pattern" class="errorMsg">
+              In-Valid Email Pattern
+            </div>
+          </div>
+        </div>
+        <div class="input-field">
+          <input
+            [type]="fieldTextType ? 'text' : 'password'"
+            placeholder="Password"
+            formControlName="password"
+            [ngClass]="{
+              'is-invalid': submitted && f?.password?.errors
+            }"
+          />
+          <div
+            *ngIf="submitted && f?.password?.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.password?.errors?.required" class="errorMsg">
+              Password is required
+            </div>
+          </div>
+
+          <span
+            style="
+              float: right;
+              margin-top: -33px;
+              margin-right: 10px;
+              position: relative;
+              z-index: 2;
+            "
+            [class]="
+              fieldTextType
+                ? 'fa fa-fw fa-eye field-icon'
+                : 'fa-solid fa-eye-slash'
+            "
+            (click)="toggleFieldTextType()"
+          ></span>
+        </div>
+        <div class="input-group col" id="check-field">
+          <div class="input-field row-field fr">
+            <a routerLink="/forgetPassword" class="float-right"
+              >Forgot Password?</a
+            >
+          </div>
+        </div>
+        <button class="btnNext" type="submit">Sign In</button>
+      </form>
+    </div>
+  </div>
+</section>

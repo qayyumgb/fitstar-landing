@@ -1,0 +1,345 @@
+
+    [
+        {
+            "id":1,
+            "value":"0",
+            "text":"Select Speciality"
+        },
+        {
+            "id":2,
+            "value":"Aerobics",
+            "text":"Aerobics"
+        },
+        {
+            "id":3,
+            "value":"Athletic Training",
+            "text":"Athletic Training"
+        },
+        {
+            "id":4,
+            "value":"Back Pain Prevention/Postrehab",
+            "text":"Back Pain Prevention/Postrehab"
+        }
+        ,
+        {
+            "id":5,
+            "value":"Biomechanics",
+            "text":"Biomechanics"
+        }
+        ,
+        {
+            "id":6,
+            "value":"Bodybuilding",
+            "text":"Bodybuilding"
+        }
+        ,
+        {
+            "id":7,
+            "value":"Cardio Workouts",
+            "text":"Cardio Workouts"
+        }
+        ,
+        {
+            "id":8,
+            "value":"Clinical Exercise Physiologist",
+            "text":"Clinical Exercise Physiologist"
+        }
+        ,
+        {
+            "id":9,
+            "value":"Core Training",
+            "text":"Core Training"
+        }
+        ,
+        {
+            "id":10,
+            "value":"Corporate Wellness",
+            "text":"Corporate Wellness"
+        }
+        ,
+        {
+            "id":11,
+            "value":"Cross Fit",
+            "text":"Cross Fit"
+        }
+        ,
+        {
+            "id":12,
+            "value":"Diet and Nutrition",
+            "text":"Diet and Nutrition"
+        }
+        ,
+        {
+            "id":13,
+            "value":"Executive Fitness",
+            "text":"Executive Fitness"
+        }
+        ,
+        {
+            "id":14,
+            "value":"Exercise Physiology",
+            "text":"Exercise Physiology"
+        }
+        ,
+        {
+            "id":15,
+            "value":"Family Fitness",
+            "text":"Family Fitness"
+        }
+        ,
+        {
+            "id":16,
+            "value":"Fat Loss",
+            "text":"Fat Loss"
+        }
+        ,
+        {
+            "id":17,
+            "value":"Fitness Assessment",
+            "text":"Fitness Assessment"
+        }
+        ,
+        {
+            "id":18,
+            "value":"Fitness Education",
+            "text":"Fitness Education"
+        }
+        ,
+        {
+            "id":19,
+            "value":"Flexibility",
+            "text":"Flexibility"
+        }
+        ,
+        {
+            "id":20,
+            "value":"Food and Cooking",
+            "text":"Food and Cooking"
+        }
+        ,
+        {
+            "id":21,
+            "value":"Group Exercise",
+            "text":"Group Exercise"
+        }
+        ,
+        {
+            "id":22,
+            "value":"Injury Prevention",
+            "text":"Injury Prevention"
+        }
+        ,
+        {
+            "id":23,
+            "value":"Kickboxing",
+            "text":"Kickboxing"
+        }
+        ,
+        {
+            "id":24,
+            "value":"Kids Fitness",
+            "text":"Kids Fitness"
+        }
+        ,
+        {
+            "id":25,
+            "value":"Kinesiology",
+            "text":"Kinesiology"
+        }
+        ,
+        {
+            "id":26,
+            "value":"Lifestyle Coaching",
+            "text":"Lifestyle Coaching"
+        }
+        ,
+        {
+            "id":27,
+            "value":"Lower Back Pain",
+            "text":"Lower Back Pain"
+        }
+        ,
+        {
+            "id":28,
+            "value":"Massage Therapy",
+            "text":"Massage Therapy"
+        }
+        ,
+        {
+            "id":29,
+            "value":"Medical Fitness for Chronic Conditions",
+            "text":"Medical Fitness for Chronic Conditions"
+        }
+        ,
+        {
+            "id":30,
+            "value":"Mens Fitness",
+            "text":"Mens Fitness"
+        }
+        ,
+        {
+            "id":31,
+            "value":"Mind-Body Fitness",
+            "text":"Mind-Body Fitness"
+        }
+        ,
+        {
+            "id":32,
+            "value":"Nutrition",
+            "text":"Nutrition"
+        }
+        ,
+        {
+            "id":33,
+            "value":"Nutrition Coaching",
+            "text":"Nutrition Coaching"
+        }
+        ,
+        {
+            "id":34,
+            "value":"Personal Training",
+            "text":"Personal Training"
+        }
+        ,
+        {
+            "id":35,
+            "value":"Physical Therapy",
+            "text":"Physical Therapy"
+        }
+        ,
+        {
+            "id":36,
+            "value":"Plyometrics",
+            "text":"Plyometrics"
+        }
+        ,
+        {
+            "id":37,
+            "value":"Postnatal Fitness",
+            "text":"Postnatal Fitness"
+        }
+        ,
+        {
+            "id":38,
+            "value":"Postrehab/Injury Recovery",
+            "text":"Postrehab/Injury Recovery"
+        }
+        ,
+        {
+            "id":39,
+            "value":"Prenatal Fitness",
+            "text":"Prenatal Fitness"
+        }
+        ,
+        {
+            "id":40,
+            "value":"Rehabilitation",
+            "text":"Rehabilitation"
+        }
+        ,
+        {
+            "id":41,
+            "value":"Rope Skipping",
+            "text":"Rope Skipping"
+        }
+        ,
+        {
+            "id":42,
+            "value":"Senior Fitness",
+            "text":"Senior Fitness"
+        }
+        ,
+        {
+            "id":43,
+            "value":"Skiing",
+            "text":"Skiing"
+        }
+        ,
+        {
+            "id":44,
+            "value":"Speed and Agility Training",
+            "text":"Speed and Agility Training"
+        }
+        ,
+        {
+            "id":45,
+            "value":"Sports Conditioning",
+            "text":"Sports Conditioning"
+        }
+        ,
+        {
+            "id":46,
+            "value":"Sports Nutrition",
+            "text":"Sports Nutrition"
+        }
+        ,
+        {
+            "id":47,
+            "value":"Strength Training",
+            "text":"Strength Training"
+        }
+        ,
+        {
+            "id":48,
+            "value":"Stress Management",
+            "text":"Stress Management"
+        }
+        ,
+        {
+            "id":49,
+            "value":"Toning and General Fitness",
+            "text":"Toning and General Fitness"
+        }
+        ,
+        {
+            "id":50,
+            "value":"Water Fitness",
+            "text":"Water Fitness"
+        }
+        ,
+        {
+            "id":51,
+            "value":"Weight Loss",
+            "text":"Weight Loss"
+        }
+        ,
+        {
+            "id":52,
+            "value":"Weight Management",
+            "text":"Weight Management"
+        }
+        ,
+        {
+            "id":53,
+            "value":"Weight Training",
+            "text":"Weight Training"
+        }
+        ,
+        {
+            "id":54,
+            "value":"Wellness Coaching",
+            "text":"Wellness Coaching"
+        }
+        ,
+        {
+            "id":55,
+            "value":"Wellness/Preventive",
+            "text":"Wellness/Preventive"
+        }
+        ,
+        {
+            "id":56,
+            "value":"Womens Fitness",
+            "text":"Womens Fitness"
+        }
+        ,
+        {
+            "id":57,
+            "value":"Other",
+            "text":"Other"
+        }
+
+       
+
+
+    ]

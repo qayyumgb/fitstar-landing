@@ -1,0 +1,187 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+input,
+textarea {
+  // text-indent: 10px;
+}
+
+ul {
+  list-style: none;
+
+  li {
+    display: inline-block;
+    background-color: red;
+    margin: 5px; // space between circles
+    border-radius: 50%;
+
+    a {
+      color: white;
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      text-decoration: none;
+      height: 50px;
+      width: 50px;
+      pointer-events: none;
+
+      &:hover,
+      &:active {
+        color: lightsalmon;
+        text-decoration: none;
+      }
+    }
+  }
+}
+.icon-size {
+  font-size: 20px;
+}
+
+.success_storyForm {
+  background-color: #fff;
+  max-width: 700px;
+  width: 100%;
+  // background: #fff;
+  // box-shadow: 0 3px 10px rgb(0 0 0 / 20%);
+  padding: 27px;
+  border-radius: 20px;
+}
+
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+  content: "Browse";
+  background-color: #ff1a1a;
+  color: #fff;
+  font-size: 1.3vw;
+  font-weight: 600;
+}
+input:read-only {
+  cursor: no-drop;
+}
+
+.border-have {
+  border: 1 px solid red;
+}
+.border-none {
+  border: 2px solid yellow;
+}
+.submit_btn {
+  border: none;
+  padding: 10px 0;
+  width: 120px;
+  font-size: 18px;
+  font-weight: 100;
+  cursor: pointer;
+  outline: none;
+  border-radius: 20px !important;
+  background-color: #5a5a5a;
+  color: white;
+}
+
+.upload_file_field {
+  width: 100%;
+  height: 40px;
+  position: relative;
+  background-color: #f2f4f9;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+.upload_file_field input[type="file"] {
+  display: none;
+}
+.form-control {
+  /* padding: 15px 30px; */
+  // margin-top: 25px;
+  border: none;
+  background-color: #f2f4f9;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+}
+.UpdateSuccessStory h2 {
+  color: #000000;
+  font-family: "Britannic";
+  font-weight: 600;
+}
+.upload_file_field label.file_upload_label {
+  background-color: #ff1a1a;
+  width: 150px;
+  height: 100%;
+  border-radius: 0px 8px 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+}
+.poppins {
+  font-family: "Poppins";
+}
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+.upload_file_field span.file_name {
+  padding-left: 20px;
+}
+textarea {
+  padding-left: 20px;
+  padding-top: 20px;
+}
+.portfolio_heading {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 100px;
+}
+.fs_d_gray {
+  color: #5a5a5a;
+}
+
+.delirium {
+  font-family: "DELIRIUM NCV";
+}
+.clear {
+  float: none;
+  clear: both;
+}
+img {
+  width: 100%;
+  border-radius: 10px;
+  height: auto;
+}
+.leftSide img {
+  width: 100% !important;
+  margin-bottom: 10px !important;
+}
+.slider_container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
+  display: block;
+}
+.SuccessStory h2 {
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: center;
+  // font: normal normal normal 90px DELIRIUM NCV;
+  font-size: 100px;
+  font-weight: 500;
+  font-family: DELIRIUM NCV;
+  color: #5a5a5a;
+  font-weight: 500;
+}
+.derlimn-font {
+  font-family: "DELIRIUM" !important;
+}

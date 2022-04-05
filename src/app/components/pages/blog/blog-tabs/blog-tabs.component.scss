@@ -1,0 +1,22 @@
+#secondarySection {
+    width: 100%;
+    background: #ff1a1a 0% 0% no-repeat;
+  }
+  
+  a {
+    text-align: center;
+    color: #fff;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    font-family: DELIRIUM NCV;
+    font-size: 50px;
+    flex: 1;
+    padding: 0 10px;
+    &:hover {
+      text-decoration: none;
+      background: #5a5a5a 0% 0% no-repeat;
+    }
+  }
+  a.active{
+    background: #5a5a5a 0% 0% no-repeat;
+  }

@@ -1,0 +1,29 @@
+<section id="banner">
+  <div class="container">
+    <!-- <div style="align-items: center;" class="row">
+      <div class="leftSide col-sm-8">
+        <h1>Connect To FitstarPro 1</h1>
+      </div>
+      <div class="rightSide col-sm-4">
+        <img src="../../../../../assets/images/header.png">
+      </div>
+    </div> -->
+    <owl-carousel-o [options]="headerSlider">
+
+      <ng-container *ngFor="let item of bannerImagesList">
+        <ng-template carouselSlide>
+          <!-- <img [src]="headItem.src"> -->
+          <div style="align-items: center;" class="row">
+            <div class="leftSide col-sm-8">
+              <h1>{{item.bannerTitle}}</h1>
+            </div>
+            <div class="rightSide col-sm-4">
+              <img [src]="item.bannerImage">
+            </div>
+          </div>
+        </ng-template>
+      </ng-container>
+
+    </owl-carousel-o>
+  </div>
+</section>
