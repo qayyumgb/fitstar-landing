@@ -69,6 +69,7 @@ export class ADDComponent implements OnInit {
   days: any[] = Days;
   selectedDays: string[] = [];
   detailSection: boolean = false;
+  updateIndex: number;
 
   @Input() profileInfo: MyProfile;
 
@@ -110,16 +111,16 @@ export class ADDComponent implements OnInit {
       console.log(`this pointer vaule is ${this.pointerEvent}`);
     }
   }
-  openModal(template: TemplateRef<any>, type: AddFormType, item: any) {
+  openModal(template: TemplateRef<any>, type: AddFormType, item: any, index: number) {
+    this.updateIndex = index;
     this.addsForm.patchValue(item);
+    debugger
     if (type === AddFormType.Edit) {
-      this.detailSection = true;
-      this.addsForm.disable();
-
+      this.detailSection = false;
     }
     else {
-      this.detailSection = false;
-      this.addsForm.reset();
+      this.addsForm.disable();
+      this.detailSection = true;
     }
     this.modalRef = this.modalService.show(template, {
       class: 'model-lg'
@@ -142,6 +143,7 @@ export class ADDComponent implements OnInit {
       this.profileService.updateProfile(body).subscribe((res: IProfileInfoResponse) => {
         this.profileInfo = res.profile;
         this.SubmitAddForm = true;
+        this.modalRef?.hide();
       })
     }
   }
@@ -165,6 +167,25 @@ export class ADDComponent implements OnInit {
     }
   }
 
+  removeAdd(index: number) {
+    this.profileInfo.ads.splice(index, 1);
+    let body = { role: this.profileInfo.role, _id: this.profileInfo._id, ads: this.profileInfo.ads } as any;
+    this.profileService.updateProfile(body).subscribe((res: IProfileInfoResponse) => {
+      this.profileInfo = res.profile;
+      this.SubmitAddForm = true;
+    })
+  }
+
+  updateAdd() {
+    this.profileInfo.ads[this.updateIndex] = this.addsForm.value;
+    let body = { role: this.profileInfo.role, _id: this.profileInfo._id, ads: this.profileInfo.ads } as any;
+    this.profileService.updateProfile(body).subscribe((res: IProfileInfoResponse) => {
+      this.profileInfo = res.profile;
+      this.SubmitAddForm = true;
+      this.modalRef?.hide();
+    })
+
+  }
 
 }
 

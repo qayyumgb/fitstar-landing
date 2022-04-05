@@ -8,14 +8,14 @@
   </div>
   <!-- mainCard Grid -->
   <div id="main-content" class="py-5 container m-auto" *ngIf="!show">
-    <div class="content my-3" *ngFor="let item of profileInfo.ads">
+    <div class="content my-3" *ngFor="let item of profileInfo.ads let i=index">
       <div class="ad_card" [style.background]="'url(' + item.file + ')'">
         <div *ngIf="!guestMode" class="edit_ico editAdInfoIconTab" style="top: 0; left: 0px"
-          (click)="openModal(addDetails,addFormType.Add ,item)">
+          (click)="openModal(addDetails,addFormType.Edit ,item,i)">
           <i class="pi pi-pencil"></i>
         </div>
 
-        <div class="edit_ico" style="top: 0; right: 50px">
+        <div class="edit_ico" style="top: 0; right: 50px" (click)="removeAdd(i)">
           <i class="fa-solid fa-trash"></i>
         </div>
 
@@ -52,7 +52,7 @@
             </p>
             <span class="see_desc right" data-toggle="modal" data-target="#myModal9">
               <button style="background-color: #5a5a5a; border-color: #5a5a5a" type="button"
-                (click)="openModal(addDetails,addFormType.Edit,item)" class="btn float-right mb-2 py-1 px-2">
+                (click)="openModal(addDetails,addFormType.Add,item,i)" class="btn float-right mb-2 py-1 px-2">
                 Details
               </button>
             </span>
@@ -61,6 +61,8 @@
       </div>
     </div>
   </div>
+
+
 
   <!-- adding new Account -->
   <ng-template #addDetails>
@@ -272,7 +274,7 @@
             </div>
 
             <div class="row py-2 float-right mx-2" *ngIf="!detailSection">
-              <button type="submit" class="btn btn-danger mt-3 py-2 px-3 submit_btn">
+              <button type="button" class="btn btn-danger mt-3 py-2 px-3 submit_btn" (click)="updateAdd()">
                 Update
               </button>
               <button type="button" class="btn btn-danger mt-3 mx-2 py-2 px-3 submit_btn" (click)="modalRef?.hide()">
@@ -293,6 +295,10 @@
       </form>
     </div>
   </ng-template>
+
+
+
+
 
   <!-- adding new Account -->
   <form [formGroup]="addsForm" (ngSubmit)="submitForm(addFormType.Edit)">
