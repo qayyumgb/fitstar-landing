@@ -107,12 +107,13 @@ export class PortfiloComponent implements OnInit {
     let file = event.target.files[0];
     if (event.target.files && event.target.files[0]) {
       reader.readAsDataURL(file);
-      reader.onload = () => {
+      reader.onload = (event) => {
         this.portfolioForm.patchValue({
-          beforeImage: reader.result,
+          beforeImage: event.target?.result
           // beforeFileName: file.name
         })
-      };
+      }
+
     }
 
   }
@@ -124,12 +125,14 @@ export class PortfiloComponent implements OnInit {
     let file = event.target.files[0];
     if (event.target.files && event.target.files[0]) {
       reader.readAsDataURL(file);
-      reader.onload = () => {
+      reader.onload = (event) => {
+        console.log(event.target?.result);
         this.portfolioForm.patchValue({
-          afterImage: reader.result,
+          afterImage: event.target?.result
           // beforeFileName: file.name
         })
-      };
+      }
+
     }
   }
 
@@ -164,6 +167,7 @@ export class PortfiloComponent implements OnInit {
     } else {
       let formValue = this.portfolioForm.value;
       console.log(formValue);
+      debugger
       let body = { role: this.profileInfo.role, _id: this.profileInfo._id, portfolio: [formValue] }
       this.profileService.updateProfile(body).subscribe((res: IProfileInfo) => {
         this.profileInfo = res.myProfile;
