@@ -167,7 +167,7 @@ export class PortfiloComponent implements OnInit {
     } else {
       let formValue = this.portfolioForm.value;
       console.log(formValue);
-      debugger
+
       let body = { role: this.profileInfo.role, _id: this.profileInfo._id, portfolio: [formValue] }
       this.profileService.updateProfile(body).subscribe((res: IProfileInfo) => {
         this.profileInfo = res.myProfile;

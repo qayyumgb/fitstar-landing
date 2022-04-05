@@ -13,8 +13,8 @@
           <h2 class="my-2 pb-3">Update Gallery Images</h2>
           <div class="custom-file mb-3" style="width: 130%">
             <div class="upload_file_field">
-              <input type="file" class="form-control" name="img_name" formControlName="galleryImages" [ngClass]="{
-                  'is-invalid': SubmitGalleryImage && f8?.galleryImages?.errors
+              <input type="file" class="form-control" name="img_name" [ngClass]="{
+                  'is-invalid': SubmitGalleryImage && f8?.gallery?.errors
                 }" id="gallery_image" required="" multiple="" (change)="fileUpload($event)" />
               <div *ngIf="SubmitGalleryImage && f8?.gallery?.errors" class="invalid-feedback">
                 <div *ngIf="f8?.gallery?.errors?.required">
@@ -46,15 +46,19 @@
       <h2 class="derlimn-font">Gallery</h2>
     </div>
 
-    <div *ngIf="this.profileInfo.gallery.length < 1">
+    <div *ngIf="!galleryArray.value.length ">
       <p class="text-center">No Images Added Yet!</p>
     </div>
 
-    <div *ngIf="this.profileInfo.gallery.length >= 1">
-      <div *ngFor="let item of this.profileInfo.gallery">
+    <div *ngIf="galleryArray.value.length ">
+      <div *ngFor="let item of galleryArray.value let i=index">
         <div>
-          <img [src]="item.url" alt="" />
+          <span>
+            <img [src]="item.url" alt="" />
+            <i class="pi pi-trash" (click)="removeImage(i)"></i>
+          </span>
         </div>
+
       </div>
     </div>
     <!-- <div class="galleryMedia">

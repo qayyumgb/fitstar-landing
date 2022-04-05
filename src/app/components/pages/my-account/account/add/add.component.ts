@@ -114,7 +114,7 @@ export class ADDComponent implements OnInit {
   openModal(template: TemplateRef<any>, type: AddFormType, item: any, index: number) {
     this.updateIndex = index;
     this.addsForm.patchValue(item);
-    debugger
+
     if (type === AddFormType.Edit) {
       this.detailSection = false;
     }
@@ -128,7 +128,7 @@ export class ADDComponent implements OnInit {
   }
 
   submitForm(type: AddFormType) {
-    debugger
+
 
     if (this.addsForm.invalid) {
       console.log(this.addsForm.value);

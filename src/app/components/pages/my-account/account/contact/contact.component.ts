@@ -164,7 +164,7 @@ export class ContactComponent implements OnInit {
 
   onEditFormSubmit() {
     this.submitEditContactForm = true;
-    debugger
+
     if (this.editContactForm.invalid) {
       console.log(this.editContactForm.value);
       console.log('Fields are required');
@@ -176,7 +176,7 @@ export class ContactComponent implements OnInit {
       let body = { role: this.profileInfo.role, _id: this.profileInfo._id, contactUs: this.editContactForm.value }
 
       this.profileService.updateProfile(body).subscribe((res: IProfileInfoResponse) => {
-        debugger
+
         this.profileInfo = res.profile;
       })
     }

@@ -68,6 +68,8 @@ export class GalleryComponent implements OnInit {
     if (changes) {
       // center role rating
       this.profileInfo = changes.profileInfo.currentValue;
+      this.profileInfo.gallery.forEach(x => this.galleryArray.push(this.galleryFormGroup(x.url)))
+
     }
   }
 
@@ -117,7 +119,6 @@ export class GalleryComponent implements OnInit {
       for (let i = 0; i < filesAmount; i++) {
         var reader = new FileReader();
         reader.onload = (event) => {
-          debugger
           console.log(event.target?.result);
           this.galleryArray.push(this.galleryFormGroup(event.target?.result))
         }
@@ -125,6 +126,14 @@ export class GalleryComponent implements OnInit {
         reader.readAsDataURL(event.target.files[i]);
       }
     }
+  }
+
+  removeImage(index: number) {
+    this.galleryArray.removeAt(index);
+    let body = { role: this.profileInfo.role, _id: this.profileInfo._id, gallery: this.galleryArray.value }
+    this.profileService.updateProfile(body).subscribe((res: IProfileInfoResponse) => {
+      this.profileInfo = res.profile;
+    })
 
   }
 
@@ -133,6 +142,7 @@ export class GalleryComponent implements OnInit {
   }
 
   OnSumbitGallery() {
+
 
     this.SubmitGalleryImage = true;
     if (this.GalleryImageForm.invalid) {

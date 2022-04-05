@@ -97,7 +97,7 @@ export class VideoComponent implements OnInit {
   }
 
   OnSubmitVideo() {
-    debugger
+
     this.SubmitVideo = true;
     if (this.formVideo.invalid) {
       console.log(this.formVideo.value);
@@ -107,7 +107,7 @@ export class VideoComponent implements OnInit {
       let formValue = this.formVideo.value;
       let payLoad = { __id: this.profileInfo._id, role: this.role, videos: formValue.videos.filter((x: IVideo) => x.url !== '' && x.videoType !== '') };
       this.profileService.updateProfile(payLoad).subscribe((res: IProfileInfoResponse) => {
-        debugger
+
         this.profileInfo = res.profile;
       })
 
