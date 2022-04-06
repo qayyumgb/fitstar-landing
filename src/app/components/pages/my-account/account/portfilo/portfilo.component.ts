@@ -22,7 +22,7 @@ import {
 import { SelectItem, PrimeNGConfig } from 'primeng/api';
 import { PortFolioUploadEnumTypeEnum } from 'src/app/shared/enum/profile.enum';
 import { ProfileService } from 'src/app/services/profile.service';
-import { IProfileInfo, MyProfile } from 'src/app/shared/interfaces/profile.interface';
+import { IProfileInfo, IProfileInfoResponse, MyProfile } from 'src/app/shared/interfaces/profile.interface';
 
 @Component({
   selector: 'app-portfilo',
@@ -137,6 +137,7 @@ export class PortfiloComponent implements OnInit {
   }
 
   toggleIcon() {
+    this.portfolioForm.reset();
     this.show = !this.show;
 
     if (this.show) {
@@ -165,14 +166,28 @@ export class PortfiloComponent implements OnInit {
       console.log('Fields are required');
       return;
     } else {
-      let formValue = this.portfolioForm.value;
-      console.log(formValue);
-
-      let body = { role: this.profileInfo.role, _id: this.profileInfo._id, portfolio: [formValue] }
-      this.profileService.updateProfile(body).subscribe((res: IProfileInfo) => {
-        this.profileInfo = res.myProfile;
+      let array = [];
+      this.profileInfo.portfolio.forEach(element => {
+        array.push(element);
+      });
+      array.push(this.portfolioForm.value);
+      debugger
+      let body = { role: this.profileInfo.role, _id: this.profileInfo._id, portfolio: array }
+      this.profileService.updateProfile(body).subscribe((res: IProfileInfoResponse) => {
+        this.profileInfo = res.profile;
+        this.show = false;
       })
     }
     this.SubmitPortfilo = true;
+  }
+
+  removeImage(index: number) {
+    this.profileInfo.portfolio.splice(index, 1)
+    let body = { role: this.profileInfo.role, _id: this.profileInfo._id, portfolio: this.profileInfo.portfolio }
+    this.profileService.updateProfile(body).subscribe((res: IProfileInfoResponse) => {
+      this.profileInfo = res.profile;
+      this.show = false;
+    })
+
   }
 }

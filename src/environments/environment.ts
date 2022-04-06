@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://192.168.18.21:3000/app/v1/',
-  // api_url: 'https://fitstar-backend.herokuapp.com/app/v1/'
+  // api_url: 'http://192.168.18.21:3000/app/v1/',
+  api_url: 'https://fitstar-backend.herokuapp.com/app/v1/'
 };
 
 /*
