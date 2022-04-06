@@ -132,8 +132,8 @@ export class ContactComponent implements OnInit {
 
       let formValue = this.editContactForm.value;
       let body = { role: this.profileInfo.role, _id: this.profileInfo._id, contactUs: formValue }
-      this.profileService.updateProfile(body).subscribe((res: IProfileInfo) => {
-        this.profileInfo = res.myProfile;
+      this.profileService.updateProfile(body).subscribe((res: IProfileInfoResponse) => {
+        this.profileInfo = res.profile;
       })
     }
     this.SubmitContactForm = true;
@@ -176,8 +176,8 @@ export class ContactComponent implements OnInit {
       let body = { role: this.profileInfo.role, _id: this.profileInfo._id, contactUs: this.editContactForm.value }
 
       this.profileService.updateProfile(body).subscribe((res: IProfileInfoResponse) => {
-
         this.profileInfo = res.profile;
+        this.show = false;
       })
     }
   }

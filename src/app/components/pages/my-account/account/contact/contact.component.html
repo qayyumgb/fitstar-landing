@@ -159,24 +159,33 @@
               profileInfo.contactUs.address }}
             </h6>
             <div class="address_bar">
-              <a [href]="profileInfo.contactUs.facebookLink" target="_blank">
+
+              <a class="btn" *ngIf="profileInfo.contactUs.facebookLink" [href]="profileInfo.contactUs.facebookLink"
+                target="_blank">
                 <img style="margin: 5px" src="../../../../../../assets/images/facebook.png"
                   alt="Share on Facebook" /></a>
-              <a [href]="profileInfo.contactUs.facebookLink" target="_blank">
-                <img style="margin: 5px" src="../../../../../../assets/images/linkedin.png"
-                  alt="Share on Facebook" /></a>
-              <a [href]="profileInfo.contactUs.facebookLink" target="_blank">
-                <img style="margin: 5px" src="../../../../../../assets/images/linkedin.png"
-                  alt="Share on Facebook" /></a>
-              <a [href]="profileInfo.contactUs.facebookLink" target="_blank">
-                <img style="margin: 5px" src="../../../../../../assets/images/twitter.png"
-                  alt="Share on Facebook" /></a>
-              <a [href]="profileInfo.contactUs.facebookLink" target="_blank">
-                <img style="margin: 5px" src="../../../../../../assets/images/linkedin.png"
-                  alt="Share on Facebook" /></a>
-              <a [href]="profileInfo.contactUs.facebookLink" target="_blank">
-                <img style="margin: 5px" src="../../../../../../assets/images/facebook.png"
-                  alt="Share on Facebook" /></a>
+
+
+              <a *ngIf="profileInfo.contactUs.twitterLink" [href]="profileInfo.contactUs.twitterLink" target="_blank">
+                <img style="margin: 5px" src="../../../../../../assets/images/twitter.png" alt="Share on twitter" /></a>
+
+
+              <a *ngIf="profileInfo.contactUs.instagramLink" [href]="profileInfo.contactUs.instagramLink"
+                target="_blank">
+                <img style="margin: 5px" src="../../../../../../assets/images/instagram.png"
+                  alt="Share on instagram" /></a>
+
+
+              <a *ngIf="profileInfo.contactUs.youtubeLink" [href]="profileInfo.contactUs.instagramLink" target="_blank">
+                <img style="margin: 5px" src="../../../../../../assets/images/youtube.png"
+                  alt="Share on instagram" /></a>
+
+
+              <a *ngIf="profileInfo.contactUs.websiteLink" [href]="profileInfo.contactUs.websiteLink" target="_blank">
+                <img style="margin: 5px" src="../../../../../../assets/images/websitelogo.png"
+                  alt="Share on website" /></a>
+
+
             </div>
 
             <form action="" [formGroup]="rateUsForm" (ngSubmit)="onSubmitWriteAboutUs()">
