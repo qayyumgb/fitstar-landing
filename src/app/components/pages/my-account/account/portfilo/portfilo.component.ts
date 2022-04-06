@@ -31,8 +31,8 @@ import { IProfileInfo, MyProfile } from 'src/app/shared/interfaces/profile.inter
 })
 export class PortfiloComponent implements OnInit {
   portfolioForm: FormGroup = new FormGroup({
-    beforeImage: new FormControl('', Validators.required),
-    afterImage: new FormControl('', Validators.required),
+    imageBefore: new FormControl('', Validators.required),
+    imageAfter: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
   });
 
@@ -109,7 +109,7 @@ export class PortfiloComponent implements OnInit {
       reader.readAsDataURL(file);
       reader.onload = (event) => {
         this.portfolioForm.patchValue({
-          beforeImage: event.target?.result
+          imageBefore: event.target?.result
           // beforeFileName: file.name
         })
       }
@@ -128,7 +128,7 @@ export class PortfiloComponent implements OnInit {
       reader.onload = (event) => {
         console.log(event.target?.result);
         this.portfolioForm.patchValue({
-          afterImage: event.target?.result
+          imageAfter: event.target?.result
           // beforeFileName: file.name
         })
       }

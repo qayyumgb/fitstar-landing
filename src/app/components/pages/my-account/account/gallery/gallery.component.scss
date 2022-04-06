@@ -159,21 +159,22 @@ label {
 }
 
 .gallery-images {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  display: flex;
   grid-gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 
   .gallery-images-items {
-    padding: 10px;
-    box-shadow: 0 0 9px -1px;
-    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+    border-radius: 8px;
     position: relative;
   }
 
   img {
     height: 100%;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 

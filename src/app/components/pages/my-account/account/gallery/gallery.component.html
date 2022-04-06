@@ -52,13 +52,10 @@
 
     <div *ngIf="galleryArray.value.length " class="gallery-images">
       <div *ngFor="let item of galleryArray.value let i=index" class="gallery-images-items">
-        <div>
-          <span>
-            <img [src]="item.url" alt="" />
-            <div *ngIf="show" class="edit_ico" style="top: 0; right: 50px;"><i class="fa-solid fa-trash"
-                (click)="removeImage(i)"></i></div>
-          </span>
-        </div>
+        <span>
+          <img [src]="item.url" alt="" />
+          <div *ngIf="show" class="edit_ico"><i class="fa-solid fa-trash" (click)="removeImage(i)"></i></div>
+        </span>
 
       </div>
     </div>
