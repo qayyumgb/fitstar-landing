@@ -34,7 +34,7 @@
               </div>
             </div>
 
-            <div class="mt-5 mb-5">
+            <div class="mt-5 mb-5" *ngIf="f.imageBefore.value">
               <img [src]="f.imageBefore.value" class="image-display" alt="Before Image"
                 style="vertical-align: bottom" />
             </div>
@@ -59,7 +59,7 @@
             </div>
           </div>
 
-          <div class="mt-5 mb-5">
+          <div class="mt-5 mb-5" *ngIf="f.imageAfter.value">
             <img [src]="f.imageAfter.value" class="image-display" alt="After-Image" style="vertical-align: bottom" />
           </div>
         </div>
@@ -94,36 +94,38 @@
         </div>
 
         <section id="storysec" *ngIf="this.profileInfo.portfolio.length >= 1">
-          <div class="slider_container">
-            <owl-carousel-o [options]="headerSlider" style="height: auto; width: 750px">
-              <ng-template carouselSlide>
-                <!-- <img [src]="headItem.src"> -->
-                <div style="align-items: center"
-                  class="row d-flex justify-content-center align-content-center my-4 mx-5">
-                  <div class="leftSide col-sm-6 pr-3">
-                    <img [src]="f.imageBefore.value" />
+          <div *ngFor="let item of this.profileInfo.portfolio let i=index">
+            <div class="slider_container">
+              <owl-carousel-o [options]="headerSlider" style="height: auto; width: 750px">
+                <ng-template carouselSlide>
+                  <!-- <img [src]="headItem.src"> -->
+                  <div style="align-items: center"
+                    class="row d-flex justify-content-center align-content-center my-4 mx-5">
+                    <div class="leftSide col-sm-6 pr-3">
+                      <img [src]="item.imageBefore" />
+                    </div>
+                    <div class="rightSide col-sm-6">
+                      <img [src]="item.imageAfter" />
+                    </div>
+                    <div class="clear"></div>
+                    <div>
+                      <p style="word-break: break-all; text-align: center">
+                        {{ item.description }}
+                      </p>
+                    </div>
                   </div>
-                  <div class="rightSide col-sm-6">
-                    <img [src]="f.imageAfter.value" />
-                  </div>
-                  <div class="clear"></div>
-                  <div>
-                    <p style="word-break: break-all; text-align: center">
-                      {{ f.description.value }}
-                    </p>
-                  </div>
-                </div>
-              </ng-template>
-            </owl-carousel-o>
-          </div>
-          <div class="del-portfilo w-100 d-flex justify-content-center py-3" style="padding: 57px">
-            <button class="d-block btn btn-danger w-100 p-2" type="button" style="
+                </ng-template>
+              </owl-carousel-o>
+            </div>
+            <div class="del-portfilo w-100 d-flex justify-content-center py-3" style="padding: 57px">
+              <button class="d-block btn btn-danger w-100 p-2" (click)="removeImage(i)" type="button" style="
                 background: #ff1a1a 0% 0% no-repeat;
                 color: #fff;
                 font-size: 1.7vw;
               ">
-              Delete
-            </button>
+                Delete
+              </button>
+            </div>
           </div>
         </section>
       </div>
