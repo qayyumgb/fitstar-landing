@@ -109,6 +109,7 @@ export class VideoComponent implements OnInit {
       this.profileService.updateProfile(payLoad).subscribe((res: IProfileInfoResponse) => {
 
         this.profileInfo = res.profile;
+        this.show = false
       })
 
     }
