@@ -127,6 +127,11 @@ export class ADDComponent implements OnInit {
     });
   }
 
+  closeMenu() {
+    this.modalRef?.hide();
+    this.addsForm.enable();
+  }
+
   submitForm(type: AddFormType) {
 
 
