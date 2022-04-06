@@ -20,7 +20,7 @@
           <div class="custom-file mb-3">
             <div class="upload_file_field">
               <input type="file" class="form-control" name="img_name" id="before_image" required="" [ngClass]="{
-                  'is-invalid': SubmitPortfilo && f.beforeImage.errors
+                  'is-invalid': SubmitPortfilo && f.imageBefore.errors
                 }" (change)="uploadBeforeImage($event)" />
 
               <label for="before_image" class="poppins file_upload_label" style="margin-top: 7px">Browse</label>
@@ -28,14 +28,14 @@
                 Select Before Image
               </span>
             </div>
-            <div *ngIf="SubmitPortfilo && f.beforeImage.errors" class="invalid-feedback">
-              <div *ngIf="f.beforeImage.errors.required">
+            <div *ngIf="SubmitPortfilo && f.imageBefore.errors" class="invalid-feedback">
+              <div *ngIf="f.imageBefore.errors.required">
                 Before Image is required
               </div>
             </div>
 
             <div class="mt-5 mb-5">
-              <img [src]="f.beforeImage.value" class="image-display" alt="Before Image"
+              <img [src]="f.imageBefore.value" class="image-display" alt="Before Image"
                 style="vertical-align: bottom" />
             </div>
           </div>
@@ -44,7 +44,7 @@
             <div class="upload_file_field">
               <input (change)="uploadAfterImage($event)" type="file" class="form-control" name="img_name"
                 id="after_image" [ngClass]="{
-                  'is-invalid': SubmitPortfilo && f.afterImage.errors
+                  'is-invalid': SubmitPortfilo && f.imageAfter.errors
                 }" required="" />
 
               <label for="after_image" class="poppins file_upload_label" style="margin-top: 7px">Browse</label>
@@ -52,15 +52,15 @@
                 Select After Image
               </span>
             </div>
-            <div *ngIf="SubmitPortfilo && f.afterImage.errors" class="invalid-feedback">
-              <div *ngIf="f.afterImage.errors.required">
+            <div *ngIf="SubmitPortfilo && f.imageAfter.errors" class="invalid-feedback">
+              <div *ngIf="f.imageAfter.errors.required">
                 After Image is required
               </div>
             </div>
           </div>
 
           <div class="mt-5 mb-5">
-            <img [src]="f.afterImage.value" class="image-display" alt="After-Image" style="vertical-align: bottom" />
+            <img [src]="f.imageAfter.value" class="image-display" alt="After-Image" style="vertical-align: bottom" />
           </div>
         </div>
         <textarea name="" class="form-control" id="" cols="30" rows="10" formControlName="description"
@@ -101,10 +101,10 @@
                 <div style="align-items: center"
                   class="row d-flex justify-content-center align-content-center my-4 mx-5">
                   <div class="leftSide col-sm-6 pr-3">
-                    <img [src]="f.beforeImage.value" />
+                    <img [src]="f.imageBefore.value" />
                   </div>
                   <div class="rightSide col-sm-6">
-                    <img [src]="f.afterImage.value" />
+                    <img [src]="f.imageAfter.value" />
                   </div>
                   <div class="clear"></div>
                   <div>
