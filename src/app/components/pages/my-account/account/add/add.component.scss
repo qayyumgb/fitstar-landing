@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 input,
 textarea {
   // text-indent: 10px;
@@ -35,6 +36,7 @@ ul {
     }
   }
 }
+
 .icon-size {
   font-size: 20px;
 }
@@ -42,6 +44,7 @@ ul {
 .my-account {
   background-color: #f2f4f9;
 }
+
 .swtichRole {
   background-color: #fff;
 }
@@ -51,11 +54,13 @@ ul {
   color: #fff;
   font-size: 1rem;
 }
+
 // 2nd section
 #tabsSection {
   width: 100%;
   background: #ff1a1a 0% 0% no-repeat;
 }
+
 .tabMenu button {
   background: #ff1a1a 0% 0% no-repeat;
   text-align: center;
@@ -64,11 +69,13 @@ ul {
   border-bottom: 1px solid #ffffff;
   font-family: DELIRIUM NCV;
   font-size: 50px;
+
   &:hover {
     text-decoration: none;
     background: #5a5a5a 0% 0% no-repeat;
   }
 }
+
 .aboutusdata .row {
   // padding: 0.75rem;
   padding: 10px 15px;
@@ -77,6 +84,7 @@ ul {
   color: #808080;
   font-weight: 700;
 }
+
 .entries input {
   border: none;
   background-color: transparent;
@@ -91,15 +99,17 @@ ul {
   outline: none !important;
   box-shadow: none;
 }
+
 .storysection {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
+
 .storysection img {
   align-items: center;
   justify-content: center;
 }
+
 .ad_card {
-  width: 310px;
   height: 380px;
   margin: 40px auto;
   position: relative;
@@ -127,19 +137,23 @@ ul {
   right: 0;
   transform: translate(50%, 50%);
 }
+
 .edit_ico i {
   color: white;
   font-size: 23px;
 }
+
 .pi {
   font-weight: normal;
   font-style: normal;
   font-size: 21px !important;
 }
+
 button,
 input {
   overflow: visible;
 }
+
 .ad_card .ads_card_banner {
   position: absolute;
   width: 100%;
@@ -155,6 +169,7 @@ input {
   padding: 0 10px;
   color: white;
 }
+
 .modal {
   position: fixed;
   top: 0;
@@ -166,6 +181,7 @@ input {
   overflow: hidden;
   outline: 0;
 }
+
 .shadow-box {
   background-color: #fff;
   max-width: 700px;
@@ -204,4 +220,10 @@ textarea,
   color: #000000;
   font-weight: 500;
   line-height: 1.2;
+}
+
+div#main-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
+  grid-gap: 20px;
 }

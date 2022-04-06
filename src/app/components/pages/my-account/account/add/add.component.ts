@@ -183,6 +183,7 @@ export class ADDComponent implements OnInit {
       this.profileInfo = res.profile;
       this.SubmitAddForm = true;
       this.modalRef?.hide();
+      this.show = false
     })
 
   }
