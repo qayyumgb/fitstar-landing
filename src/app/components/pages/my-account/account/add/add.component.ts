@@ -127,6 +127,11 @@ export class ADDComponent implements OnInit {
     });
   }
 
+  closeMenu() {
+    this.modalRef?.hide();
+    this.addsForm.enable();
+  }
+
   submitForm(type: AddFormType) {
 
 
@@ -144,6 +149,7 @@ export class ADDComponent implements OnInit {
         this.profileInfo = res.profile;
         this.SubmitAddForm = true;
         this.modalRef?.hide();
+        this.show = false
       })
     }
   }
@@ -173,6 +179,7 @@ export class ADDComponent implements OnInit {
     this.profileService.updateProfile(body).subscribe((res: IProfileInfoResponse) => {
       this.profileInfo = res.profile;
       this.SubmitAddForm = true;
+
     })
   }
 
