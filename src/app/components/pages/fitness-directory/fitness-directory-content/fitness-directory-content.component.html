@@ -8,9 +8,22 @@
         </div>
         <div class="col-sm-3 col-12 my-1">
           <select class="form-control" name="speciality" id="speciality" formControlName="specialities">
-            <option value="{{ data.name }}" *ngFor="let data of specialistsList">
-              {{ data.name }}
-            </option>
+            <ng-container *ngIf="_role === 'pro'">
+              <option value="{{ data.name }}" *ngFor="let data of specialistsList">
+                {{ data.name }}
+              </option>
+            </ng-container>
+
+            <ng-container *ngIf="_role === 'modal'">
+              <option value="{{ data.name }}" *ngFor="let data of modelingInterest">
+                {{ data.name }}
+              </option>
+            </ng-container>
+            <ng-container *ngIf="_role === 'center'">
+              <option value="{{ data.name }}" *ngFor="let data of activitieslist">
+                {{ data.name }}
+              </option>
+            </ng-container>
           </select>
         </div>
         <div class="col-sm-3 col-12 my-1">
@@ -38,27 +51,23 @@
             <tr *ngIf="_role === 'pro'">
               <th>Fitness Pro</th>
               <th>Name</th>
-              <th>1:1 Rate</th>
-              <th>Speciality</th>
               <th>Languages</th>
+              <th>Specialty</th>
             </tr>
             <tr *ngIf="_role === 'center'">
-              <th>Fitness Center</th>
               <th>Name</th>
-              <th>Language</th>
               <th>Type</th>
-              <th>Open Since</th>
+              <th>Specialties</th>
             </tr>
             <tr *ngIf="_role === 'modal'">
-              <th>Fitness Model</th>
               <th>Name</th>
-              <th>Experience</th>
+              <th>Compensation</th>
               <th>Ethnicity</th>
-              <th>Modeling Activities</th>
+              <th>Modeling Interest</th>
             </tr>
           </thead>
 
-          <tbody *ngIf="itemList.length">
+          <tbody>
             <ng-container *ngFor="let item of itemList">
               <ng-container *ngIf="item.role === 'pro'">
                 <tr>
@@ -70,31 +79,31 @@
                       " style="width: 100px" /></a>
                   </td>
                   <td>{{ item?.fullName }}</td>
-                  <td>{{ item?.rating }}</td>
-                  <td>{{ item?.proAbout?.qualifications?.specialities }}</td>
                   <td>
                     <span *ngFor="let language of item?.proAbout?.qualifications?.languages">
                       {{ language.name}}
                     </span>
                   </td>
+                  <td>{{ item?.proAbout?.qualifications?.specialities }}</td>
+
                 </tr>
               </ng-container>
             </ng-container>
 
             <ng-container *ngFor="let item of itemList">
               <tr *ngIf="item.role === 'center'">
-                <td>
+                <!-- <td>
                   <a href="#"><img [src]="
                         item.image !== ''
                           ? item.image
                           : 'https://www.kindpng.com/picc/m/59-597441_clip-art-fitness-models-pics-portable-network-graphics.png'
                       " style="width: 100px" /></a>
-                </td>
+                </td> -->
                 <td [routerLink]="['../myaccount/', item._id]" [state]="item">{{ item?.fullName }}</td>
 
-                <td>{{ item?.centerAbout?.language }}</td>
+                <!-- <td>{{ item?.centerAbout?.language }}</td> -->
                 <td>{{ item?.centerAbout?.fitnessCenterType }}</td>
-                <td>{{ item?.centerAbout?.openSince }}</td>
+                <td>{{ item?.centerAbout?.specialities }}</td>
               </tr>
             </ng-container>
 
@@ -102,17 +111,17 @@
 
             <ng-container *ngFor="let item of itemList">
               <tr *ngIf="_role === 'modal'">
-                <td>
+                <!-- <td>
                   <a href="#"><img [src]="
                         item.image !== ''
                           ? item.image
                           : 'https://www.kindpng.com/picc/m/59-597441_clip-art-fitness-models-pics-portable-network-graphics.png'
                       " style="width: 100px" /></a>
-                </td>
+                </td> -->
                 <td [routerLink]="['../myaccount/', item._id]" [state]="item">{{ item?.fullName }}</td>
-                <td>{{ item?.modelAbout?.experience }}</td>
+                <td>{{ item?.modelAbout?.compensation }}</td>
                 <td>{{ item?.modelAbout?.ethnicity }}</td>
-                <td>{{ item?.modelAbout?.activites }}</td>
+                <td>{{ item?.modelAbout?.modelingInterest }}</td>
               </tr>
             </ng-container>
           </tbody>

@@ -31,7 +31,9 @@ export const API_ENDPOINTS = {
     fitnessDir: `${API_URL}users/get/ `,
     fitnessDirFilter: `${API_URL}users/fitstars/list`,
 
+   //Referral user
+   userList: `${API_URL}users/get`,
 
-
-
+   //collaboratorList
+   collaboratorList:`${API_URL}collaborators/get/`
 }

@@ -1,76 +1,74 @@
-<section id="">
+<section id="registerForm">
   <div class="container1">
     <div class="side-image">
       <img src="../../../assets/images/sign.png" alt="Girl doing exercise" />
     </div>
     <div class="form">
-      <a href="/"
-        ><img src="../../../assets/images/logo.png" alt="Fitstar Pro Logo"
-      /></a>
+      <a href="/"><img src="../../../assets/images/logo.png" alt="Fitstar Pro Logo" /></a>
       <h1>Sign Up</h1>
       <form [formGroup]="registerForm" (ngSubmit)="submit()">
         <input type="hidden" />
         <div class="input-field">
-          <input
-            type="text"
-            placeholder="Full Name"
-            name="username"
-            required=""
-            formControlName="fullName"
-            [ngClass]="{
+          <input type="text" placeholder="Full Name" name="username" required="" formControlName="fullName" [ngClass]="{
               'is-invalid': submitted && f.fullName.errors
-            }"
-          />
-          <div
-            *ngIf="submitted && f?.fullName?.errors"
-            class="invalid-feedback"
-          >
+            }" />
+          <div *ngIf="submitted && f?.fullName?.errors" class="invalid-feedback">
             <div *ngIf="f.fullName?.errors?.required" class="errorMsg">
               fullName is required
             </div>
           </div>
         </div>
         <div class="input-group">
-          <div class="input-field">
-            <input
-              style="margin-top: 15px"
-              type="email"
-              placeholder="Email Address"
-              name="email"
-              formControlName="email"
-              required=""
-              [ngClass]="{
-                'is-invalid': submitted && f.email.errors
-              }"
-            />
-            <div *ngIf="submitted && f?.email?.errors" class="invalid-feedback">
-              <div *ngIf="f.email?.errors?.required" class="errorMsg">
-                Email is required
-              </div>
-              <div *ngIf="f.email?.errors?.pattern" class="errorMsg">
-                In-Valid Email Pattern
+          <div class="row">
+            <div class="col-12">
+              <div class="input-field row-field">
+                <input style="margin-top: 15px" type="email" placeholder="Email Address" name="email"
+                  formControlName="email" required="" [ngClass]="{
+                    'is-invalid': submitted && f.email.errors
+                  }" />
+                <div *ngIf="submitted && f?.email?.errors" class="invalid-feedback">
+                  <div *ngIf="f.email?.errors?.required" class="errorMsg">
+                    Email is required
+                  </div>
+                  <div *ngIf="f.email?.errors?.pattern" class="errorMsg">
+                    In-Valid Email Pattern
+                  </div>
+                </div>
               </div>
             </div>
+
+            <!-- Referral User is Commented Now  -->
+
+            <!-- <div class="col-sm-12 col-md-6">
+              <div class="input-field row-field">
+                <select formControlName="selectReferral" class="form-select" aria-label="Default select example"
+                  style="margin-top: 15px" required="" [ngClass]="{
+                    'is-invalid': submitted && f.selectReferral.errors
+                  }">
+                  <option class="form-control" selected>Open this select menu</option>
+                  <option class="form-control" value="" *ngFor="let item of referralUserLists" [value]="item.id">
+                    {{referralUserLists.users}}
+                  </option>
+                </select>
+                <div *ngIf="submitted && f?.selectReferral?.errors" class="invalid-feedback">
+                  <div *ngIf="f.selectReferral?.errors?.required" class="errorMsg">
+                    Referral is required
+                  </div>
+
+                </div>
+              </div>
+            </div> -->
           </div>
         </div>
         <div class="input-group">
           <div class="row">
             <div class="col-sm-12 col-md-6">
               <div class="input-field row-field">
-                <input
-                  [type]="passwordShow ? 'text' : 'password'"
-                  placeholder="Password"
-                  formControlName="password"
-                  required=""
-                  style="margin-top: 0px"
-                  [ngClass]="{
+                <input [type]="passwordShow ? 'text' : 'password'" placeholder="Password" formControlName="password"
+                  required="" style="margin-top: 0px" [ngClass]="{
                     'is-invalid': submitted && f.password.errors
-                  }"
-                />
-                <div
-                  *ngIf="submitted && f?.password?.errors"
-                  class="invalid-feedback"
-                >
+                  }" />
+                <div *ngIf="submitted && f?.password?.errors" class="invalid-feedback">
                   <div *ngIf="f.password?.errors?.required" class="errorMsg">
                     password is required
                   </div>
@@ -79,79 +77,52 @@
                     password atleast 6 characters
                   </div>
                 </div>
-                <span
-                  style="
+                <span style="
                     float: right;
                     margin-top: -33px;
                     margin-right: 10px;
                     position: relative;
                     z-index: 2;
-                  "
-                  [class]="
+                  " [class]="
                     passwordShow
                       ? 'fa fa-fw fa-eye field-icon'
                       : 'fa-solid fa-eye-slash'
-                  "
-                  (click)="password()"
-                ></span>
+                  " (click)="password()"></span>
               </div>
             </div>
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-md-6 c-password">
               <div class="input-field row-field pl">
-                <input
-                  [type]="confirmPasswordShow ? 'text' : 'password'"
-                  placeholder="Confirm Password"
-                  formControlName="confirmPassword"
-                  [ngClass]="{
+                <input [type]="confirmPasswordShow ? 'text' : 'password'" placeholder="Confirm Password"
+                  formControlName="confirmPassword" [ngClass]="{
                     'is-invalid': submitted && f.confirmPassword.errors
-                  }"
-                />
-                <div
-                  *ngIf="submitted && f?.confirmPassword?.errors"
-                  class="invalid-feedback"
-                >
-                  <div
-                    *ngIf="f.confirmPassword?.errors?.required"
-                    class="errorMsg"
-                  >
+                  }" />
+                <div *ngIf="submitted && f?.confirmPassword?.errors" class="invalid-feedback">
+                  <div *ngIf="f.confirmPassword?.errors?.required" class="errorMsg">
                     Confirm Password is required
                   </div>
-                  <div
-                    *ngIf="f.confirmPassword?.errors?.notSame"
-                    class="errorMsg"
-                  >
+                  <div *ngIf="f.confirmPassword?.errors?.notSame" class="errorMsg">
                     Password does not Match
                   </div>
                 </div>
-                <span
-                  style="
+                <span style="
                     float: right;
                     margin-top: -33px;
                     margin-right: 10px;
                     position: relative;
                     z-index: 2;
-                  "
-                  [class]="
+                  " [class]="
                     confirmPasswordShow
                       ? 'fa fa-fw fa-eye field-icon'
                       : 'fa-solid fa-eye-slash'
-                  "
-                  (click)="confirmPasswordToggle()"
-                ></span>
+                  " (click)="confirmPasswordToggle()"></span>
               </div>
             </div>
           </div>
         </div>
         <div class="input-group">
-          <select
-            formControlName="role"
-            name="role"
-            class="row-field mr"
-            required=""
-            [ngClass]="{
+          <select formControlName="role" name="role" class="row-field mr" required="" [ngClass]="{
               'is-invalid': submitted && f.role.errors
-            }"
-          >
+            }">
             <option selected="" disabled="">Select Role</option>
             <option *ngFor="let item of roles" [value]="item.id">
               {{ item.name }}
@@ -165,23 +136,11 @@
         </div>
         <div class="input-group">
           <div class="input-field row-field pr">
-            <input
-              type="text"
-              style="margin-top: 0px"
-              placeholder="Enter Your Location"
-              name="location"
-              required=""
-              class="pac-target-input"
-              autocomplete="off"
-              formControlName="location"
-              [ngClass]="{
+            <input type="text" style="margin-top: 0px" placeholder="Enter Your Location" class="pac-target-input"
+              autocomplete="off" formControlName="location" [ngClass]="{
                 'is-invalid': submitted && f.location.errors
-              }"
-            />
-            <div
-              *ngIf="submitted && f?.location?.errors"
-              class="invalid-feedback"
-            >
+              }" />
+            <div *ngIf="submitted && f?.location?.errors" class="invalid-feedback">
               <div *ngIf="f.location?.errors?.required" class="errorMsg">
                 Location is required
               </div>
@@ -190,34 +149,20 @@
         </div>
 
         <div class="input-field" id="check-field">
-          <input
-            type="checkbox"
-            name="checkbtn"
-            formControlName="checkbtn"
-            id="checkbtn"
-            required=""
-            [checked]="true"
-            [(ngModel)]="terms"
-            (change)="terms = !terms"
-            [ngClass]="{
+          <input type="checkbox" name="checkbtn" formControlName="checkbtn" id="checkbtn" required="" [checked]="true"
+            [(ngModel)]="terms" (change)="terms = !terms" [ngClass]="{
               'is-invalid': submitted && f.checkbtn.errors
-            }"
-          />
+            }" />
 
-          <label for="checkbtn"
-            >I agree the supplied information is true and agree to FitStar Pro's
-            Terms and Conditions.</label
-          >
-          <div
-            *ngIf="submitted && f?.checkbtn?.errors"
-            class="invalid-feedback"
-          >
+          <label for="checkbtn">I agree the supplied information is true and agree to FitStar Pro's
+            Terms and Conditions.</label>
+          <div *ngIf="submitted && f?.checkbtn?.errors" class="invalid-feedback">
             <div *ngIf="f.checkbtn?.errors?.required" class="errorMsg">
               Please Accept TOC to continue.
             </div>
           </div>
         </div>
-        <div
+        <!-- <div
           style="margin-right: -50px; margin-top: 30px; margin-left: 200px"
           class="g-recaptcha"
           data-sitekey="6LdL8AUaAAAAAPlNDKd8dRPu9PsbBft6hinwwDmg"
@@ -252,7 +197,13 @@
             ></textarea>
           </div>
           <iframe style="display: none"></iframe>
-        </div>
+        </div> -->
+        <h6 class="float-right">
+          Already have account?
+          <a routerLink="../login">
+            <span class="text-danger">Login Now</span>
+          </a>
+        </h6>
         <button class="btnNext" type="submit">Sign Up</button>
       </form>
     </div>

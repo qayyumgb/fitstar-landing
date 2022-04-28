@@ -20,8 +20,9 @@
 }
 a {
   text-decoration: none;
-  color: #000000;
+  color: #ff0000;
   font-family: Poppins;
+  font-weight: 900;
 }
 .form h1 {
   font-family: "britannic";
@@ -98,4 +99,22 @@ input[type="password"] {
 .errorMsg {
   display: flex;
   justify-content: flex-start !important;
+}
+
+@media only screen and (max-width: 1024px) {
+  .login{
+    padding: 0px 10px;
+    width: 100%;
+   
+   
+  }
+  .side-image {
+    display: none;
+    width: 100%;
+}
+.container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 }

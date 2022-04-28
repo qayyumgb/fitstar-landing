@@ -3,7 +3,9 @@
   <section class="swtichRole container rounded">
     <div class="swtich">
       <div class="row">
-        <div class="col-sm-12 col-md-5 profileImg" [style.backgroundImage]="'url(' + f2.image.value  + ')'">
+        <div class="col-sm-12 col-md-5 profileImg" [style.backgroundImage]="profileInfo.image !== ''
+        ? 'url(' + profileInfo.image + ')'
+        : 'url(../../../../../assets/images/main.jpg)'">
           <div class="" style="
               display: inline;
               position: absolute;

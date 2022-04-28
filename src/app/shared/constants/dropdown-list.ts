@@ -27,19 +27,14 @@ export const Languages = [
 
 
 export const Specialties = [
+    {name:"select a Specialties",code:"select specialties"},
     { name: 'Aerobics', code: 'Aerobics' },
     { name: 'Athlectic Training', code: 'Athlectic Training' },
-    {
-        name: 'Backpain Prevention/Postrehab',
-        code: 'Backpain Prevention/Postrehab',
-    },
+    {name: 'Backpain Prevention/Postrehab',code: 'Backpain Prevention/Postrehab'},
     { name: 'Biomechanics', code: 'Biomechanics' },
     { name: 'BodyBuiding', code: 'BodyBuiding' },
     { name: 'Cardio workout', code: 'Cardio workout' },
-    {
-        name: 'Clinical Exercise Psysiolgist',
-        code: 'Clinical Exercise Psysiolgist',
-    },
+    { name: 'Clinical Exercise Psysiolgist', code: 'Clinical Exercise Psysiolgist'},
     { name: 'Core Training', code: 'Core Training' },
     { name: 'Corporate Wellness', code: 'Corporate Wellness' },
     { name: 'Cross Fit', code: 'Cross Fit' },
@@ -58,10 +53,7 @@ export const Specialties = [
     { name: 'LifeStyleCoaching', code: 'LifeStyleCoaching' },
     { name: 'Lower Back pain', code: 'Lower Back pain' },
     { name: 'Message Thrapey', code: 'Message Thrapey' },
-    {
-        name: 'Medical Fitness for Chronic Condition',
-        code: 'Medical Fitness for Chronic Condition',
-    },
+    { name: 'Medical Fitness for Chronic Condition',code: 'Medical Fitness for Chronic Condition'},
     { name: 'Mens Fitness', code: 'Mens Fitness' },
     { name: 'Mind Body Fitness', code: 'mindBodyFitness' },
     { name: 'Nutrition Coaching', code: 'nutritionCoaching' },
@@ -87,6 +79,7 @@ export const Specialties = [
     { name: 'Willness/Preventive', code: 'willness/preventive' },
     { name: 'Womens Fitness', code: 'womensfitness' },
     { name: 'Others', code: 'others' },
+    {name:"All",code:"All"}
 ];
 
 
@@ -102,6 +95,7 @@ export const Professions = [
 
 
 export const Interests = [
+    { name: 'Select Modeling Interest', code: 0 },
     { name: 'Acting', code: 1 },
     { name: 'Art', code: 2 },
     { name: 'Body Paint', code: 3 },
@@ -126,6 +120,7 @@ export const Interests = [
     { name: 'Swim Wear', code: 22 },
     { name: 'Under Water', code: 23 },
     { name: 'Other', code: 24 },
+    { name: 'All', code: 'all'  },
 ];
 
 export const Certificates = [
@@ -309,6 +304,7 @@ export const Certificates = [
     { name: 'YogaWorks', code: 'YogaWorks' },
 ];
 export const Activities = [
+    { name: 'Select a Type', code: 'select type' },
     { name: 'Aerobics', code: 'Aerobics' },
     { name: 'Baseball', code: 'Baseball' },
     { name: 'Basketball', code: 'Basketball' },
@@ -375,6 +371,7 @@ export const Activities = [
     { name: 'Wrestling', code: 'Wrestling' },
     { name: 'Yoga', code: 'Yoga' },
     { name: 'Zumba (Latin Dance)', code: 'Zumba (Latin Dance)' },
+    { name: 'All', code: 'all' },
 ];
 
 
@@ -383,7 +380,7 @@ export const TabsItemsList: ITabsItems[] = [
     { name: 'Video', code: AccountTabEnum.Video },
     { name: 'Portfolio', code: AccountTabEnum.Portfolio },
     { name: 'Gallery', code: AccountTabEnum.Gallery },
-    { name: 'Adds', code: AccountTabEnum.Adds },
+    { name: 'Ads', code: AccountTabEnum.Adds },
     { name: 'Contact', code: AccountTabEnum.Contact },
 ];
 

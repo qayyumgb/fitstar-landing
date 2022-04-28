@@ -1,0 +1,46 @@
+<section id="ambassadors">
+    <div class="container">
+        <h2>Fitstar collaborators</h2>
+        <owl-carousel-o [options]="collaboratorSlider">
+            <ng-container *ngFor="let item of collaboratorList; let i = index">
+                <ng-template carouselSlide>
+                    <div class="things slick-initialized slick-slider" id="wrapper">
+                        <div class="slick-list draggable" style="padding: 0px 50px">
+                            <div class="slick-track">
+                                <div class="items slick-slide slick-cloned" data-slick-index="-4" id=""
+                                    aria-hidden="true" tabindex="-1" style="width: 250px">
+                                    <div class="ad_card" [ngStyle]="{
+                      'background-image':
+                        item.picture !== ''
+                          ? 'url(' + item.picture + ')'
+                          : 'url(../../../../../assets/images/main.jpg)'
+                    }">
+                                        <div class="ads_card_banner poppins" style="height: 90px">
+                                            <h3 class="pt-2">
+                                                {{ item.title }}
+                                            </h3>
+                                            <p class="mb-0">
+                                                {{ item.subTitle }}
+                                            </p>
+                                            <div class="pb-2">
+                                                <a href="{{ item.facebook }}" target="_blank" tabindex="-1"><i
+                                                        class="fa-brands fa-facebook-f"></i></a>
+
+                                                <a href="{{ item.twitter }}" target="_blank" tabindex="-1"><i
+                                                        class="fa-brands fa-twitter"></i></a>
+                                                <a href="{{ item.instagram }}" target="_blank" tabindex="-1"><i
+                                                        class="fa-brands fa-instagram"></i></a>
+                                                <a href="{{ item.youtube }}" target="_blank" tabindex="-1"><i
+                                                        class="fa-brands fa-youtube"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+        </owl-carousel-o>
+    </div>
+</section>

@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { ProfileService } from 'src/app/services/profile.service';
-import { Specialties } from 'src/app/shared/constants/dropdown-list';
+import { Specialties,Interests,Activities } from 'src/app/shared/constants/dropdown-list';
 import { IFitPro } from 'src/app/shared/interfaces/fit-pro.interface';
 import { IFitnessDirFilter } from 'src/app/shared/interfaces/landing-page.interface';
 import { ActivatedRoute } from '@angular/router';
@@ -15,6 +15,13 @@ import { MyProfile } from 'src/app/shared/interfaces/profile.interface';
 })
 export class FitnessDirectoryContentComponent implements OnInit {
   specialistsList: any[] = Specialties;
+  modelingInterest:any[] =Interests;
+  activitieslist:any[]=Activities;
+
+  fitnessProList: MyProfile[] = [];
+  showContent: boolean = false;
+  fitnessProfssionList: any[] = [];
+
   @Input() itemList: any[] = [];
   public _role: any;
 
@@ -41,15 +48,32 @@ export class FitnessDirectoryContentComponent implements OnInit {
   })
 
   ngOnInit() {
-
+console.log(this._role)
     console.log(this.itemList)
+    console.log(this.modelingInterest)
   }
 
   search() {
+    
     let searchValue = this.searchForm.value;
-    this.profileService.filterFitnessDir(searchValue).subscribe((response: IFitPro) => {
-      this.itemList = response.users;
-    })
+    console.log(searchValue.specialities)
+    //If User Select All from DropDown 
+    if (searchValue.specialities==="All") {
+      let data = {} as IFitnessDirFilter;
+      data.role = this._role
+      this.profileService.filterFitnessDir(data).subscribe((response: IFitPro) => {
+        this.itemList = response.users;
+        console.log(`list ${this._role} are :${this.fitnessProList}`)
+        this.showContent = true;
+      })
+    }
+    else {
+      this.profileService.filterFitnessDir(searchValue).subscribe((response: IFitPro) => {
+        this.itemList = response.users;
+      })
+    }
+   
+   
   }
 
 

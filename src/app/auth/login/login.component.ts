@@ -6,6 +6,7 @@ import { FitStarRegex } from 'src/app/shared/constants/login';
 import { ILoginResponse } from 'src/app/shared/interfaces/login.interface';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   fieldTextType: boolean;
   submitted:boolean=false;
+  referralUser:any[]=[];
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', {
@@ -33,12 +35,13 @@ export class LoginComponent implements OnInit {
   // get f(): { [key: string]: AbstractControl } {
   //   return this.loginForm.controls;
   // }
-  constructor(private router: Router, private authService: AuthService,private toastr: ToastrService) {
+  constructor( private router: Router, private authService: AuthService,private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
-  }
+    
 
+  }
   submitForm() {
     this.submitted=true
     if (this.loginForm?.invalid) {

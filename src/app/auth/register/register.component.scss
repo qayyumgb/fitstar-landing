@@ -21,8 +21,9 @@
 }
 a {
   text-decoration: none;
-  color: #000000;
-  font-family: Poppins;
+    color: #ff0000;
+    font-family: Poppins;
+    font-weight: 900;
 }
 .form img,
 input[type="text"],
@@ -146,4 +147,22 @@ label {
 .errorMsg {
   display: flex;
   justify-content: flex-start !important;
+}
+@media only screen and (max-width: 1024px) {
+  #registerForm {
+    padding:0px  10px !important;
+  }
+  .side-image {
+    display: none;
+    width: 100%;
+
+}
+.container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.c-password {
+  margin-top: 25px;
+}
 }
