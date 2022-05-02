@@ -7,24 +7,30 @@
             formControlName="name" />
         </div>
         <div class="col-sm-3 col-12 my-1">
-          <select class="form-control" name="speciality" id="speciality" formControlName="specialities">
-            <ng-container *ngIf="_role === 'pro'">
-              <option value="{{ data.name }}" *ngFor="let data of specialistsList">
-                {{ data.name }}
-              </option>
-            </ng-container>
 
-            <ng-container *ngIf="_role === 'modal'">
-              <option value="{{ data.name }}" *ngFor="let data of modelingInterest">
+          <ng-container *ngIf="_role === 'pro'">
+            <!-- <option placeholder="Select an Specialty" value="{{ data.name }}" *ngFor="let data of specialistsList">
                 {{ data.name }}
-              </option>
-            </ng-container>
-            <ng-container *ngIf="_role === 'center'">
-              <option value="{{ data.name }}" *ngFor="let data of activitieslist">
+              </option> -->
+            <p-dropdown class="py-1" [options]="specialistsList" formControlName="specialities" class="w-100"
+              optionLabel="name" optionValue="name" placeholder="Select a specialities"></p-dropdown>
+          </ng-container>
+
+          <ng-container *ngIf="_role === 'modal'">
+            <!-- <option value="{{ data.name }}" *ngFor="let data of modelingInterest">
                 {{ data.name }}
-              </option>
-            </ng-container>
-          </select>
+              </option> -->
+            <p-dropdown class="py-1" [options]="modelingInterest" formControlName="specialities" class="w-100"
+              optionLabel="name" optionValue="name" placeholder="Select an Interest"></p-dropdown>
+          </ng-container>
+          <ng-container *ngIf="_role === 'center'">
+            <!-- <option value="{{ data.name }}" *ngFor="let data of activitieslist">
+                {{ data.name }}
+              </option> -->
+            <p-dropdown class="py-1" [options]="activitieslist" formControlName="specialities" class="w-100"
+              optionLabel="name" optionValue="name" placeholder="Select Fitness center Type"></p-dropdown>
+          </ng-container>
+
         </div>
         <div class="col-sm-3 col-12 my-1">
           <input name="location" value="" id="location" formControlName="location" type="text"

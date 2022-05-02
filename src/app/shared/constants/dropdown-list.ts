@@ -27,7 +27,7 @@ export const Languages = [
 
 
 export const Specialties = [
-    {name:"select a Specialties",code:"select specialties"},
+
     { name: 'Aerobics', code: 'Aerobics' },
     { name: 'Athlectic Training', code: 'Athlectic Training' },
     {name: 'Backpain Prevention/Postrehab',code: 'Backpain Prevention/Postrehab'},
@@ -95,7 +95,6 @@ export const Professions = [
 
 
 export const Interests = [
-    { name: 'Select Modeling Interest', code: 0 },
     { name: 'Acting', code: 1 },
     { name: 'Art', code: 2 },
     { name: 'Body Paint', code: 3 },
@@ -459,14 +458,141 @@ export const Specialities = [
 
 export const Compensation = [
 
-    { name: "Paid Assignments" },
+    { name: "Paid Assignments",code:1},
 
-    { name: "Any" },
+    { name: "Any" ,code:2},
 
-    { name: "Depends on assignment" },
+    { name: "Depends on assignment",code:3 },
 
-    { name: "Time for Print" }
+    { name: "Time for Print" ,code:4}
 
 
+]
+
+export const Roles =[
+    
+        { id: "center", name: "Fitness Center", },
+        { id: "model", name: "Fitness Model" },
+        { id: "pro", name: "Fitness Professional" },
+    
+]
+
+export const age =[
+    {name:"Years",code:'1'}
+]
+export const measurement =[
+    {name:"Meters",code:'1'},
+    {name:"Feets",code:'2'},
+]
+export const weightList =[
+    {name:"Kilos",code:'1'},
+    {name:"Pounds",code:'2'},
+]
+
+export const bodyType =[
+    {name:"Ectomorph",code:'1'},
+    {name:"Endomorph",code:'2'},
+    {name:"Mesomorph",code:'3'},
+]
+
+export const Ethnicity =[
+    {name:"Asian",code:'1'},
+    {name:"Caucassin",code:'2'},
+    {name:"Eastern European",code:'3'},
+    {name:"East Indian",code:'4'},
+    {name:"Hispanic",code:'5'},
+    {name:"Middle Eastern",code:'6'},
+    {name:"Native American",code:'7'},
+    {name:"Pacfic Islands",code:'8'},
+    {name:"I don't Know",code:'9'},
+]
+
+
+export const skinTone =[
+    {name:"Light",code:'1'},
+    {name:"Fair",code:'2'},
+    {name:"Medium",code:'3'},
+    {name:"Olive",code:'4'},
+    {name:"Tan",code:'5'},
+    {name:"Brown",code:'6'},
+    {name:"Dark Brown",code:'7'},
+    {name:"Black",code:'8'},
+    
+]
+export const eyeColor =[
+    {name:"Amber",code:'1'},
+    {name:"Blue",code:'2'},
+    {name:"Brain",code:'3'},
+    {name:"Dark Brown",code:'4'},
+    {name:"Grey",code:'5'},
+    {name:"Green",code:'6'},
+    {name:"Hazel",code:'7'},
+    {name:"Red",code:'8'},
+    {name:"Violet",code:'9'},
+]
+
+export const hairLength =[
+    {name:"Bold",code:'1'},
+    {name:"Small",code:'2'},
+    {name:"Medium",code:'3'},
+    {name:"Long",code:'4'},
+    {name:"Short",code:'5'},
+    {name:"Shoulder Length",code:'6'},
+    {name:"Very long",code:'7'},
+   
+]
+
+export const Tattoos =[
+    {name:"None",code:'1'},
+    {name:"Some",code:'2'},
+    {name:"Many",code:'3'},
+   
+   
+]
+export const Piercings =[
+    {name:"None",code:'1'},
+    {name:"Some",code:'2'},
+    {name:"Many",code:'3'}, 
+]
+
+export const Experience =[
+    {name:"Not selected",code:'1'},
+    {name:"No Experience",code:'2'},
+    {name:"Some Experience",code:'3'},
+    {name:"Experience",code:'4'},
+    {name:"Very Experience",code:'5'},
+   
+   
+]
+
+export const clientPreference =[
+    {name:"Untrained",code:'1'},
+    {name:"Novice",code:'2'},
+    {name:"Intermediate",code:'3'},
+    {name:"Advanced",code:'4'},
+    {name:"Elite",code:'5'},
+    {name:"All levels",code:'6'}
+]
+
+export const inHomeTraining =[
+    {name:" Availability for in-home training ?",code:'1'},
+    {name:"Yes Available",code:'2'},
+    {name:"No,Come to My Place",code:'3'}
+    
+]
+
+
+export const onineLiveTraining =[
+    {name:" Availability for in-home training ?",code:'1'},
+    {name:"Yes Available",code:'2'},
+    {name:"No,Come to My Place",code:'3'}
+    
+]
+
+export const dietType =[
+    {name:" Regular",code:'1'},
+    {name:"Vegan",code:'2'},
+    {name:"Raw Food",code:'3'},
+    {name:"Mediterranean",code:'4'}
 ]
 

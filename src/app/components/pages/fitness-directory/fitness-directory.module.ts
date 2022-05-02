@@ -8,7 +8,7 @@ import { FitnessProsComponent } from './fitness-pros/fitness-pros.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FitnessDirectoryContentComponent } from './fitness-directory-content/fitness-directory-content.component';
-
+import {DropdownModule} from 'primeng/dropdown';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import { FitnessDirectoryContentComponent } from './fitness-directory-content/fi
     CommonModule,
     FitnessDirectoryRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DropdownModule
   ],
   exports: [
     FitnessCenterComponent, FitnessModalComponent, FitnessProsComponent, TabsComponent, FitnessDirectoryContentComponent

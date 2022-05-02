@@ -9,7 +9,11 @@ import {
   FormGroup, Validators
 } from '@angular/forms';
 import { ProfileService } from 'src/app/services/profile.service';
-import { Activities, Certificates, FitnessTypeList, Interests, Languages, Professions, Specialties } from 'src/app/shared/constants/dropdown-list';
+import {  clientPreference,
+  inHomeTraining,
+  onineLiveTraining,
+  dietType,
+   Activities, Certificates, Compensation,FitnessTypeList, Interests, Languages, Professions, Specialties ,age,measurement,weightList,bodyType,Ethnicity,skinTone,eyeColor,hairLength,Tattoos,Piercings,Experience} from 'src/app/shared/constants/dropdown-list';
 import { ActiveRoleEnum } from 'src/app/shared/enum/profile.enum';
 import { CenterAbout, IProfileInfo, ModelAbout, MyProfile, ProAbout, ProductRating } from './../../../../../shared/interfaces/profile.interface';
 
@@ -19,6 +23,57 @@ import { CenterAbout, IProfileInfo, ModelAbout, MyProfile, ProAbout, ProductRati
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+
+  role: string;
+  @Input() profileInfo: MyProfile;
+  activeRoleEnum = ActiveRoleEnum;
+
+  fitnessTypeList = FitnessTypeList
+  languages: any[] = Languages;
+  specialties: any[] = Specialties;
+  professions: any[] = Professions;
+  Interests: any[] = Interests;
+  certificates: any[] = Certificates;
+  Activities: any[] = Activities;
+  selectedOption: string = "select an option"
+
+
+  SubmitFitnessCenter = false;
+  submitAboutFitnessModel = false;
+  submitAboutFitnessProfessional = false;
+
+  fitnessCenterRole: boolean = true;
+  fitnessKeyInfo: boolean = false;
+  fitnessProfessionalRole: boolean = false;
+
+
+  tabsIndex = 0;
+  show = false;
+  buttonIcon = 'pi pi-pencil';
+  hide: any;
+  readonly: Boolean = true;
+  pointerEvent: boolean = true;
+
+  age=age;
+  measurement=measurement;
+  weightList=weightList
+  bodyType=bodyType
+  Ethnicity=Ethnicity
+  skinTone=skinTone
+  eyeColor=eyeColor
+  hairLength=hairLength
+  Tattoos=Tattoos
+  Piercings=Piercings
+  Experience=Experience
+  Compensation=Compensation
+  clientPreference=clientPreference
+  inHomeTraining=inHomeTraining
+  onineLiveTraining=onineLiveTraining
+  dietType=dietType
+  
+
+
+
   // Center Role Form
   aboutFitnessCenterForm: FormGroup = new FormGroup({
     _id: new FormControl(''),
@@ -104,7 +159,7 @@ export class AboutComponent implements OnInit {
       activites: new FormControl('', Validators.required),
       aboutMe: new FormControl('', Validators.required),
       productsRating: new FormArray([]),
-      sponsorImages: new FormControl('', Validators.required),
+      sponsorImages: new FormArray([]),
     })
   }
   qualificationsForm() {
@@ -116,7 +171,7 @@ export class AboutComponent implements OnInit {
       specialities: new FormControl('', Validators.required),
       languages: new FormControl('', Validators.required),
       trainingMethodsAndStyles: new FormControl('', Validators.required),
-      fitnessAward: new FormControl('', Validators.required),
+      fitnessAward: new FormControl(),
       productsRating: new FormArray([]),
 
     })
@@ -135,36 +190,7 @@ export class AboutComponent implements OnInit {
   }
 
 
-  role: string;
-  @Input() profileInfo: MyProfile;
-  activeRoleEnum = ActiveRoleEnum;
-
-  fitnessTypeList = FitnessTypeList
-  languages: any[] = Languages;
-  specialties: any[] = Specialties;
-  professions: any[] = Professions;
-  Interests: any[] = Interests;
-  certificates: any[] = Certificates;
-  Activities: any[] = Activities;
-  selectedOption: string = "select an option"
-
-
-  SubmitFitnessCenter = false;
-  submitAboutFitnessModel = false;
-  submitAboutFitnessProfessional = false;
-
-  fitnessCenterRole: boolean = true;
-  fitnessKeyInfo: boolean = false;
-  fitnessProfessionalRole: boolean = false;
-
-
-  tabsIndex = 0;
-  show = false;
-  buttonIcon = 'pi pi-pencil';
-  hide: any;
-  readonly: Boolean = true;
-  pointerEvent: boolean = true;
-
+  
 
   get productRatingArray() {
     return this.aboutFitnessCenterForm.get('productsRating') as FormArray;
@@ -228,6 +254,7 @@ export class AboutComponent implements OnInit {
   get f5(): { [key: string]: AbstractControl } {
     return this.aboutFitnessProfessionalForm.controls;
   }
+ 
 
   addFitnessProductRating(type: ActiveRoleEnum) {
     switch (type) {
@@ -287,6 +314,7 @@ export class AboutComponent implements OnInit {
 
 
   OnSubmitFitnessCenter() {
+    debugger
     this.SubmitFitnessCenter = true;
     if (this.aboutFitnessCenterForm.invalid) {
       return;
@@ -304,6 +332,7 @@ export class AboutComponent implements OnInit {
   }
 
   OnSubmitAboutFitnessModel() {
+    debugger
     this.submitAboutFitnessModel = true;
     if (this.aboutFitnessModelForm.invalid) {
       console.log(this.aboutFitnessModelForm.value);
@@ -325,11 +354,13 @@ export class AboutComponent implements OnInit {
   }
 
   OnSubmitAboutFitnessProfessional() {
+    debugger
     this.submitAboutFitnessProfessional = true;
     if (this.aboutFitnessProfessionalForm.invalid) {
-
+      debugger
       console.log(this.aboutFitnessProfessionalForm.value);
       console.log('Fields are required');
+  
       return;
     } else {
       let formValue = this.aboutFitnessProfessionalForm.value as ProAbout;
@@ -344,6 +375,6 @@ export class AboutComponent implements OnInit {
       })
     }
     console.log('All Done');
-    this.submitAboutFitnessModel = true;
+    // this.submitAboutFitnessModel = true;
   }
 }

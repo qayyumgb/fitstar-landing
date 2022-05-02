@@ -120,14 +120,19 @@
           </div>
         </div>
         <div class="input-group">
-          <select formControlName="role" name="role" class="row-field mr" required="" [ngClass]="{
+          <!-- <select formControlName="role" name="role" class="row-field mr" required="" [ngClass]="{
               'is-invalid': submitted && f.role.errors
             }">
             <option selected="" disabled="">Select Role</option>
             <option *ngFor="let item of roles" [value]="item.id">
               {{ item.name }}
             </option>
-          </select>
+          </select> -->
+          <p-dropdown [options]="roles" formControlName="role" class="w-100" [(ngModel)]="selectedRole"
+            optionLabel="name" optionValue="id" placeholder="Select a Role" [ngClass]="{
+              'is-invalid': submitted && f.role.errors
+            }"></p-dropdown>
+
           <div *ngIf="submitted && f?.role?.errors" class="invalid-feedback">
             <div *ngIf="f.role?.errors?.required" class="errorMsg">
               Role is required

@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
-
+import {DropdownModule} from 'primeng/dropdown';
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { AuthRoutingModule } from './auth-routing.module';
   imports: [
     CommonModule,
     FormsModule, ReactiveFormsModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    DropdownModule
   ]
 })
 export class AuthModule { }

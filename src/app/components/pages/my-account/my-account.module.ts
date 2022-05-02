@@ -15,6 +15,9 @@ import { VideoComponent } from './account/video/video.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MyAccountRoutingModule } from './my-account-routing.module';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import {DropdownModule} from 'primeng/dropdown';
+
+
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     RatingModule,
     MultiSelectModule,
     SharedModule,
-    RadioButtonModule
+    RadioButtonModule,
+    DropdownModule
   ],
 
 })

@@ -24,7 +24,7 @@
                       pointerEvent === true ? 'none' : 'inherit '
                   }" [ngClass]="{
                     'is-invalid': SubmitFitnessCenter && f3.openSince.errors
-                  }" placeholder="0" />
+                  }" />
                 <div *ngIf="SubmitFitnessCenter && f3.openSince.errors" class="invalid-feedback">
                   <div *ngIf="f3.openSince.errors.required">
                     openSince is required
@@ -37,7 +37,7 @@
                 <span for="exampleInputEmail1">Fitness Center Type</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <select formControlName="fitnessCenterType" name="fitnessCenterType" class="form-select form-control"
+                <!-- <select formControlName="fitnessCenterType" name="fitnessCenterType" class="form-select form-control"
                   required="" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
@@ -50,8 +50,16 @@
                   <option *ngFor="let item of fitnessTypeList" [value]="item.name">
                     {{ item.name }}
                   </option>
-                </select>
-
+                </select> -->
+                <p-dropdown [options]="fitnessTypeList" formControlName="fitnessCenterType" class="w-100"
+                  optionLabel="name" optionValue="name" placeholder="Select Fitness Type" [ngStyle]="{
+                  border: pointerEvent === true ? 'none' : '1px solid grey',
+                  'pointer-events':
+                    pointerEvent === true ? 'none' : 'inherit '
+                }" [ngClass]="{
+                  'is-invalid':
+                    SubmitFitnessCenter && f3.fitnessCenterType.errors
+                }"></p-dropdown>
                 <div *ngIf="SubmitFitnessCenter && f3.fitnessCenterType.errors" class="invalid-feedback">
                   <div *ngIf="f3.fitnessCenterType.errors.required">
                     fitnessCenterType is required
@@ -66,7 +74,7 @@
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
                   <div class="">
-                    <p-multiSelect [options]="languages" specialties="Select a Languages" optionLabel="name"
+                    <p-multiSelect [options]="languages" placeholder="Select a Languages" optionLabel="name"
                       formControlName="language" [ngStyle]="{
                         border:
                           pointerEvent === true ? 'none' : '1px solid grey',
@@ -92,8 +100,8 @@
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
                   <div class="">
-                    <p-multiSelect [options]="specialties" specialties="Select a specialties" optionLabel="name"
-                      formControlName="specialities" [ngStyle]="{
+                    <p-multiSelect placeholder="Select specialties" [options]="specialties"
+                      specialties="Select a specialties" optionLabel="name" formControlName="specialities" [ngStyle]="{
                         border:
                           pointerEvent === true ? 'none' : '1px solid grey',
                         'pointer-events':
@@ -117,7 +125,7 @@
                 <span for="exampleInputEmail1">Hours Of Operation</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <input type="text" class="form-control" id="" formControlName="hoursOfOperation"
+                <input type="number" class="form-control" id="" formControlName="hoursOfOperation"
                   placeholder="Hours Of Operation" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
@@ -182,8 +190,8 @@
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
                   <div class="">
-                    <p-multiSelect [options]="professions" specialties="Select a Professional" optionLabel="name"
-                      formControlName="ourFitnessPro" [ngStyle]="{
+                    <p-multiSelect placeholder="Select a Professional" [options]="professions"
+                      specialties="Select a Professional" optionLabel="name" formControlName="ourFitnessPro" [ngStyle]="{
                         border:
                           pointerEvent === true ? 'none' : '1px solid grey',
                         'pointer-events':
@@ -232,7 +240,11 @@
                 <span for="exampleInputEmail1">Product Reviews</span>
               </div>
 
-              <div class="col-sm-12 col-md-8 entries">
+              <div class="col-sm-12 col-md-8 entries" [ngStyle]="{
+               
+                'pointer-events':
+                  pointerEvent === true ? 'none' : 'inherit '
+              }">
                 <div class="productReviewsMain" formArrayName="productsRating">
                   <div class="row productReviewsMainItem" style="border: none" *ngFor="
                       let item of productRatingArray.controls;
@@ -248,7 +260,7 @@
                       </div>
                     </div>
 
-                    <div class="col-2 p-0 text-right">
+                    <div class="col-2 p-0 text-right" *ngIf="show">
                       <a>
                         <div class="edit_ico">
                           <i class="pi pi-trash" (click)="removeFitnessCenterRating(i)"></i>
@@ -387,7 +399,8 @@
                   </div>
 
                   <div class="col-md-6 pl-5 py-2">
-                    <p>Years</p>
+                    <p-dropdown [options]="age" class="w-100" optionLabel="name" optionValue="id" [disabled]=true>
+                    </p-dropdown>
                   </div>
                 </div>
               </div>
@@ -416,7 +429,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 pl-3">
-                    <select class="form-control" formControlName="measurement" [ngStyle]="{
+                    <!-- <select class="form-control" formControlName="measurement" [ngStyle]="{
                         border:
                           pointerEvent === true ? 'none' : '1px solid grey',
                         'pointer-events':
@@ -430,10 +443,19 @@
                       </option>
                       <option value="Feets">Feets</option>
                       <option value="Inches">Inches</option>
-                    </select>
-
+                    </select> -->
+                    <p-dropdown [options]="measurement" formControlName="measurement" class="w-100" optionLabel="name"
+                      optionValue="name" placeholder="Select a measurement" [ngStyle]="{
+                      border:
+                        pointerEvent === true ? 'none' : '1px solid grey',
+                      'pointer-events':
+                        pointerEvent === true ? 'none' : 'inherit '
+                    }" [ngClass]="{
+                      'is-invalid':
+                        submitAboutFitnessModel && f4?.measurement?.errors
+                    }"></p-dropdown>
                     <div *ngIf="submitAboutFitnessModel && f4?.measurement?.errors" class="invalid-feedback">
-                      <div *ngIf="f4.measurement?.errors?.required">
+                      <div *ngIf="f4?.measurement?.errors?.required">
                         measurement is required
                       </div>
                     </div>
@@ -461,13 +483,13 @@
                           submitAboutFitnessModel && f4?.number?.errors
                       }" />
                     <div *ngIf="submitAboutFitnessModel && f4?.number?.errors" class="invalid-feedback">
-                      <div *ngIf="f4.number?.errors?.required">
+                      <div *ngIf="f4?.number?.errors?.required">
                         weight is required
                       </div>
                     </div>
                   </div>
                   <div class="col-md-6 pl-3">
-                    <select class="form-select form-control" formControlName="measurement" [ngStyle]="{
+                    <!-- <select class="form-select form-control" formControlName="measurement" [ngStyle]="{
                         border:
                           pointerEvent === true ? 'none' : '1px solid grey',
                         'pointer-events':
@@ -481,9 +503,20 @@
                       </option>
                       <option value="Kilo">Kilo</option>
                       <option value="Pounds">Pounds</option>
-                    </select>
+                    </select> -->
+                    <p-dropdown [options]="weightList" formControlName="measurement" class="w-100" optionLabel="name"
+                      optionValue="name" placeholder="Select a measurement" [ngStyle]="{
+                      border:
+                        pointerEvent === true ? 'none' : '1px solid grey',
+                      'pointer-events':
+                        pointerEvent === true ? 'none' : 'inherit '
+                    }" [ngClass]="{
+                      'is-invalid':
+                        submitAboutFitnessModel && f4?.measurement?.errors
+                    }"></p-dropdown>
+
                     <div *ngIf="submitAboutFitnessModel && f4?.measurement?.errors" class="invalid-feedback">
-                      <div *ngIf="f4.measurement?.errors?.required">
+                      <div *ngIf="f4?.measurement?.errors?.required">
                         measurement is required
                       </div>
                     </div>
@@ -496,7 +529,7 @@
                 <span for="exampleInputEmail1">Body Type</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <select class="form-select form-control" formControlName="bodyType" [ngStyle]="{
+                <!-- <select class="form-select form-control" formControlName="bodyType" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
@@ -512,7 +545,19 @@
                   <option value="6">Brown</option>
                   <option value="7">Dark Brown</option>
                   <option value="8">Black</option>
-                </select>
+                </select> -->
+
+                <p-dropdown [options]="bodyType" formControlName="bodyType" class="w-100" optionLabel="name"
+                  optionValue="name" placeholder="Select a body Type" [ngStyle]="{
+                      border:
+                        pointerEvent === true ? 'none' : '1px solid grey',
+                      'pointer-events':
+                        pointerEvent === true ? 'none' : 'inherit '
+                    }" [ngClass]="{
+                      'is-invalid':
+                        submitAboutFitnessModel && f4?.bodyType?.errors
+                    }"></p-dropdown>
+
                 <div *ngIf="submitAboutFitnessModel && f4.bodyType.errors" class="invalid-feedback">
                   <div *ngIf="f4.bodyType.errors.required">
                     bodyType is required
@@ -525,7 +570,7 @@
                 <span for="exampleInputEmail1">Ethnicity</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <select class="form-select form-control" formControlName="ethnicity" [ngStyle]="{
+                <!-- <select class="form-select form-control" formControlName="ethnicity" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
@@ -541,7 +586,18 @@
                   <option value="7">Native American</option>
                   <option value="8">Pacfic Islands</option>
                   <option value="9">I don't Know</option>
-                </select>
+                </select> -->
+                <p-dropdown [options]="measurement" formControlName="ethnicity" class="w-100" optionLabel="name"
+                  optionValue="name" placeholder="Select a ethnicity" [ngStyle]="{
+                      border:
+                        pointerEvent === true ? 'none' : '1px solid grey',
+                      'pointer-events':
+                        pointerEvent === true ? 'none' : 'inherit '
+                    }" [ngClass]="{
+                      'is-invalid':
+                        submitAboutFitnessModel && f4?.ethnicity?.errors
+                    }"></p-dropdown>
+
                 <div *ngIf="submitAboutFitnessModel && f4.ethnicity.errors" class="invalid-feedback">
                   <div *ngIf="f4.ethnicity.errors.required">
                     Ethnicity is required
@@ -556,7 +612,7 @@
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
                   <div class="col-md-12">
-                    <select class="form-select form-control" formControlName="skinTone" [ngStyle]="{
+                    <!-- <select class="form-select form-control" formControlName="skinTone" [ngStyle]="{
                         border:
                           pointerEvent === true ? 'none' : '1px solid grey',
                         'pointer-events':
@@ -573,7 +629,18 @@
                       <option value="6">Brown</option>
                       <option value="7">Dark Brown</option>
                       <option value="8">Black</option>
-                    </select>
+                    </select> -->
+
+                    <p-dropdown [options]="skinTone" formControlName="skinTone" class="w-100" optionLabel="name"
+                      optionValue="name" placeholder="Select a skinTone" [ngStyle]="{
+                      border:
+                        pointerEvent === true ? 'none' : '1px solid grey',
+                      'pointer-events':
+                        pointerEvent === true ? 'none' : 'inherit '
+                    }" [ngClass]="{
+                      'is-invalid':
+                        submitAboutFitnessModel && f4?.skinTone?.errors
+                    }"></p-dropdown>
                     <div *ngIf="submitAboutFitnessModel && f4.skinTone.errors" class="invalid-feedback">
                       <div *ngIf="f4.skinTone.errors.required">
                         SkinTone is required
@@ -588,7 +655,7 @@
                 <span for="exampleInputEmail1">Eye Color</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <select class="form-select form-control" formControlName="eyeColor" [ngStyle]="{
+                <!-- <select class="form-select form-control" formControlName="eyeColor" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
@@ -604,7 +671,18 @@
                   <option value="7">Hazel</option>
                   <option value="8">Red</option>
                   <option value="9">Violet</option>
-                </select>
+                </select> -->
+                <p-dropdown [options]="eyeColor" formControlName="eyeColor" class="w-100" optionLabel="name"
+                  optionValue="name" placeholder="Select a eyeColor" [ngStyle]="{
+                      border:
+                        pointerEvent === true ? 'none' : '1px solid grey',
+                      'pointer-events':
+                        pointerEvent === true ? 'none' : 'inherit '
+                    }" [ngClass]="{
+                      'is-invalid':
+                        submitAboutFitnessModel && f4?.eyeColor?.errors
+                    }"></p-dropdown>
+
                 <div *ngIf="submitAboutFitnessModel && f4.eyeColor.errors" class="invalid-feedback">
                   <div *ngIf="f4.eyeColor.errors.required">
                     EyeColor is required
@@ -617,7 +695,7 @@
                 <span for="exampleInputEmail1">Hair Length</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <select class="form-select form-control" formControlName="hairLength" [ngStyle]="{
+                <!-- <select class="form-select form-control" formControlName="hairLength" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
@@ -632,7 +710,18 @@
                   <option value="5">Short</option>
                   <option value="6">Shoulder Length</option>
                   <option value="7">Very long</option>
-                </select>
+                </select> -->
+                <p-dropdown [options]="hairLength" formControlName="hairLength" class="w-100" optionLabel="name"
+                  optionValue="name" placeholder="Select a hairLength" [ngStyle]="{
+                      border:
+                        pointerEvent === true ? 'none' : '1px solid grey',
+                      'pointer-events':
+                        pointerEvent === true ? 'none' : 'inherit '
+                    }" [ngClass]="{
+                      'is-invalid':
+                        submitAboutFitnessModel && f4?.hairLength?.errors
+                    }"></p-dropdown>
+
                 <div *ngIf="submitAboutFitnessModel && f4.hairLength.errors" class="invalid-feedback">
                   <div *ngIf="f4.hairLength.errors.required">
                     HairLength is required
@@ -645,7 +734,7 @@
                 <span for="exampleInputEmail1">Tattoos</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <select class="form-select form-control" formControlName="tattoos" [ngStyle]="{
+                <!-- <select class="form-select form-control" formControlName="tattoos" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
@@ -654,7 +743,17 @@
                   }">
                   <option selected value="2">Some</option>
                   <option value="2">Many</option>
-                </select>
+                </select> -->
+                <p-dropdown [options]="Tattoos" formControlName="tattoos" class="w-100" optionLabel="name"
+                  optionValue="name" placeholder="Select a tattoos" [ngStyle]="{
+                      border:
+                        pointerEvent === true ? 'none' : '1px solid grey',
+                      'pointer-events':
+                        pointerEvent === true ? 'none' : 'inherit '
+                    }" [ngClass]="{
+                      'is-invalid':
+                        submitAboutFitnessModel && f4?.tattoos?.errors
+                    }"></p-dropdown>
                 <div *ngIf="submitAboutFitnessModel && f4.tattoos.errors" class="invalid-feedback">
                   <div *ngIf="f4.tattoos.errors.required">
                     Tattoos is required
@@ -667,7 +766,7 @@
                 <span for="exampleInputEmail1">Piercings</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <select class="form-select form-control" formControlName="piercings" [ngStyle]="{
+                <!-- <select class="form-select form-control" formControlName="piercings" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
@@ -677,7 +776,18 @@
                   <option selected>None</option>
                   <option value="2">Some</option>
                   <option value="3">Many</option>
-                </select>
+                </select> -->
+                <p-dropdown [options]="Piercings" formControlName="piercings" class="w-100" optionLabel="name"
+                  optionValue="name" placeholder="Select a piercings" [ngStyle]="{
+                border:
+                  pointerEvent === true ? 'none' : '1px solid grey',
+                'pointer-events':
+                  pointerEvent === true ? 'none' : 'inherit '
+              }" [ngClass]="{
+                'is-invalid':
+                  submitAboutFitnessModel && f4?.piercings?.errors
+              }"></p-dropdown>
+
                 <div *ngIf="submitAboutFitnessModel && f4.piercings.errors" class="invalid-feedback">
                   <div *ngIf="f4.piercings.errors.required">
                     Piercings is required
@@ -690,7 +800,7 @@
                 <span for="exampleInputEmail1">Experience</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <select class="form-select form-control" formControlName="experience" [ngStyle]="{
+                <!-- <select class="form-select form-control" formControlName="experience" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
@@ -702,7 +812,18 @@
                   <option value="2">Some Experience</option>
                   <option vaule="3">Experience</option>
                   <option vaule="4">Very Experience</option>
-                </select>
+                </select> -->
+
+                <p-dropdown [options]="Experience" formControlName="experience" class="w-100" optionLabel="name"
+                  optionValue="name" placeholder="Select a experience" [ngStyle]="{
+                border:
+                  pointerEvent === true ? 'none' : '1px solid grey',
+                'pointer-events':
+                  pointerEvent === true ? 'none' : 'inherit '
+              }" [ngClass]="{
+                'is-invalid':
+                  submitAboutFitnessModel && f4?.experience?.errors
+              }"></p-dropdown>
                 <div *ngIf="submitAboutFitnessModel && f4.experience.errors" class="invalid-feedback">
                   <div *ngIf="f4.experience.errors.required">
                     Experience is required
@@ -717,8 +838,8 @@
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
                   <div class="">
-                    <p-multiSelect [options]="languages" formControlName="languages" optionValue="code"
-                      specialties="Select a Languages" optionLabel="name" [ngStyle]="{
+                    <p-multiSelect [options]="languages" placeholder="Select a Languages" formControlName="languages"
+                      optionValue="name" specialties="Select a Languages" optionLabel="name" [ngStyle]="{
                         border:
                           pointerEvent === true ? 'none' : '1px solid grey',
                         'pointer-events':
@@ -786,7 +907,7 @@
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <p-multiSelect [options]="Interests" formControlName="modelingInterest"
-                  specialties="Select Your Interests" optionLabel="name" [ngStyle]="{
+                  placeholder="Select Your Interests" optionLabel="name" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
@@ -807,7 +928,7 @@
                 <span for="exampleInputEmail1">Compensation</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <select class="form-select form-control" formControlName="compensation" [ngStyle]="{
+                <!-- <select class="form-select form-control" formControlName="compensation" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
@@ -820,7 +941,18 @@
                   <option value="2">Any</option>
                   <option vaule="3">Depends on assigments</option>
                   <option vaule="4">Time Prints</option>
-                </select>
+                </select> -->
+                <p-dropdown [options]="Compensation" formControlName="compensation" class="w-100" optionLabel="name"
+                  optionValue="name" placeholder="Select a compensation" [ngStyle]="{
+                border:
+                  pointerEvent === true ? 'none' : '1px solid grey',
+                'pointer-events':
+                  pointerEvent === true ? 'none' : 'inherit '
+              }" [ngClass]="{
+                'is-invalid':
+                  submitAboutFitnessModel && f4?.compensation?.errors
+              }"></p-dropdown>
+
                 <div *ngIf="submitAboutFitnessModel && f4.compensation.errors" class="invalid-feedback">
                   <div *ngIf="f4.compensation.errors.required">
                     compensation is required
@@ -857,7 +989,7 @@
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
                   <div class="">
-                    <p-multiSelect [options]="Activities" specialties="Select a Activities" optionLabel="name"
+                    <p-multiSelect [options]="Activities" placeholder="Select a Activities" optionLabel="name"
                       formControlName="activites" [ngStyle]="{
                         border:
                           pointerEvent === true ? 'none' : '1px solid grey',
@@ -925,7 +1057,7 @@
                     </div>
 
                     <div class="col-2 p-0 text-right" *ngIf="!guestMode">
-                      <a>
+                      <a *ngIf="show">
                         <div class="edit_ico">
                           <i class="pi pi-trash" (click)="removeFitnessModalRating(i)"></i>
                         </div>
@@ -955,6 +1087,8 @@
   </div>
   <!-- Fitness Model Role AboutUs Ends -->
 
+
+
   <!-- Fitness Professional Role AboutUs Start -->
 
   <div *ngIf="role === activeRoleEnum.Pro" id="fitness Professional">
@@ -970,6 +1104,7 @@
       </div>
       <div class="aboutUs">
         <form action="" [formGroup]="aboutFitnessProfessionalForm" (ngSubmit)="OnSubmitAboutFitnessProfessional()">
+
           <!-- Business -->
           <div class="container-fluid aboutusdata" formGroupName="business">
             <!-- Business Name -->
@@ -981,16 +1116,17 @@
               <div class="col-sm-12 col-md-8 entries">
                 <input type="text" class="form-control" formControlName="name" id="" placeholder="Enter Business Name"
                   [ngStyle]="{
-                    border: pointerEvent === true ? 'none' : '1px solid grey',
-                    'pointer-events':
-                      pointerEvent === true ? 'none' : 'inherit '
-                  }" [ngClass]="{
-                    'is-invalid':
-                      submitAboutFitnessProfessional && f5.name.errors
-                  }" />
-                <div *ngIf="submitAboutFitnessProfessional && f5.name.errors" class="invalid-feedback">
-                  <div *ngIf="f5.name.errors.required">name is required</div>
+                  border: pointerEvent === true ? 'none' : '1px solid grey',
+                  'pointer-events': pointerEvent === true ? 'none' : 'inherit '
+                   
+                    
+                }" [ngClass]="{
+                  'is-invalid': submitAboutFitnessProfessional && f5?.name?.errors 
+                }" />
+                <div *ngIf="submitAboutFitnessProfessional && f5?.name?.errors" class="invalid-feedback">
+                  <div *ngIf="f5?.name?.errors?.required">name is required</div>
                 </div>
+
               </div>
             </div>
 
@@ -1000,7 +1136,7 @@
                 <span for="exampleInputEmail1">Client Preference</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <select class="form-select form-control" formControlName="clientPreference" [ngStyle]="{
+                <!-- <select class="form-select form-control" formControlName="clientPreference" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
@@ -1015,11 +1151,22 @@
                   <option value="3">Advanced</option>
                   <option value="4">Elite</option>
                   <option value="5">All levels</option>
-                </select>
+                </select> -->
+                <p-dropdown [options]="clientPreference" formControlName="clientPreference" class="w-100"
+                  optionLabel="name" optionValue="name" placeholder="Select a client Preference option" [ngStyle]="{
+                  border: pointerEvent === true ? 'none' : '1px solid grey',
+                  'pointer-events':
+                    pointerEvent === true ? 'none' : 'inherit '
+                }" [ngClass]="{
+                  'is-invalid':
+                    submitAboutFitnessProfessional &&
+                    f5?.clientPreference?.errors
+                }"></p-dropdown>
+
                 <div *ngIf="
-                    submitAboutFitnessProfessional && f5.clientPreference.errors
+                    submitAboutFitnessProfessional && f5?.clientPreference?.errors
                   " class="invalid-feedback">
-                  <div *ngIf="f5.clientPreference.errors.required">
+                  <div *ngIf="f5?.clientPreference?.errors?.required">
                     clientPreference is required
                   </div>
                 </div>
@@ -1032,7 +1179,7 @@
                 <span for="exampleInputEmail1">Availability for in-home training</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <select class="form-select form-control" formControlName="availabilityForInHomeTraining" [ngStyle]="{
+                <!-- <select class="form-select form-control" formControlName="availabilityForInHomeTraining" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
@@ -1046,12 +1193,23 @@
                   </option>
                   <option value="1">Yes Available</option>
                   <option value="2">No,Come to My Place</option>
-                </select>
+                </select> -->
+                <p-dropdown [options]="inHomeTraining" formControlName="availabilityForInHomeTraining" class="w-100"
+                  optionLabel="name" optionValue="name" placeholder="Select a Training Method " [ngStyle]="{
+                border: pointerEvent === true ? 'none' : '1px solid grey',
+                'pointer-events':
+                  pointerEvent === true ? 'none' : 'inherit '
+              }" [ngClass]="{
+                'is-invalid':
+                  submitAboutFitnessProfessional &&
+                  f5?.availabilityForInHomeTraining?.errors
+              }"></p-dropdown>
+
                 <div *ngIf="
                     submitAboutFitnessProfessional &&
-                    f5.availabilityForInHomeTraining.errors
+                    f5?.availabilityForInHomeTraining?.errors
                   " class="invalid-feedback">
-                  <div *ngIf="f5.availabilityForInHomeTraining.errors.required">
+                  <div *ngIf="f5?.availabilityForInHomeTraining?.errors?.required">
                     availabilityForInHomeTraining is required
                   </div>
                 </div>
@@ -1065,7 +1223,7 @@
                 </span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <select class="form-select form-control" formControlName="availabilityForOnLineliveTraining" [ngStyle]="{
+                <!-- <select class="form-select form-control" formControlName="availabilityForOnLineliveTraining" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
@@ -1079,12 +1237,23 @@
                   </option>
                   <option value="1">Yes Available</option>
                   <option value="2">No,Come to My Place</option>
-                </select>
+                </select> -->
+                <p-dropdown [options]="onineLiveTraining" formControlName="availabilityForOnLineliveTraining"
+                  class="w-100" optionLabel="name" optionValue="name" placeholder="Select a training option" [ngStyle]="{
+                border: pointerEvent === true ? 'none' : '1px solid grey',
+                'pointer-events':
+                  pointerEvent === true ? 'none' : 'inherit '
+              }" [ngClass]="{
+                'is-invalid':
+                  submitAboutFitnessProfessional &&
+                  f5?.availabilityForOnLineliveTraining?.errors
+              }"></p-dropdown>
+
                 <div *ngIf="
                     submitAboutFitnessProfessional &&
-                    f5.availabilityForOnLineliveTraining.errors
+                    f5?.availabilityForOnLineliveTraining?.errors
                   " class="invalid-feedback">
-                  <div *ngIf="f5.availabilityForOnLineliveTraining.errors.required">
+                  <div *ngIf="f5?.availabilityForOnLineliveTraining?.errors?.required">
                     availabilityForOnLineliveTraining is required
                   </div>
                 </div>
@@ -1104,12 +1273,12 @@
                       pointerEvent === true ? 'none' : 'inherit '
                   }" [ngClass]="{
                     'is-invalid':
-                      submitAboutFitnessProfessional && f5.trainingRates.errors
+                      submitAboutFitnessProfessional && f5?.trainingRates?.errors
                   }" />
                 <div *ngIf="
-                    submitAboutFitnessProfessional && f5.trainingRates.errors
+                    submitAboutFitnessProfessional && f5?.trainingRates?.errors
                   " class="invalid-feedback">
-                  <div *ngIf="f5.trainingRates.errors.required">
+                  <div *ngIf="f5?.trainingRates?.errors?.required">
                     trainingRates is required
                   </div>
                 </div>
@@ -1130,13 +1299,13 @@
                   }" [ngClass]="{
                     'is-invalid':
                       submitAboutFitnessProfessional &&
-                      f5.noteAboutTrainingRates.errors
+                      f5?.noteAboutTrainingRates?.errors
                   }" />
                 <div *ngIf="
                     submitAboutFitnessProfessional &&
-                    f5.noteAboutTrainingRates.errors
+                    f5?.noteAboutTrainingRates?.errors
                   " class="invalid-feedback">
-                  <div *ngIf="f5.noteAboutTrainingRates.errors.required">
+                  <div *ngIf="f5?.noteAboutTrainingRates?.errors?.required">
                     noteAboutTrainingRates is required
                   </div>
                 </div>
@@ -1160,10 +1329,10 @@
                       pointerEvent === true ? 'none' : 'inherit '
                   }" [ngClass]="{
                     'is-invalid':
-                      submitAboutFitnessProfessional && f5.degree.errors
-                  }" placeholder="0" />
-                <div *ngIf="submitAboutFitnessProfessional && f5.degree.errors" class="invalid-feedback">
-                  <div *ngIf="f5.degree.errors.required">
+                      submitAboutFitnessProfessional && f5?.degree?.errors
+                  }" />
+                <div *ngIf="submitAboutFitnessProfessional && f5?.degree?.errors" class="invalid-feedback">
+                  <div *ngIf="f5?.degree?.errors?.required">
                     Degree is required
                   </div>
                 </div>
@@ -1182,12 +1351,12 @@
                       pointerEvent === true ? 'none' : 'inherit '
                   }" [ngClass]="{
                     'is-invalid':
-                      submitAboutFitnessProfessional && f5.professions.errors
+                      submitAboutFitnessProfessional && f5?.professions?.errors
                   }" placeholder="Profession" />
                 <div *ngIf="
-                    submitAboutFitnessProfessional && f5.professions.errors
+                    submitAboutFitnessProfessional && f5?.professions?.errors
                   " class="invalid-feedback">
-                  <div *ngIf="f5.professions.errors.required">
+                  <div *ngIf="f5?.professions?.errors?.required">
                     professions is required
                   </div>
                 </div>
@@ -1207,12 +1376,12 @@
                         pointerEvent === true ? 'none' : 'inherit '
                     }" [ngClass]="{
                       'is-invalid':
-                        submitAboutFitnessProfessional && f5.experience.errors
+                        submitAboutFitnessProfessional && f5?.experience?.errors
                     }" placeholder="Experience" />
                   <div *ngIf="
-                      submitAboutFitnessProfessional && f5.experience.errors
+                      submitAboutFitnessProfessional && f5?.experience?.errors
                     " class="invalid-feedback">
-                    <div *ngIf="f5.experience.errors.required">
+                    <div *ngIf="f5?.experience?.errors?.required">
                       experience is required
                     </div>
                   </div>
@@ -1229,7 +1398,7 @@
                 <div class="">
                   <div class="">
                     <p-multiSelect formControlName="certification" [options]="certificates"
-                      specialties="Select a certificates" optionLabel="name" [ngStyle]="{
+                      placeholder="Select a certificates" optionLabel="name" [ngStyle]="{
                         border:
                           pointerEvent === true ? 'none' : '1px solid grey',
                         'pointer-events':
@@ -1237,14 +1406,14 @@
                       }" [ngClass]="{
                         'is-invalid':
                           submitAboutFitnessProfessional &&
-                          f5.certification.errors
+                          f5?.certification?.errors
                       }">
                     </p-multiSelect>
                     <div *ngIf="
                         submitAboutFitnessProfessional &&
-                        f5.certification.errors
+                        f5?.certification?.errors
                       " class="invalid-feedback">
-                      <div *ngIf="f5.certification.errors.required">
+                      <div *ngIf="f5?.certification?.errors?.required">
                         certificates is required
                       </div>
                     </div>
@@ -1259,20 +1428,20 @@
                 <span for="exampleInputEmail1">Specialties</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <p-multiSelect [options]="specialties" specialties="Select a specialities" optionLabel="name"
+                <p-multiSelect [options]="specialties" placeholder="Select a specialities" optionLabel="name"
                   formControlName="specialities" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
                   }" [ngClass]="{
                     'is-invalid':
-                      submitAboutFitnessProfessional && f5.specialities.errors
+                      submitAboutFitnessProfessional && f5?.specialities?.errors
                   }">
                 </p-multiSelect>
                 <div *ngIf="
-                    submitAboutFitnessProfessional && f5.specialities.errors
+                    submitAboutFitnessProfessional && f5?.specialities?.errors
                   " class="invalid-feedback">
-                  <div *ngIf="f5.specialities.errors.required">
+                  <div *ngIf="f5?.specialities?.errors?.required">
                     specialities is required
                   </div>
                 </div>
@@ -1285,18 +1454,18 @@
                 <span for="exampleInputEmail1">Languages</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <p-multiSelect [options]="languages" specialties="Select a languages" optionLabel="name"
+                <p-multiSelect [options]="languages" placeholder="Select a languages" optionLabel="name"
                   formControlName="languages" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
                   }" [ngClass]="{
                     'is-invalid':
-                      submitAboutFitnessProfessional && f5.languages.errors
+                      submitAboutFitnessProfessional && f5?.languages?.errors
                   }">
                 </p-multiSelect>
-                <div *ngIf="submitAboutFitnessProfessional && f5.languages.errors" class="invalid-feedback">
-                  <div *ngIf="f5.languages.errors.required">
+                <div *ngIf="submitAboutFitnessProfessional && f5?.languages?.errors" class="invalid-feedback">
+                  <div *ngIf="f5?.languages?.errors?.required">
                     languages is required
                   </div>
                 </div>
@@ -1317,13 +1486,13 @@
                   }" [ngClass]="{
                     'is-invalid':
                       submitAboutFitnessProfessional &&
-                      f5.trainingMethodsAndStyles.errors
+                      f5?.trainingMethodsAndStyles?.errors
                   }"></textarea>
                 <div *ngIf="
                     submitAboutFitnessProfessional &&
-                    f5.trainingMethodsAndStyles.errors
+                    f5?.trainingMethodsAndStyles?.errors
                   " class="invalid-feedback">
-                  <div *ngIf="f5.trainingMethodsAndStyles.errors.required">
+                  <div *ngIf="f5?.trainingMethodsAndStyles?.errors?.required">
                     trainingMethodsAndStyles is required
                   </div>
                 </div>
@@ -1360,10 +1529,10 @@
                       pointerEvent === true ? 'none' : 'inherit '
                   }" [ngClass]="{
                     'is-invalid':
-                      submitAboutFitnessProfessional && f5.name.errors
+                      submitAboutFitnessProfessional && f5?.name?.errors
                   }" placeholder="Fitness Model Name" />
-                <div *ngIf="submitAboutFitnessProfessional && f5.name.errors" class="invalid-feedback">
-                  <div *ngIf="f5.name.errors.required">
+                <div *ngIf="submitAboutFitnessProfessional && f5?.name?.errors" class="invalid-feedback">
+                  <div *ngIf="f5?.name?.errors?.required">
                     personal name is required
                   </div>
                 </div>
@@ -1382,10 +1551,10 @@
                       pointerEvent === true ? 'none' : 'inherit '
                   }" [ngClass]="{
                     'is-invalid':
-                      submitAboutFitnessProfessional && f5.profileUrl.errors
+                      submitAboutFitnessProfessional && f5?.profileUrl?.errors
                   }" placeholder="Enter profile Url" />
-                <div *ngIf="submitAboutFitnessProfessional && f5.profileUrl.errors" class="invalid-feedback">
-                  <div *ngIf="f5.profileUrl.errors.required">
+                <div *ngIf="submitAboutFitnessProfessional && f5?.profileUrl?.errors" class="invalid-feedback">
+                  <div *ngIf="f5?.profileUrl?.errors?.required">
                     profileUrl is required
                   </div>
                 </div>
@@ -1438,14 +1607,15 @@
                           pointerEvent === true ? 'none' : 'inherit '
                       }" [ngClass]="{
                         'is-invalid':
-                          submitAboutFitnessProfessional && f5.age.errors
+                          submitAboutFitnessProfessional && f5?.age?.errors
                       }" placeholder="Age" />
-                    <div *ngIf="submitAboutFitnessProfessional && f5.age.errors" class="invalid-feedback">
-                      <div *ngIf="f5.age.errors.required">age is required</div>
+                    <div *ngIf="submitAboutFitnessProfessional && f5?.age?.errors" class="invalid-feedback">
+                      <div *ngIf="f5?.age?.errors?.required">age is required</div>
                     </div>
                   </div>
                   <div class="col-md-6 pl-5 py-2">
-                    <h4>Years</h4>
+                    <p-dropdown [options]="age" class="w-100" optionLabel="name" optionValue="name" [disabled]=true>
+                    </p-dropdown>
                   </div>
                 </div>
               </div>
@@ -1467,16 +1637,16 @@
                           pointerEvent === true ? 'none' : 'inherit '
                       }" [ngClass]="{
                         'is-invalid':
-                          submitAboutFitnessProfessional && f5.number.errors
+                          submitAboutFitnessProfessional && f5?.number?.errors
                       }" />
-                    <div *ngIf="submitAboutFitnessProfessional && f5.number.errors" class="invalid-feedback">
-                      <div *ngIf="f5.number.errors.required">
+                    <div *ngIf="submitAboutFitnessProfessional && f5?.number?.errors" class="invalid-feedback">
+                      <div *ngIf="f5?.number?.errors?.required">
                         height is required
                       </div>
                     </div>
                   </div>
                   <div class="col-md-6 pl-3">
-                    <select class="form-select form-control" formControlName="measurement" [ngStyle]="{
+                    <!-- <select class="form-select form-control" formControlName="measurement" [ngStyle]="{
                         border:
                           pointerEvent === true ? 'none' : '1px solid grey',
                         'pointer-events':
@@ -1488,14 +1658,26 @@
                       }">
                       <option selected value="1">Meters</option>
                       <option value="2">Feets</option>
-                    </select>
-                    <div *ngIf="
+                    </select> -->
+                    <p-dropdown [options]="measurement" formControlName="measurement" class="w-100" optionLabel="name"
+                      optionValue="name" placeholder="Select a Height in" [ngStyle]="{
+                      border:
+                        pointerEvent === true ? 'none' : '1px solid grey',
+                      'pointer-events':
+                        pointerEvent === true ? 'none' : 'inherit '
+                    }" [ngClass]="{
+                      'is-invalid':
+                        submitAboutFitnessProfessional &&
+                        f5?.measurement?.errors
+                    }"></p-dropdown>
+
+                    <!-- <div *ngIf="
                         submitAboutFitnessProfessional && f5.measurement.errors
                       " class="invalid-feedback">
                       <div *ngIf="f5.measurement.errors.required">
                         height is required
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -1516,17 +1698,17 @@
                           pointerEvent === true ? 'none' : 'inherit '
                       }" [ngClass]="{
                         'is-invalid':
-                          submitAboutFitnessProfessional && f5.number.errors
+                          submitAboutFitnessProfessional && f5?.number?.errors
                       }" />
-                    <div *ngIf="submitAboutFitnessProfessional && f5.number.errors" class="invalid-feedback">
-                      <div *ngIf="f5.number.errors.required">
+                    <div *ngIf="submitAboutFitnessProfessional && f5?.number?.errors" class="invalid-feedback">
+                      <div *ngIf="f5?.number?.errors?.required">
                         weight is required
                       </div>
                     </div>
                   </div>
 
                   <div class="col-md-6 pl-3">
-                    <select class="form-select form-control" formControlName="measurement" [ngStyle]="{
+                    <!-- <select class="form-select form-control" formControlName="measurement" [ngStyle]="{
                         border:
                           pointerEvent === true ? 'none' : '1px solid grey',
                         'pointer-events':
@@ -1538,14 +1720,26 @@
                       }" autoWidth="false" [style]="{ width: '100%' }">
                       <option selected value="1">Kilograms</option>
                       <option value="2">Pounds</option>
-                    </select>
-                    <div *ngIf="
+                    </select> -->
+                    <p-dropdown [options]="weightList" formControlName="measurement" class="w-100" optionLabel="name"
+                      optionValue="name" placeholder="Select a Weight in" [ngStyle]="{
+                      border:
+                        pointerEvent === true ? 'none' : '1px solid grey',
+                      'pointer-events':
+                        pointerEvent === true ? 'none' : 'inherit '
+                    }" [ngClass]="{
+                      'is-invalid':
+                        submitAboutFitnessProfessional &&
+                        f5?.measurement?.errors
+                    }"></p-dropdown>
+
+                    <!-- <div *ngIf="
                         submitAboutFitnessProfessional && f5.measurement.errors
                       " class="invalid-feedback">
                       <div *ngIf="f5.measurement.errors.required">
                         Measurement is required
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -1557,7 +1751,7 @@
                 <span for="exampleInputEmail1">Diet Type</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <select formControlName="dietType" class="form-select form-control custom-select" [ngStyle]="{
+                <!-- <select formControlName="dietType" class="form-select form-control custom-select" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
@@ -1569,9 +1763,21 @@
                   <option value="2">Vegan</option>
                   <option value="3">Rew Food</option>
                   <option value="4">Mediterranean</option>
-                </select>
-                <div *ngIf="submitAboutFitnessProfessional && f5.dietType.errors" class="invalid-feedback">
-                  <div *ngIf="f5.dietType.errors.required">
+                </select> -->
+                <p-dropdown [options]="dietType" formControlName="dietType" class="w-100" optionLabel="name"
+                  optionValue="name" placeholder="Select a Diet Type" [ngStyle]="{
+                  border:
+                    pointerEvent === true ? 'none' : '1px solid grey',
+                  'pointer-events':
+                    pointerEvent === true ? 'none' : 'inherit '
+                }" [ngClass]="{
+                  'is-invalid':
+                    submitAboutFitnessProfessional &&
+                    f5?.dietType?.errors
+                }"></p-dropdown>
+
+                <div *ngIf="submitAboutFitnessProfessional && f5?.dietType?.errors" class="invalid-feedback">
+                  <div *ngIf="f5?.dietType?.errors?.required">
                     dietType is required
                   </div>
                 </div>
@@ -1584,7 +1790,7 @@
                 <span for="exampleInputEmail1">Body Type</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <select formControlName="bodyType" class="form-select form-control" [ngStyle]="{
+                <!-- <select formControlName="bodyType" class="form-select form-control" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
@@ -1595,9 +1801,21 @@
                   <option selected value="1">Ectomorph</option>
                   <option value="2">Endomorph</option>
                   <option value="3">Mesormorph</option>
-                </select>
-                <div *ngIf="submitAboutFitnessProfessional && f5.bodyType.errors" class="invalid-feedback">
-                  <div *ngIf="f5.bodyType.errors.required">
+                </select> -->
+                <p-dropdown [options]="measurement" formControlName="bodyType" class="w-100" optionLabel="name"
+                  optionValue="name" placeholder="Select Body type" [ngStyle]="{
+                      border:
+                        pointerEvent === true ? 'none' : '1px solid grey',
+                      'pointer-events':
+                        pointerEvent === true ? 'none' : 'inherit '
+                    }" [ngClass]="{
+                      'is-invalid':
+                        submitAboutFitnessProfessional &&
+                        f5?.bodyType?.errors
+                    }"></p-dropdown>
+
+                <div *ngIf="submitAboutFitnessProfessional && f5?.bodyType?.errors" class="invalid-feedback">
+                  <div *ngIf="f5?.bodyType?.errors?.required">
                     bodyType is required
                   </div>
                 </div>
@@ -1612,7 +1830,7 @@
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
                   <div class="">
-                    <p-multiSelect formControlName="activites" [options]="Activities" specialties="Select a Activities"
+                    <p-multiSelect formControlName="activites" [options]="Activities" placeholder="Select a Activities"
                       optionLabel="name" autoWidth="false" [ngStyle]="{
                         border:
                           pointerEvent === true ? 'none' : '1px solid grey',
@@ -1620,13 +1838,13 @@
                           pointerEvent === true ? 'none' : 'inherit '
                       }" [ngClass]="{
                         'is-invalid':
-                          submitAboutFitnessProfessional && f5.activites.errors
+                          submitAboutFitnessProfessional && f5?.activites?.errors
                       }">
                     </p-multiSelect>
                     <div *ngIf="
-                        submitAboutFitnessProfessional && f5.activites.errors
+                        submitAboutFitnessProfessional && f5?.activites?.errors
                       " class="invalid-feedback">
-                      <div *ngIf="f5.activites.errors.required">
+                      <div *ngIf="f5?.activites?.errors?.required">
                         activities is required
                       </div>
                     </div>
@@ -1648,10 +1866,10 @@
                       pointerEvent === true ? 'none' : 'inherit '
                   }" [ngClass]="{
                     'is-invalid':
-                      submitAboutFitnessProfessional && f5.aboutMe.errors
+                      submitAboutFitnessProfessional && f5?.aboutMe?.errors
                   }"></textarea>
-                <div *ngIf="submitAboutFitnessProfessional && f5.aboutMe.errors" class="invalid-feedback">
-                  <div *ngIf="f5.aboutMe.errors.required">
+                <div *ngIf="submitAboutFitnessProfessional && f5?.aboutMe?.errors" class="invalid-feedback">
+                  <div *ngIf="f5?.aboutMe?.errors?.required">
                     aboutMe is required
                   </div>
                 </div>
@@ -1741,4 +1959,6 @@
       </div>
     </div>
   </div>
+
+
 </section>
