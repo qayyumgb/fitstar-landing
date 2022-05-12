@@ -18,46 +18,39 @@
             </div>
           </div>
         </div>
-        <div class="input-group">
-          <div class="row">
-            <div class="col-12">
-              <div class="input-field row-field">
-                <input style="margin-top: 15px" type="email" placeholder="Email Address" name="email"
-                  formControlName="email" required="" [ngClass]="{
+
+        <div class="input-field ">
+          <input style="margin-top: 15px" type="email" placeholder="Email Address" name="email" formControlName="email"
+            required="" [ngClass]="{
                     'is-invalid': submitted && f.email.errors
                   }" />
-                <div *ngIf="submitted && f?.email?.errors" class="invalid-feedback">
-                  <div *ngIf="f.email?.errors?.required" class="errorMsg">
-                    Email is required
-                  </div>
-                  <div *ngIf="f.email?.errors?.pattern" class="errorMsg">
-                    In-Valid Email Pattern
-                  </div>
-                </div>
-              </div>
+          <div *ngIf="submitted && f?.email?.errors" class="invalid-feedback">
+            <div *ngIf="f.email?.errors?.required" class="errorMsg">
+              Email is required
             </div>
-
-            <!-- Referral User is Commented Now  -->
-
-            <!-- <div class="col-sm-12 col-md-6">
-              <div class="input-field row-field">
-                <select formControlName="selectReferral" class="form-select" aria-label="Default select example"
-                  style="margin-top: 15px" required="" [ngClass]="{
+            <div *ngIf="f.email?.errors?.pattern" class="errorMsg">
+              In-Valid Email Pattern
+            </div>
+          </div>
+        </div>
+        <!-- Referral User is Commented Now  -->
+        <div class="col-12">
+          <div class="input-field row-field">
+            <select formControlName="selectReferral" class="form-select" aria-label="Default select example"
+              style="margin-top: 15px" required="" [ngClass]="{
                     'is-invalid': submitted && f.selectReferral.errors
                   }">
-                  <option class="form-control" selected>Open this select menu</option>
-                  <option class="form-control" value="" *ngFor="let item of referralUserLists" [value]="item.id">
-                    {{referralUserLists.users}}
-                  </option>
-                </select>
-                <div *ngIf="submitted && f?.selectReferral?.errors" class="invalid-feedback">
-                  <div *ngIf="f.selectReferral?.errors?.required" class="errorMsg">
-                    Referral is required
-                  </div>
-
-                </div>
+              <option class="form-control" selected>Select Referral </option>
+              <option class="form-control" value="" *ngFor="let item of referralUserLists" [value]="item.id">
+                {{referralUserLists.users}}
+              </option>
+            </select>
+            <div *ngIf="submitted && f?.selectReferral?.errors" class="invalid-feedback">
+              <div *ngIf="f.selectReferral?.errors?.required" class="errorMsg">
+                Referral is required
               </div>
-            </div> -->
+
+            </div>
           </div>
         </div>
         <div class="input-group">

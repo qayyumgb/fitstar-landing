@@ -15,7 +15,45 @@
           <div class="container-fluid aboutusdata">
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Open Since</span>
+                <span>Name</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <input type="text" class="form-control" id="" formControlName="name" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid': SubmitFitnessCenter && f3.name.errors
+                  }" />
+                <div *ngIf="SubmitFitnessCenter && f3.name.errors" class="invalid-feedback">
+                  <div *ngIf="f3.name.errors.required">
+                    Fitness Center Name is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span>Profile Url</span>
+              </div>
+              <div class="col-sm-12 col-md-8 entries">
+                <input type="text" class="form-control" id="" formControlName="profileUrl" [ngStyle]="{
+                    border: pointerEvent === true ? 'none' : '1px solid grey',
+                    'pointer-events':
+                      pointerEvent === true ? 'none' : 'inherit '
+                  }" [ngClass]="{
+                    'is-invalid': SubmitFitnessCenter && f3.profileUrl.errors
+                  }" />
+                <div *ngIf="SubmitFitnessCenter && f3.profileUrl.errors" class="invalid-feedback">
+                  <div *ngIf="f3.profileUrl.errors.required">
+                    Profile Url is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-4 py-2">
+                <span>Open Since</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <input type="text" class="form-control" id="" formControlName="openSince" [ngStyle]="{
@@ -34,7 +72,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Fitness Center Type</span>
+                <span>Fitness Center Type</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <!-- <select formControlName="fitnessCenterType" name="fitnessCenterType" class="form-select form-control"
@@ -69,7 +107,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Languages</span>
+                <span>Languages</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
@@ -95,7 +133,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Specialties</span>
+                <span>Specialties</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
@@ -122,7 +160,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Hours Of Operation</span>
+                <span>Hours Of Operation</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <input type="number" class="form-control" id="" formControlName="hoursOfOperation"
@@ -143,7 +181,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Membership Plans</span>
+                <span>Membership Plans</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <input type="text" class="form-control" id="" placeholder="Membership Plans"
@@ -164,7 +202,7 @@
 
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Accomplishments</span>
+                <span>Accomplishments</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <input type="text" class="form-control" placeholder="Accomplishments" id=""
@@ -185,7 +223,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Our Fitness Pros</span>
+                <span>Our Fitness Pros</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
@@ -212,7 +250,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Our Story/About Us</span>
+                <span>Our Story/About Us</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
@@ -237,7 +275,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Product Reviews</span>
+                <span>Product Reviews</span>
               </div>
 
               <div class="col-sm-12 col-md-8 entries" [ngStyle]="{
@@ -250,17 +288,17 @@
                       let item of productRatingArray.controls;
                       let i = index
                     " [formGroupName]="i">
-                    <div style="border: none" class="col-10 p-0 row" *ngIf="productRatingArray.length">
-                      <input class="col-3 form-control mt-0 product_review_name_multiple_field" placeholder="Product"
-                        formControlName="product" />
-                      <input class="col-4 form-control mt-0 product_review_multiple_field" placeholder="Review"
-                        formControlName="review" />
-                      <div class="col-3">
+                    <div class="col-11 p-0 row border-none" *ngIf="productRatingArray.length">
+                      <textarea class="col-3 mr-2 form-control mt-0 product_review_name_multiple_field"
+                        placeholder="Product" formControlName="product"></textarea>
+                      <textarea class="col-4 form-control w-100 h-auto mt-0 pl-2 product_review_multiple_field"
+                        placeholder="Review" formControlName="review"></textarea>
+                      <div class="col-2 pl-2 d-flex justify-content-center align-content-center">
                         <p-rating [cancel]="false" formControlName="starts"></p-rating>
                       </div>
                     </div>
 
-                    <div class="col-2 p-0 text-right" *ngIf="show">
+                    <div class="col-1 p-0 text-right" *ngIf="show">
                       <a>
                         <div class="edit_ico">
                           <i class="pi pi-trash" (click)="removeFitnessCenterRating(i)"></i>
@@ -309,7 +347,7 @@
             <!-- Name -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Name</span>
+                <span>Name</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <input type="text" class="form-control" formControlName="name" id="" [ngStyle]="{
@@ -328,7 +366,7 @@
             <!-- Profile Url -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Profile Url</span>
+                <span>Profile Url</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <input type="text" class="form-control" formControlName="profileUrl" id="" [ngStyle]="{
@@ -350,7 +388,7 @@
             <!-- Gender -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Gender</span>
+                <span>Gender</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
@@ -380,12 +418,12 @@
             <!-- Age -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Age</span>
+                <span>Age</span>
               </div>
               <div class="col-sm-12 col-md-8">
                 <div class="row" style="border: none">
                   <div class="col-md-6">
-                    <input type="text" class="form-control" formControlName="age" id="" [ngStyle]="{
+                    <input type="number" value="" class="form-control" formControlName="age" id="" [ngStyle]="{
                         border:
                           pointerEvent === true ? 'none' : '1px solid grey',
                         'pointer-events':
@@ -407,7 +445,7 @@
             </div>
             <div class="row" formGroupName="height">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Height</span>
+                <span>Height</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="row" style="border: none">
@@ -467,7 +505,7 @@
             <!-- Weight -->
             <div class="row" formGroupName="weight">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Weight</span>
+                <span>Weight</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="row" style="border: none">
@@ -526,7 +564,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Body Type</span>
+                <span>Body Type</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <!-- <select class="form-select form-control" formControlName="bodyType" [ngStyle]="{
@@ -567,7 +605,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Ethnicity</span>
+                <span>Ethnicity</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <!-- <select class="form-select form-control" formControlName="ethnicity" [ngStyle]="{
@@ -607,7 +645,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Skin Tone</span>
+                <span>Skin Tone</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
@@ -652,7 +690,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Eye Color</span>
+                <span>Eye Color</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <!-- <select class="form-select form-control" formControlName="eyeColor" [ngStyle]="{
@@ -692,7 +730,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Hair Length</span>
+                <span>Hair Length</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <!-- <select class="form-select form-control" formControlName="hairLength" [ngStyle]="{
@@ -731,7 +769,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Tattoos</span>
+                <span>Tattoos</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <!-- <select class="form-select form-control" formControlName="tattoos" [ngStyle]="{
@@ -763,7 +801,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Piercings</span>
+                <span>Piercings</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <!-- <select class="form-select form-control" formControlName="piercings" [ngStyle]="{
@@ -797,7 +835,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Experience</span>
+                <span>Experience</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <!-- <select class="form-select form-control" formControlName="experience" [ngStyle]="{
@@ -833,7 +871,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Languages</span>
+                <span>Languages</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
@@ -860,7 +898,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Working With Media</span>
+                <span>Working With Media</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
@@ -903,7 +941,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Modeling Interests</span>
+                <span>Modeling Interests</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <p-multiSelect [options]="Interests" formControlName="modelingInterest"
@@ -925,7 +963,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Compensation</span>
+                <span>Compensation</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <!-- <select class="form-select form-control" formControlName="compensation" [ngStyle]="{
@@ -962,7 +1000,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Notes About Compensation</span>
+                <span>Notes About Compensation</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <input type="text" class="form-control" formControlName="noteAboutCompensation" id="" [ngStyle]="{
@@ -984,7 +1022,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Activities</span>
+                <span>Activities</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
@@ -1011,13 +1049,13 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">My Story/About Me</span>
+                <span>My Story/About Me</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
                   <div class="">
                     <textarea name="" class="form-control" formControlName="aboutMe" id="" cols="5" rows="5"
-                      placeholder="About us" [style]="{ width: '100%' }" [ngStyle]="{
+                      placeholder="About Me" [style]="{ width: '100%' }" [ngStyle]="{
                         border:
                           pointerEvent === true ? 'none' : '1px solid grey',
                         'pointer-events':
@@ -1028,7 +1066,7 @@
                       }"></textarea>
                     <div *ngIf="submitAboutFitnessModel && f4.aboutMe.errors" class="invalid-feedback">
                       <div *ngIf="f4.aboutMe.errors.required">
-                        AboutMe is required
+                        About Me is required
                       </div>
                     </div>
                   </div>
@@ -1037,7 +1075,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Product Reviews</span>
+                <span>Product Reviews</span>
               </div>
 
               <div class="col-sm-12 col-md-8 entries">
@@ -1046,11 +1084,11 @@
                       let item of productRatingModalArray.controls;
                       let i = index
                     " [formGroupName]="i">
-                    <div style="border: none" class="col-10 p-0 row" *ngIf="productRatingModalArray.length">
-                      <input class="col-3 form-control mt-0 product_review_name_multiple_field" placeholder="Product"
-                        formControlName="product" />
-                      <input class="col-4 form-control mt-0 product_review_multiple_field" placeholder="Review"
-                        formControlName="review" />
+                    <div class="col-10 p-0 row" *ngIf="productRatingModalArray.length">
+                      <textarea class="col-3 form-control mt-0 mr-2 product_review_name_multiple_field"
+                        placeholder="Product" formControlName="product"></textarea>
+                      <textarea class="col-4 form-control mt-0 pl-2 product_review_multiple_field" placeholder="Review"
+                        formControlName="review"></textarea>
                       <div class="col-3">
                         <p-rating [cancel]="false" formControlName="starts"></p-rating>
                       </div>
@@ -1111,7 +1149,7 @@
 
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Business Name</span>
+                <span>Business Name</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <input type="text" class="form-control" formControlName="name" id="" placeholder="Enter Business Name"
@@ -1133,7 +1171,7 @@
             <!-- Client Preference -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Client Preference</span>
+                <span>Client Preference</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <!-- <select class="form-select form-control" formControlName="clientPreference" [ngStyle]="{
@@ -1176,7 +1214,7 @@
             <!-- availabilityForInHomeTraining -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Availability for in-home training</span>
+                <span>Availability for in-home training</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <!-- <select class="form-select form-control" formControlName="availabilityForInHomeTraining" [ngStyle]="{
@@ -1219,7 +1257,7 @@
             <!-- availabilityForOnLineLiveTraining -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Availability for on-line-live training
+                <span>Availability for on-line-live training
                 </span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
@@ -1263,7 +1301,7 @@
             <!-- trainingRates -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Training Rates</span>
+                <span>Training Rates</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <input type="text" class="form-control" id="" formControlName="trainingRates"
@@ -1288,7 +1326,7 @@
             <!-- noteAboutTrainingRates -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Note About Training Rates</span>
+                <span>Note About Training Rates</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <input type="text" class="form-control" id="" formControlName="noteAboutTrainingRates"
@@ -1320,10 +1358,11 @@
             <!-- Degrees/Diplomas -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Degrees/Diplomas</span>
+                <span>Degrees/Diplomas</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
-                <input type="text" class="form-control" id="" formControlName="degree" [ngStyle]="{
+                <input type="text" class="form-control" placeholder="Enter Degree /Diploma" id=""
+                  formControlName="degree" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
@@ -1342,7 +1381,7 @@
             <!-- Professions -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Professions</span>
+                <span>Professions</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <input type="text" class="form-control" formControlName="professions" id="" [ngStyle]="{
@@ -1366,7 +1405,7 @@
             <!-- experience -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Experience</span>
+                <span>Experience</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
@@ -1392,10 +1431,18 @@
             <!-- Certifications -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Certifications/Trainings</span>
+                <span>Certifications/Trainings</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
+                  <div class="my-2">
+                    <input type="text" class="form-control" formControlName="certification" id="" [ngStyle]="{
+                        border: pointerEvent === true ? 'none' : '1px solid grey',
+                        'pointer-events':
+                          pointerEvent === true ? 'none' : 'inherit '
+                      }" placeholder="Enter Certificate If not in List" />
+
+                  </div>
                   <div class="">
                     <p-multiSelect formControlName="certification" [options]="certificates"
                       placeholder="Select a certificates" optionLabel="name" [ngStyle]="{
@@ -1425,7 +1472,7 @@
             <!-- Specialties -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Specialties</span>
+                <span>Specialties</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <p-multiSelect [options]="specialties" placeholder="Select a specialities" optionLabel="name"
@@ -1451,7 +1498,7 @@
             <!-- Languages -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Languages</span>
+                <span>Languages</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <p-multiSelect [options]="languages" placeholder="Select a languages" optionLabel="name"
@@ -1475,7 +1522,7 @@
             <!-- Training Methods and Styles -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Training Methods and Styles</span>
+                <span>Training Methods and Styles</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <textarea name="" class="form-control" id="" cols="5" formControlName="trainingMethodsAndStyles"
@@ -1501,7 +1548,7 @@
 
             <!-- <div class="row">
               <div class="col-sm-12 col-md-6 py-2">
-                <span for="exampleInputEmail1">Fitness Awards</span>
+                <span >Fitness Awards</span>
               </div>
               <div class="col-sm-12 col-md-6 entries">
                 <button *ngIf="show" class="btn btn-danger" style="
@@ -1520,7 +1567,7 @@
             <!-- name -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Name</span>
+                <span>Name</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <input type="text" class="form-control" formControlName="name" id="" [ngStyle]="{
@@ -1542,7 +1589,7 @@
             <!-- Profile Url -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Profile Url</span>
+                <span>Profile Url</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <input type="text" class="form-control" id="" formControlName="profileUrl" [ngStyle]="{
@@ -1565,7 +1612,7 @@
 
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Gender</span>
+                <span>Gender</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
@@ -1595,7 +1642,7 @@
             <!-- Age -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Age</span>
+                <span>Age</span>
               </div>
               <div class="col-sm-12 col-md-8">
                 <div class="row" style="border: none">
@@ -1624,7 +1671,7 @@
             <!-- Height -->
             <div class="row" formGroupName="height">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Height</span>
+                <span>Height</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="row" style="border: none">
@@ -1685,7 +1732,7 @@
 
             <div class="row" formGroupName="weight">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Weight</span>
+                <span>Weight</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="row" style="border: none">
@@ -1748,7 +1795,7 @@
             <!-- Diet Type -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Diet Type</span>
+                <span>Diet Type</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <!-- <select formControlName="dietType" class="form-select form-control custom-select" [ngStyle]="{
@@ -1787,7 +1834,7 @@
             <!-- Body Type -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Body Type</span>
+                <span>Body Type</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <!-- <select formControlName="bodyType" class="form-select form-control" [ngStyle]="{
@@ -1825,7 +1872,7 @@
             <!-- Activities -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Activities</span>
+                <span>Activities</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="">
@@ -1856,11 +1903,11 @@
             <!-- My Story/About me -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">My Story/About me</span>
+                <span>My Story/About me</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <textarea name="" class="form-control" id="" cols="5" formControlName="aboutMe" rows="5"
-                  placeholder="About us" [ngStyle]="{
+                  placeholder="About Me" [ngStyle]="{
                     border: pointerEvent === true ? 'none' : '1px solid grey',
                     'pointer-events':
                       pointerEvent === true ? 'none' : 'inherit '
@@ -1879,7 +1926,7 @@
             <!-- Product Reviews -->
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Product Reviews</span>
+                <span>Product Reviews</span>
               </div>
 
               <div class="col-sm-12 col-md-8 entries">
@@ -1889,10 +1936,10 @@
                       let i = index
                     " [formGroupName]="i">
                     <div style="border: none" class="col-10 p-0 row" *ngIf="productRatingProArray.length">
-                      <input class="col-3 form-control mt-0 product_review_name_multiple_field" placeholder="Product"
-                        formControlName="product" />
-                      <input class="col-4 form-control mt-0 product_review_multiple_field" placeholder="Review"
-                        formControlName="review" />
+                      <textarea class="col-3  mr-2 form-control mt-0 product_review_name_multiple_field"
+                        placeholder="Product" formControlName="product"></textarea>
+                      <textarea class="col-4 pl-2form-control mt-0 product_review_multiple_field" placeholder="Review"
+                        formControlName="review"></textarea>
                       <div class="col-3">
                         <p-rating [cancel]="false" formControlName="starts"></p-rating>
                       </div>
@@ -1918,7 +1965,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 col-md-4 py-2">
-                <span for="exampleInputEmail1">Sponsor Images</span>
+                <span>Sponsor Images</span>
               </div>
               <div class="col-sm-12 col-md-8 entries">
                 <div class="productReviewsMain" formArrayName="productsRating">

@@ -303,7 +303,7 @@ export const Certificates = [
     { name: 'YogaWorks', code: 'YogaWorks' },
 ];
 export const Activities = [
-    { name: 'Select a Type', code: 'select type' },
+  
     { name: 'Aerobics', code: 'Aerobics' },
     { name: 'Baseball', code: 'Baseball' },
     { name: 'Basketball', code: 'Basketball' },
@@ -372,7 +372,76 @@ export const Activities = [
     { name: 'Zumba (Latin Dance)', code: 'Zumba (Latin Dance)' },
     { name: 'All', code: 'all' },
 ];
-
+export const activitiesList = [
+  
+    { name: 'Aerobics', code: 'Aerobics' },
+    { name: 'Baseball', code: 'Baseball' },
+    { name: 'Basketball', code: 'Basketball' },
+    { name: 'Bicycling', code: 'Bicycling' },
+    {
+        name: 'Body Leverage/Bodyweight Training',
+        code: 'Body Leverage/Bodyweight Training',
+    },
+    { name: 'Bodybuilding', code: 'Bodybuilding' },
+    { name: 'Boot Camps', code: 'Boot Camps' },
+    { name: 'Boxing', code: 'Boxing' },
+    { name: 'Cardio Machines', code: 'Cardio Machines' },
+    { name: 'Choreography', code: 'Choreography' },
+    { name: 'Circuit Training', code: 'Circuit Training' },
+    { name: 'Core Conditioning', code: 'Core Conditioning' },
+    { name: 'Cross Country', code: 'Cross Country' },
+    { name: 'Cross Fit', code: 'Cross Fit' },
+    { name: 'Cycling', code: 'Cycling' },
+    { name: 'Dancing', code: 'Dancing' },
+    { name: 'Diving', code: 'Diving' },
+    { name: 'Equestrian', code: 'Equestrian' },
+    { name: 'Football', code: 'Football' },
+    { name: 'Golfing', code: 'Golfing' },
+    { name: 'Gymnastics', code: 'Gymnastics' },
+    { name: 'Gyrotonic, Gyrokinesis', code: 'Gyrotonic, Gyrokinesis' },
+    { name: 'Hiking', code: 'Hiking' },
+    { name: 'Hockey', code: 'Hockey' },
+    { name: 'Ice Skating', code: 'Ice Skating' },
+    { name: 'Jogging', code: 'Jogging' },
+    { name: 'Kettlebells', code: 'Kettlebells' },
+    { name: 'Kickboxing', code: 'Kickboxing' },
+    { name: 'Lacrosse', code: 'Lacrosse' },
+    { name: 'Martial Arts', code: 'Martial Arts' },
+    { name: 'Meditation', code: 'Meditation' },
+    { name: 'Mind &amp; Body', code: 'Mind &amp; Body' },
+    { name: 'Mixed Martial Arts (MMA)', code: 'Mixed Martial Arts (MMA)' },
+    { name: 'Nia', code: 'Nia' },
+    { name: 'Nordic Walking', code: 'Nordic Walking' },
+    { name: 'Personal Training', code: 'Personal Training' },
+    { name: 'Pilates', code: 'Pilates' },
+    { name: 'Pole Dancing', code: 'Pole Dancing' },
+    { name: 'Pole Fitness', code: 'Pole Fitness' },
+    { name: 'Roller Blading', code: 'Roller Blading' },
+    { name: 'Rope Skipping', code: 'Rope Skipping' },
+    { name: 'Rowing', code: 'Rowing' },
+    { name: 'Running', code: 'Running' },
+    { name: 'Skiing', code: 'Skiing' },
+    { name: 'Snowboarding', code: 'Snowboarding' },
+    { name: 'Soccer', code: 'Soccer' },
+    { name: 'Softball', code: 'Softball' },
+    { name: 'Stretching/Flexibility', code: 'Stretching/Flexibility' },
+    { name: 'Surfing', code: 'Surfing' },
+    { name: 'Swimming', code: 'Swimming' },
+    { name: 'Tai Chi', code: 'Tai Chi' },
+    { name: 'Tennis', code: 'Tennis' },
+    { name: 'Track and Field', code: 'Track and Field' },
+    { name: 'Trail Running', code: 'Trail Running' },
+    { name: 'Triathlon', code: 'Triathlon' },
+    { name: 'TRX (Suspension Training)', code: 'TRX (Suspension Training)' },
+    { name: 'Volleyball', code: 'Volleyball' },
+    { name: 'Walking', code: 'Walking' },
+    { name: 'Water Fitness', code: 'Water Fitness' },
+    { name: 'Water Polo', code: 'Water Polo' },
+    { name: 'Wrestling', code: 'Wrestling' },
+    { name: 'Yoga', code: 'Yoga' },
+    { name: 'Zumba (Latin Dance)', code: 'Zumba (Latin Dance)' },
+    
+];
 
 export const TabsItemsList: ITabsItems[] = [
     { name: 'About', code: AccountTabEnum.About },
@@ -482,7 +551,7 @@ export const age =[
 ]
 export const measurement =[
     {name:"Meters",code:'1'},
-    {name:"Feets",code:'2'},
+    {name:"Feet",code:'2'},
 ]
 export const weightList =[
     {name:"Kilos",code:'1'},
@@ -595,4 +664,25 @@ export const dietType =[
     {name:"Raw Food",code:'3'},
     {name:"Mediterranean",code:'4'}
 ]
+
+export const videoCatagory=[
+    {name:"WORK OUT",code:"1"},
+    {name:"MUSIC PLAYLIST",code:"2"},
+    {name:"RECIPES",code:"3"},
+    {name:"PRODUCT RIVIEW",code:"4"},
+    {name:"JUST FOR FUN",code:"5"},
+    {name:"VIDEO PODCAST",code:"6"},
+    {name:"SUCCESS STORY",code:"7"},
+    {name:"AD",code:"8"},
+    {name:"other",code:"9"},
+]
+
+export const CatagoryLevel=[
+    {name:"Beginner",code:"1"},
+    {name:"Intermediate",code:"2"},
+    {name:"Advanced",code:"3"},
+    {name:"Elite",code:"4"}
+]
+
+
 

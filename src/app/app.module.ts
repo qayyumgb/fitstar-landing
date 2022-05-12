@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
+import { InterceptorService } from './components/services/interceptor.service';
 import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { ToastrModule } from 'ngx-toastr';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
+      useClass: InterceptorService,
       multi: true,
     },
   ],

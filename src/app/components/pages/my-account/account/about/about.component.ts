@@ -70,13 +70,15 @@ export class AboutComponent implements OnInit {
   inHomeTraining=inHomeTraining
   onineLiveTraining=onineLiveTraining
   dietType=dietType
-  
+  fitnessProList:any;
 
 
 
   // Center Role Form
   aboutFitnessCenterForm: FormGroup = new FormGroup({
     _id: new FormControl(''),
+    name: new FormControl('', Validators.required),
+    profileUrl: new FormControl('', Validators.required),
     openSince: new FormControl('', Validators.required),
     fitnessCenterType: new FormControl('', Validators.required),
     specialities: new FormControl('', Validators.required),
@@ -241,6 +243,17 @@ export class AboutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+ this.profileService.getAllFitnesspro().subscribe((res:any)=>{
+  //  console.log(`geeting all FitnessPro list for render ${res.users}`)
+
+  // this.fitnessProList=res.users.fullName;
+  const data = res.users 
+  data.forEach((element : any)  => {
+     this.fitnessProList=element.fullName
+     console.log(this.fitnessProList)
+   });
+  //console.log(`User Full Name ${this.fitnessProList}`)
+ })
 
   }
 

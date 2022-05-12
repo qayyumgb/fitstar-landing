@@ -19,7 +19,7 @@ export class AuthService {
   // Clears the token
   async logout() {
     localStorage.removeItem('accessToken');
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
   }
 
   public getAccessToken(): string | null {
@@ -51,6 +51,17 @@ export class AuthService {
     return accessToken && accessToken.length > 0;
   }
 
+  // async logout() {
+  //   localStorage.removeItem('accessToken');
+  //   this.router.navigate(['/login']);
+  // }
+
+  // public getAccessToken(): string | null {
+  //   return localStorage.getItem('accessToken');
+  // }
+  public setAccessToken(token: string): void {
+    localStorage.setItem('accessToken', token);
+  }
 
 
 

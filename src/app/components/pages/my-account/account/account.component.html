@@ -1,5 +1,5 @@
 <!-- //section#1 Switich Role  -->
-<div class="my-account d-flex justify-content-center py-3">
+<div class="my-account d-flex justify-content-center " style="padding: 40px 0px;">
   <section class="swtichRole container rounded">
     <div class="swtich">
       <div class="row">
@@ -122,8 +122,9 @@
           Important: Only change the role if you want to create a new profile
           for that role or if you already have a profile for that role.
         </p>
-        <input type="text" formControlName="activeRole" placeholder="Selected Role" name="" id="" value=""
-          class="form-control no-shadow my-2" />
+        <input type="text" placeholder="Selected Role" name="" id="" class="form-control no-shadow my-2"
+          [value]="SwitchRole" disabled />
+
         <div class="selectRole py-2">
           <select formControlName="activeRole" name="activeRole" class="form-select form-control" required="" [ngClass]="{
               'is-invalid': SubmittedRole && f1.activeRole.errors

@@ -50,6 +50,7 @@ export class TopFitnessComponent implements OnInit {
     let data = {} as IFitnessDirFilter;
     data.role = 'pro'
     this.profileService.filterFitnessDir(data).subscribe((response: IFitPro) => {
+      console.log(response)
       this.fitnessProList = response.users;
 
     })

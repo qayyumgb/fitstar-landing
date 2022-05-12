@@ -53,7 +53,7 @@
     <div *ngIf="galleryArray.value.length " class="gallery-images">
       <div *ngFor="let item of galleryArray.value let i=index" class="gallery-images-items">
         <span>
-          <img [src]="item.url" alt="" />
+          <img [src]="item.url" alt="" (click)="openModal(galleryPopup, item.url)" />
           <div *ngIf="show" class="edit_ico"><i class="fa-solid fa-trash" (click)="removeImage(i)"></i></div>
         </span>
 
@@ -74,4 +74,20 @@
       </div>
     </div> -->
   </div>
+  <ng-template #galleryPopup>
+    <div class="modal fade show in" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-modal="true" style="display: block">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true" (click)="modalRef?.hide()">×</span>
+            </button>
+
+            <img src="{{ clickedItemImage }}" alt="" width="100%" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
 </section>

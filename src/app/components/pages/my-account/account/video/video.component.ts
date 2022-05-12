@@ -11,6 +11,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { PrimeNGConfig } from 'primeng/api';
 import { ProfileService } from 'src/app/services/profile.service';
 import { IProfileInfo, IProfileInfoResponse, IVideo, MyProfile } from 'src/app/shared/interfaces/profile.interface';
+import {videoCatagory} from '../../../../../shared/constants/dropdown-list'
+
 
 
 @Component({
@@ -38,7 +40,8 @@ export class VideoComponent implements OnInit {
   readonly: Boolean = true;
   pointerEvent: boolean = true;
   role: string = "";
-
+  videoCategory=videoCatagory;
+   
   constructor(private primengConfig: PrimeNGConfig, private profileService: ProfileService) { }
 
   ngOnChanges(changes: SimpleChanges): void {

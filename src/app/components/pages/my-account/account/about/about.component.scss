@@ -178,8 +178,15 @@ ul {
 .radioLabel {
   padding-left: 15px;
 }
-.form-group.is-invalid {
+
   .invalid-feedback {
     display: block;
   }
+
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
 }

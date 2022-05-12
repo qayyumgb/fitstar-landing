@@ -43,12 +43,14 @@ export class GalleryComponent implements OnInit {
   hide: any;
   readonly: Boolean = true;
   pointerEvent: boolean = true;
-  @Input() profileInfo: MyProfile;
+  modalRef?: BsModalRef;
 
+  @Input() profileInfo: MyProfile;
   @Input() guestMode: boolean = false;
 
 
   constructor(
+    private modalService: BsModalService,
     private profileService: ProfileService
   ) { }
 
@@ -156,5 +158,13 @@ export class GalleryComponent implements OnInit {
       })
     }
     this.SubmitGalleryImage = true;
+  }
+
+  clickedItemImage:any;
+  openModal(template: TemplateRef<any>,getImageValue:any) {
+    this.modalRef = this.modalService.show(template, {
+      class: 'ambassadorListingModal',
+    });
+    this.clickedItemImage = getImageValue
   }
 }

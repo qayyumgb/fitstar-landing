@@ -25,8 +25,8 @@
                 </div>
               </div>
               <!-- category -->
-              <div class="col-sm-12 col-md-4 px-1">
-                <select class="form-select form-control" formControlName="videoType" [ngClass]="{
+              <div class="col-sm-12 col-md-4 px-1 mt-4 p-0">
+                <!-- <select class="form-select form-control" formControlName="videoType" [ngClass]="{
                     'is-invalid': SubmitVideo && f6.videoType.errors
                   }">
                   <option selected>Select Video Catagory</option>
@@ -39,7 +39,17 @@
                   <option value="successStory">SUCCESS STORY</option>
                   <option value="AD">AD</option>
                   <option value="other">OTHER</option>
-                </select>
+                </select> -->
+
+                <p-dropdown [options]="videoCategory" formControlName="videoType" class="w-100 p-video"
+                  optionLabel="name" optionValue="name" placeholder="Select a video Category " [ngStyle]="{
+                      border:
+                        pointerEvent === true ? 'none' : '1px solid grey',
+                      'pointer-events':
+                        pointerEvent === true ? 'none' : 'inherit '
+                    }" [ngClass]="{
+                      'is-invalid': SubmitVideo && f6.videoType.errors
+                    }"></p-dropdown>
                 <div *ngIf="SubmitVideo && f6.videoType.errors" class="invalid-feedback">
                   <div *ngIf="f6.videoType.errors.required">
                     Select Video Type is required
@@ -64,7 +74,8 @@
 
           <div class="form-controll_btn">
             <button *ngIf="videoArray.length == 0" type=" button" class="update_btn poppins"
-              (click)="addNewYoutubeLink()" style="width: auto; padding: 5px 11px; margin: 10px 0px 0px 15px">
+              (click)="addNewYoutubeLink()"
+              style="width: auto; padding: 5px 11px; margin: 10px 0px 0px 15px;float: right; margin-right: 96px; margin-bottom: 15px;">
               Add new video
             </button>
             <div class="field poppins age edit my-2">

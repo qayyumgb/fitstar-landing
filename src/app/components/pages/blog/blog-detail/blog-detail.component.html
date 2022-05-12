@@ -17,16 +17,29 @@
                 <div class="col-sm-8 col-12 blog-main">
                     <h3 class="blog-heading">{{item.title}}</h3>
 
-                    <div style="margin-top: 10px; cursor:pointer;">
+                    <!-- <div style="margin-top: 10px; cursor:pointer;">
                         <form action="/blog_heart_counter/" method="POST">
                             <input type="hidden" name="csrfmiddlewaretoken"
                                 value="GpFnXtx7QhnibDDeEofPoJOLzm2tYcE4o9n1AlsybHhoyzwGFQEiDnN8Knr83DCz">
                             <input type="text" hidden="" value="100" name="blog_id">
                         </form>
-                    </div>
+                    </div> -->
 
                     <p style="color: #969393;font-size: 15px">{{item.description}}</p>
+                    <div class="row">
+                        <div class="col-12 mt-5">
+                            <a [href]="" target="_blank"><i class="px-1 cursor-pointer"><img
+                                        src="../../../../../assets/images/facebook.png" alt="" /></i></a>
+                            <a [href]="" target="_blank"><i class="px-1 cursor-pointer"><img
+                                        src="../../../../../assets/images/linkedin.png" alt="" /></i></a>
+                            <a [href]="" target="_blank"><i class="px-1 cursor-pointer"><img
+                                        src="../../../../../assets/images/twitter.png" alt="" /></i></a>
+                            <a [href]="" target="_blank"><i class="px-1 cursor-pointer"><img
+                                        src="../../../../../assets/images/pinterest.png" alt="" /></i></a>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
         <div class="container-fluid">
@@ -43,6 +56,8 @@
                     <p class="poppins" style="color: #5b5858; word-break: break-all;">{{item.description}}</p>
                 </div>
             </div>
+
         </div>
+
     </section>
 </div>

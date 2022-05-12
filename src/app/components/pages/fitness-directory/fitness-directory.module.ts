@@ -9,10 +9,13 @@ import { TabsComponent } from './tabs/tabs.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FitnessDirectoryContentComponent } from './fitness-directory-content/fitness-directory-content.component';
 import {DropdownModule} from 'primeng/dropdown';
+import { TopFitnessProComponent } from './top-fitness-pro/top-fitness-pro.component';
+import { TopFitnessCenterComponent } from './top-fitness-center/top-fitness-center.component';
+import { TopFitnessModelComponent } from './top-fitness-model/top-fitness-model.component';
 
 
 @NgModule({
-  declarations: [FitnessCenterComponent, FitnessModalComponent, FitnessProsComponent, TabsComponent, FitnessDirectoryContentComponent],
+  declarations: [FitnessCenterComponent, FitnessModalComponent, FitnessProsComponent, TabsComponent, FitnessDirectoryContentComponent, TopFitnessProComponent, TopFitnessCenterComponent, TopFitnessModelComponent],
   imports: [
     CommonModule,
     FitnessDirectoryRoutingModule,

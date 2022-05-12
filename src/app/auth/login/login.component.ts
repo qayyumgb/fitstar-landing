@@ -70,10 +70,11 @@ export class LoginComponent implements OnInit {
           if (res.message === 'Successful Login!')
           localStorage.setItem('accessToken', res?.token);
           this.router.navigate(['']);
+          this.toastr.success(res.message)
         },
         error: (error: ILoginResponse) => {
           this.toastr.error("Provided credentials are incorrect, please try again.");
-        
+          this.toastr.error(error.message);
         }
       });
     }

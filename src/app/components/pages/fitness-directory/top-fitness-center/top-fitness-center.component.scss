@@ -1,0 +1,57 @@
+#ambassadors h2, #sponsors h2 {
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 100px/110px DELIRIUM NCV;
+    letter-spacing: var(--unnamed-character-spacing-0);
+    text-align: center;
+    font: normal normal normal 7vw DELIRIUM NCV;
+    font-family: "DELIRIUM" !important;
+    color: #5a5a5a;
+    padding-bottom: 30px;
+}
+#wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+.slick-initialized .slick-slide {
+    display: block;
+}
+.ad_card {
+    width: 100%;
+    height: 340px;
+    margin: 40px auto;
+    position: relative;
+    background-image: url(../../../../../assets/images/gym-freak.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+.ads_card_banner {
+    position: absolute;
+    width: 100%;
+    height: 70px;
+    border-radius: 0 0 8px 8px;
+    bottom: 0;
+    left: 0;
+    background-color: #FF1A1A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 10px;
+    color: white;
+}

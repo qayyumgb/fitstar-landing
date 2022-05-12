@@ -44,4 +44,11 @@ export class ProfileService {
     }))
   }
 
+ getAllFitnesspro():Observable<any> {
+  return this.http.get<any>(API_ENDPOINTS.fitnessPro).pipe(map((res: any) => {
+    console.log(res)
+    return res
+  }))
+ }
+
 }

@@ -61,15 +61,18 @@
               <th>Specialty</th>
             </tr>
             <tr *ngIf="_role === 'center'">
+              <th>Fitness Center</th>
               <th>Name</th>
+              <th>Languages</th>
               <th>Type</th>
-              <th>Specialties</th>
+              <th>Open Since</th>
             </tr>
             <tr *ngIf="_role === 'modal'">
+              <th>Fitness Model</th>
               <th>Name</th>
-              <th>Compensation</th>
+              <th>Experience</th>
               <th>Ethnicity</th>
-              <th>Modeling Interest</th>
+              <th>Modeling Activities</th>
             </tr>
           </thead>
 
@@ -97,38 +100,44 @@
             </ng-container>
 
             <ng-container *ngFor="let item of itemList">
-              <tr *ngIf="item.role === 'center'">
-                <!-- <td>
-                  <a href="#"><img [src]="
-                        item.image !== ''
-                          ? item.image
-                          : 'https://www.kindpng.com/picc/m/59-597441_clip-art-fitness-models-pics-portable-network-graphics.png'
-                      " style="width: 100px" /></a>
-                </td> -->
-                <td [routerLink]="['../myaccount/', item._id]" [state]="item">{{ item?.fullName }}</td>
+              <ng-container *ngIf="item.role === 'center'">
+                <tr>
+                  <td>
+                    <a [routerLink]="['../myaccount/', item._id]" [state]="item"><img [src]="
+                          item.image !== ''
+                            ? item.image
+                            : 'https://www.kindpng.com/picc/m/59-597441_clip-art-fitness-models-pics-portable-network-graphics.png'
+                        " style="width: 100px" /></a>
+                  </td>
+                  <!-- <td [routerLink]="['../myaccount/', item._id]"> <img src="{{item?.centerAbout?.image}}" alt=""></td> -->
+                  <td>{{ item?.fullName }}</td>
+                  <td>{{ item?.centerAbout?.language }}</td>
+                  <td>{{ item?.centerAbout?.fitnessCenterType }}</td>
+                  <td>{{ item?.centerAbout?.openSince }}</td>
+                </tr>
+              </ng-container>
 
-                <!-- <td>{{ item?.centerAbout?.language }}</td> -->
-                <td>{{ item?.centerAbout?.fitnessCenterType }}</td>
-                <td>{{ item?.centerAbout?.specialities }}</td>
-              </tr>
             </ng-container>
 
 
 
             <ng-container *ngFor="let item of itemList">
-              <tr *ngIf="_role === 'modal'">
-                <!-- <td>
-                  <a href="#"><img [src]="
-                        item.image !== ''
-                          ? item.image
-                          : 'https://www.kindpng.com/picc/m/59-597441_clip-art-fitness-models-pics-portable-network-graphics.png'
-                      " style="width: 100px" /></a>
-                </td> -->
-                <td [routerLink]="['../myaccount/', item._id]" [state]="item">{{ item?.fullName }}</td>
-                <td>{{ item?.modelAbout?.compensation }}</td>
-                <td>{{ item?.modelAbout?.ethnicity }}</td>
-                <td>{{ item?.modelAbout?.modelingInterest }}</td>
-              </tr>
+              <ng-container *ngIf="role === 'modal'">
+                <tr>
+                  <td>
+                    <a href="#" [routerLink]="['../myaccount/', item._id]" [state]="item"><img [src]="
+                          item.image !== ''
+                            ? item.image
+                            : 'https://www.kindpng.com/picc/m/59-597441_clip-art-fitness-models-pics-portable-network-graphics.png'
+                        " style="width: 100px" /></a>
+                  </td>
+                  <td>{{ item?.fullName }}</td>
+                  <td>{{ item?.modelAbout?.experience }}</td>
+                  <td>{{ item?.modelAbout?.ethnicity }}</td>
+                  <td>{{ item?.modelAbout?.modelingInterest }}</td>
+                </tr>
+              </ng-container>
+
             </ng-container>
           </tbody>
         </table>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './AuthGuad/auth.guard';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
 
   {
     path: "myaccount",
+    
     loadChildren: () => import('../app/components/pages/my-account/my-account.module').then(m => m.MyAccountModule)
   },
   {

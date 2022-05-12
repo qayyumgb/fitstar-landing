@@ -1,24 +1,50 @@
 <section class="mt-5  mb-5">
     <div class="container">
-        <div class="row pb-3 mb-3 border-bottom" *ngFor="let blog of itemList">
-            <div class="col-sm-6 col-12 blog-main">
-                <img src="{{blog.featuredImageOne}}" class="blogImage" style="width: 100%">
-            </div>
-            <div class="col-sm-6 col-12 blog-main">
-                <h5 class="blog-heading mt-3">{{blog.category}}<span style="color: #969393;font-size: 20px"> |
-                        {{blog.createdAt|date:'medium'}}</span></h5>
-                <h3 class="blog-heading"><a [routerLink]="['/blog/detail/', blog._id]"
-                        [state]="{ data:blog}">{{blog.title}}</a>
-                </h3>
-                <p style="color: #969393;font-size: 15px">{{blog.description}}</p>
-                <div class="clearfix">
-                    <img src="{{blog.authorImage}}" style="width: 70px;height: 70px;border-radius: 50px;float: left">
-                    <div style="padding-left: 20px">
-                        <span
-                            style="margin-top: 10px;position: absolute;margin-left: 20px;">{{blog.authorName}}</span><br>
+        <div class="row pb-3 mb-3 border-bottom" *ngFor="let blog of itemList index as i;">
+            <ng-template ngIf="(i%2===0)">
+                <div class="col-sm-6 col-12 blog-main py-2">
+                    <img src="{{blog.featuredImageOne}}" class="blogImage" style="width: 100%">
+                </div>
+                <div class="col-sm-6 col-12 blog-main py-2">
+                    <h5 class="blog-heading mt-3">{{blog.category}}<span style="color: #969393;font-size: 20px"> |
+                            {{blog.createdAt|date:'medium'}}</span></h5>
+                    <h3 class="blog-heading"><a [routerLink]="['/blog/detail/', blog._id]"
+                            [state]="{ data:blog}">{{blog.title}}</a>
+                    </h3>
+                    <p style="color: #969393;font-size: 15px">{{blog.description}}</p>
+                    <div class="clearfix">
+                        <img src="{{blog.authorImage}}"
+                            style="width: 70px;height: 70px;border-radius: 50px;float: left">
+                        <div style="padding-left: 20px">
+                            <span
+                                style="margin-top: 10px;position: absolute;margin-left: 20px;">{{blog.authorName}}</span><br>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </ng-template>
+
+            <ng-template ngIf="(i%2 !===0)">
+
+                <div class="col-sm-6 col-12 blog-main py-2">
+                    <h5 class="blog-heading mt-3">{{blog.category}}<span style="color: #969393;font-size: 20px"> |
+                            {{blog.createdAt|date:'medium'}}</span></h5>
+                    <h3 class="blog-heading"><a [routerLink]="['/blog/detail/', blog._id]"
+                            [state]="{ data:blog}">{{blog.title}}</a>
+                    </h3>
+                    <p style="color: #969393;font-size: 15px">{{blog.description}}</p>
+                    <div class="clearfix">
+                        <img src="{{blog.authorImage}}"
+                            style="width: 70px;height: 70px;border-radius: 50px;float: left">
+                        <div style="padding-left: 20px">
+                            <span
+                                style="margin-top: 10px;position: absolute;margin-left: 20px;">{{blog.authorName}}</span><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-12 blog-main py-2">
+                    <img src="{{blog.featuredImageOne}}" class="blogImage" style="width: 100%">
+                </div>
+            </ng-template>
         </div>
     </div>
 </section>

@@ -51,10 +51,11 @@ export class PortfiloComponent implements OnInit {
   hide: any;
   readonly: Boolean = true;
   pointerEvent: boolean = true;
+  modalRef?: BsModalRef;
   @Input() guestMode: boolean = false;
 
 
-  constructor(private profileService: ProfileService) { }
+  constructor( private modalService: BsModalService,private profileService: ProfileService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
@@ -189,5 +190,13 @@ export class PortfiloComponent implements OnInit {
       this.show = false;
     })
 
+  }
+  clickedItemImage:any
+
+  openModal(template: TemplateRef<any>,getImageValue:any) {
+    this.modalRef = this.modalService.show(template, {
+      class: 'ambassadorListingModal',
+    });
+    this.clickedItemImage = getImageValue
   }
 }

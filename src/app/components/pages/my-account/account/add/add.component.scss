@@ -110,11 +110,12 @@ ul {
 }
 
 .ad_card {
+  width: 310px;
   height: 380px;
   margin: 40px auto;
   position: relative;
   background-image: url(../../../../../../assets/images/fitstar_oFuC4Ci.png);
-  background-size: cover;
+  background-size: contain !important;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 10px;
@@ -226,4 +227,18 @@ div#main-content {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
   grid-gap: 20px;
+}
+.ads_heading h2 {
+  letter-spacing: var(--unnamed-character-spacing-0);
+  text-align: center;
+  // font: normal normal normal 90px DELIRIUM NCV;
+  font-size: 100px;
+  font-weight: 500;
+  font-family: "DELIRIUMDELIRIUM NCV";
+  color: #5a5a5a;
+  font-weight: 500;
+}
+
+.derlimn-font {
+  font-family: "DELIRIUM" !important;
 }

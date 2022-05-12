@@ -33,6 +33,8 @@ export class MyProfile {
 }
 
 export interface CenterAbout {
+    name:string;
+    profileUrl:string;
     openSince: number;
     fitnessCenterType: string;
     language: string[];
@@ -53,7 +55,12 @@ export interface ProductRating {
 }
 
 export interface ContactUs {
-    address: string;
+    address1: string;
+    address2:string;
+    address3:string;
+    gym1:string;
+    gym2:string;
+    gym3:string;
     phoneNo: string;
     blogLink: string;
     facebookLink: string;

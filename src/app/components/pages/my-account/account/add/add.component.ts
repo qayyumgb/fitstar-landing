@@ -17,7 +17,7 @@ import { AddFormType } from 'src/app/shared/enum/fitnessDirectoryEnums';
 import { ActiveRoleEnum } from 'src/app/shared/enum/profile.enum';
 import { IProfileInfo, IProfileInfoResponse, MyProfile } from 'src/app/shared/interfaces/profile.interface';
 import { ProfileService } from './../../../../../services/profile.service';
-
+import {CatagoryLevel,activitiesList} from '../../../../../shared/constants/dropdown-list'
 
 @Component({
   selector: 'app-add',
@@ -31,9 +31,10 @@ export class ADDComponent implements OnInit {
   interests = Interests;
   compensation = Compensation;
   SubmitAddForm: boolean = false;
+  categoryList=CatagoryLevel
   @Input() guestMode: boolean = false;
   addFormType = AddFormType;
-
+  activitiesList=activitiesList
 
   addsForm: FormGroup = new FormGroup({
 
@@ -70,7 +71,7 @@ export class ADDComponent implements OnInit {
   selectedDays: string[] = [];
   detailSection: boolean = false;
   updateIndex: number;
-
+  headerTitle:string;
   @Input() profileInfo: MyProfile;
 
 
@@ -116,9 +117,12 @@ export class ADDComponent implements OnInit {
     this.addsForm.patchValue(item);
 
     if (type === AddFormType.Edit) {
+      this.headerTitle="Edit Ad"
+      this.addsForm.enable();
       this.detailSection = false;
     }
     else {
+      this.headerTitle="Ad Information"
       this.addsForm.disable();
       this.detailSection = true;
     }

@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   passwordShow: boolean = false;
   terms: boolean = true;
   submitted:boolean=false;
-  // referralUserLists:any;
+  referralUserLists:any;
   selectedRole:any='';
   roles=Roles;
 
@@ -74,11 +74,11 @@ export class RegisterComponent implements OnInit {
  
 
   ngOnInit(): void {
-  // this._referralUser.getAllUser().subscribe((data:any)=>{
-  //   console.log(data)
-  //   this.referralUserLists=data.users;
+  this._referralUser.getAllUser().subscribe((data:any)=>{
+    console.log(data)
+    this.referralUserLists=data.users;
 
-  // })
+  })
   }
   password() {
     this.passwordShow = !this.passwordShow;

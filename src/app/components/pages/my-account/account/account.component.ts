@@ -39,7 +39,7 @@ interface City {
 export class AccountComponent implements OnInit {
   modalRef?: BsModalRef;
   ChangeFitnessRole: FormGroup = new FormGroup({
-    activeRole: new FormControl(),
+    activeRole: new FormControl('Selected Role'),
   });
   createProfileImage: FormGroup = new FormGroup({
     image: new FormControl()
@@ -63,8 +63,10 @@ export class AccountComponent implements OnInit {
   SubmittedRole = false;
   showRoleContent: boolean = false;
   guestMode: boolean = false;
-
+  SwitchRole:string='';
   tabsItems = [...TabsItemsList];
+ 
+
   roles = [
     { id: "center", name: "Fitness Center", },
     { id: "model", name: "Fitness Model" },
@@ -78,7 +80,12 @@ export class AccountComponent implements OnInit {
     private profileService: ProfileService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-  ) { }
+  ) { 
+    // this.profileService.getAllProfileInfo().subscribe((res:any)=>{
+    //   this.SwitchRole=res.myProfile.activeRole
+    //   console.log(this.SwitchRole)
+    // })
+  }
 
 
   ngOnInit(): void {
@@ -93,10 +100,13 @@ export class AccountComponent implements OnInit {
       }
     });
 
+  
     if (isIdExists) {
       this.profileService.getProfileById(id).subscribe((response: IProfileId) => {
         this.profileInfo = response.profile;
         this.profileInfo.activeRole = response.profile.role;
+       
+ 
       })
 
 
@@ -109,7 +119,9 @@ export class AccountComponent implements OnInit {
     else if (!isIdExists) {
       this.profileService.getAllProfileInfo().subscribe((res: IProfileInfo) => {
         this.profileInfo = res.myProfile;
-        this.location = res.myProfile.location;
+        this.SwitchRole= "Current User Role Is :"+ res.myProfile.activeRole
+        console.log(this.SwitchRole)
+        this.location =  res.myProfile.location;
         this.ChangeFitnessRole.patchValue(res.myProfile);
         this.patchImageData(res.myProfile);
         this.showRoleContent = true;
@@ -120,6 +132,7 @@ export class AccountComponent implements OnInit {
     else {
       this.router.navigate(['']);
     }
+
 
 
   }
@@ -217,6 +230,8 @@ export class AccountComponent implements OnInit {
     } else {
       let body = {} as IProfileInfoUpdate;
       body.role = this.ChangeFitnessRole.get('activeRole')?.value;
+      console.log(body.role)
+      
       this.profileService.updateProfile(body).subscribe(res => {
         this.profileInfo = res.profile;
       })

@@ -4,6 +4,7 @@ export interface IRegister {
     password: string;
     role: string;
     location: string;
+    selectReferral:string;
 }
 
 export interface IRegisterResponse {

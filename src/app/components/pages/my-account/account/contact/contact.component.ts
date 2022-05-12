@@ -31,8 +31,12 @@ import { IProfileInfo, IProfileInfoResponse, MyProfile } from 'src/app/shared/in
 export class ContactComponent implements OnInit {
 
   editContactForm: FormGroup = new FormGroup({
-
-    address: new FormControl('', Validators.required),
+    gymName1:new FormControl('',Validators.required),
+    address1: new FormControl('', Validators.required),
+    gymName2:new FormControl(''),
+    address2: new FormControl(''),
+    gymName3:new FormControl(''),
+    address3: new FormControl(''),
     phoneNo: new FormControl('', Validators.required),
     blogLink: new FormControl('', Validators.required),
     facebookLink: new FormControl('', Validators.required),
@@ -85,15 +89,23 @@ export class ContactComponent implements OnInit {
       writeaboutus: ['', Validators.required],
     })
 
-
-
   }
 
+  contactUsForm:FormGroup= new FormGroup({
+//FormFields will added as per Direction of Seniors
+name: new FormControl('',Validators.required),
+email:new FormControl('',Validators.required),
+subject:new FormControl('',Validators.required),
+message:new FormControl('',Validators.required)
+  })
+  
   rateUsForm: FormGroup = new FormGroup({
     ratingComment: new FormControl('', Validators.required),
     rating: new FormControl('', Validators.required)
   })
-
+  get f9(): { [key: string]: AbstractControl } {
+    return this.writeAboutUsForm.controls;
+  }
   get f10(): { [key: string]: AbstractControl } {
     return this.writeAboutUsForm.controls;
   }
